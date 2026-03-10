@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#39ff14" stop-opacity="0.3"/>
+      <stop offset="70%" stop-color="#39ff14" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#39ff14" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="neon">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="neonStrong">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="256" height="256" rx="24" fill="#0a0f0a"/>
+
+  <!-- Subtle glow -->
+  <circle cx="128" cy="128" r="120" fill="url(#glow)"/>
+
+  <!-- Grid lines for terminal feel -->
+  <g opacity="0.08" stroke="#39ff14" stroke-width="0.5">
+    <line x1="40" y1="0" x2="40" y2="256"/>
+    <line x1="80" y1="0" x2="80" y2="256"/>
+    <line x1="120" y1="0" x2="120" y2="256"/>
+    <line x1="160" y1="0" x2="160" y2="256"/>
+    <line x1="200" y1="0" x2="200" y2="256"/>
+    <line x1="0" y1="40" x2="256" y2="40"/>
+    <line x1="0" y1="80" x2="256" y2="80"/>
+    <line x1="0" y1="120" x2="256" y2="120"/>
+    <line x1="0" y1="160" x2="256" y2="160"/>
+    <line x1="0" y1="200" x2="256" y2="200"/>
+  </g>
+
+  <!-- Code bracket left -->
+  <text x="48" y="156" font-family="monospace" font-size="100" font-weight="bold" fill="#39ff14" filter="url(#neonStrong)" opacity="0.9">{</text>
+
+  <!-- Code bracket right -->
+  <text x="156" y="156" font-family="monospace" font-size="100" font-weight="bold" fill="#39ff14" filter="url(#neonStrong)" opacity="0.9">}</text>
+
+  <!-- Center dot / cursor -->
+  <rect x="122" y="100" width="12" height="48" rx="2" fill="#4dff4d" filter="url(#neon)" opacity="0.95"/>
+
+  <!-- Decorative scan line -->
+  <rect x="0" y="0" width="256" height="256" rx="24" fill="none" stroke="#39ff14" stroke-width="1.5" opacity="0.15"/>
+</svg>

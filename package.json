@@ -1,0 +1,62 @@
+{
+  "name": "neon-green-theme",
+  "displayName": "Neon Green — Dark Terminal",
+  "description": "VS Code theme with neon green accents inspired by luongnv.com. Three variants: Dark Terminal, Midnight, and Light. Vivid green highlights and carefully tuned multicolor syntax for long coding sessions.",
+  "version": "1.0.0",
+  "publisher": "luongnv89",
+  "author": {
+    "name": "Luong Nguyen",
+    "url": "https://luongnv.com"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "dark",
+    "light",
+    "neon",
+    "green",
+    "terminal",
+    "hacker",
+    "matrix",
+    "developer",
+    "coding",
+    "theme"
+  ],
+  "galleryBanner": {
+    "color": "#0a0f0a",
+    "theme": "dark"
+  },
+  "homepage": "https://github.com/luongnv89/vscode-theme-neon-green#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luongnv89/vscode-theme-neon-green"
+  },
+  "bugs": {
+    "url": "https://github.com/luongnv89/vscode-theme-neon-green/issues"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "Neon Green — Dark Terminal",
+        "uiTheme": "vs-dark",
+        "path": "./themes/neon-green-color-theme.json"
+      },
+      {
+        "label": "Neon Green — Midnight",
+        "uiTheme": "vs-dark",
+        "path": "./themes/neon-green-midnight-color-theme.json"
+      },
+      {
+        "label": "Neon Green — Light",
+        "uiTheme": "vs",
+        "path": "./themes/neon-green-light-color-theme.json"
+      }
+    ]
+  }
+}
