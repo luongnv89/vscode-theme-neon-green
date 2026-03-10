@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 64" width="440" height="64">
+  <defs>
+    <filter id="textGlow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.224  0 0 0 0 1  0 0 0 0 0.078  0 0 0 0.35 0" result="greenBlur"/>
+      <feMerge>
+        <feMergeNode in="greenBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <text x="0" y="40" font-family="'SF Pro Display', 'Inter', 'Segoe UI', system-ui, sans-serif" font-size="42" font-weight="700" fill="#39ff14" filter="url(#textGlow)" letter-spacing="-0.5">NEON GREEN</text>
+</svg>

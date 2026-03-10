@@ -1,10 +1,16 @@
-# Neon Green — VS Code Theme
+<p align="center">
+  <img src="icon.png" alt="Neon Green Logo" width="128" height="128" />
+</p>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![VS Code](https://img.shields.io/badge/VS%20Code-^1.70.0-blue.svg)](https://code.visualstudio.com/)
-[![Marketplace](https://img.shields.io/badge/Marketplace-Neon%20Green-brightgreen.svg)](https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme)
+<h1 align="center">Neon Green — VS Code Theme</h1>
 
-A meticulously crafted VS Code theme featuring deep charcoal/midnight backgrounds with vivid neon green (`#39ff14`) accents.
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT"></a>
+  <a href="https://code.visualstudio.com/"><img src="https://img.shields.io/badge/VS%20Code-^1.70.0-blue.svg" alt="VS Code"></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme"><img src="https://img.shields.io/badge/Marketplace-Neon%20Green-brightgreen.svg" alt="Marketplace"></a>
+</p>
+
+<p align="center">A meticulously crafted VS Code theme featuring deep charcoal/midnight backgrounds with vivid neon green (<code>#39ff14</code>) accents.</p>
 
 ## Screenshots
 
@@ -105,6 +111,14 @@ Carefully tuned token colors for:
 
 ```
 vscode-theme-neon-green/
+├── assets/logo/                          # Brand assets (full logo kit)
+│   ├── logo-full.svg                     # Mark + wordmark (horizontal)
+│   ├── logo-mark.svg                     # Symbol only
+│   ├── logo-wordmark.svg                 # Text only
+│   ├── logo-icon.svg                     # App icon (512x512)
+│   ├── favicon.svg                       # 16x16 optimized
+│   ├── logo-white.svg                    # White version (dark backgrounds)
+│   └── logo-black.svg                    # Black version (light backgrounds)
 ├── themes/
 │   ├── neon-green-color-theme.json       # Dark Terminal variant
 │   ├── neon-green-midnight-color-theme.json  # Midnight variant

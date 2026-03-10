@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 128" width="600" height="128">
+  <defs>
+    <linearGradient id="neonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4dff4d"/>
+      <stop offset="50%" stop-color="#39ff14"/>
+      <stop offset="100%" stop-color="#00e676"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.224  0 0 0 0 1  0 0 0 0 0.078  0 0 0 0.5 0" result="greenBlur"/>
+      <feMerge>
+        <feMergeNode in="greenBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.224  0 0 0 0 1  0 0 0 0 0.078  0 0 0 0.2 0"/>
+    </filter>
+  </defs>
+
+  <!-- Mark background -->
+  <rect width="112" height="112" x="8" y="8" rx="22" fill="#0a0f0a"/>
+
+  <!-- Ambient glow -->
+  <g filter="url(#softGlow)">
+    <path d="M38 96 L38 32 L90 96 L90 32" fill="none" stroke="#39ff14" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- N mark -->
+  <g filter="url(#glow)">
+    <path d="M38 96 L38 32 L90 96 L90 32" fill="none" stroke="url(#neonGrad)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Inner bright core -->
+  <path d="M38 96 L38 32 L90 96 L90 32" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/>
+
+  <!-- Corner accents -->
+  <circle cx="38" cy="32" r="2" fill="#4dff4d" opacity="0.8"/>
+  <circle cx="90" cy="32" r="2" fill="#4dff4d" opacity="0.8"/>
+  <circle cx="38" cy="96" r="2" fill="#4dff4d" opacity="0.8"/>
+  <circle cx="90" cy="96" r="2" fill="#4dff4d" opacity="0.8"/>
+
+  <!-- Wordmark -->
+  <text x="140" y="58" font-family="'SF Pro Display', 'Inter', 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="700" fill="#39ff14" letter-spacing="-0.5">NEON GREEN</text>
+  <text x="140" y="88" font-family="'SF Pro Display', 'Inter', 'Segoe UI', system-ui, sans-serif" font-size="16" font-weight="400" fill="#7dcea0" letter-spacing="3">VS CODE THEME</text>
+</svg>
