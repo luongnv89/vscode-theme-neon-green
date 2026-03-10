@@ -5,6 +5,18 @@ All notable changes to the Neon Green theme will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-03-10
+
+### Changed
+
+- Redesigned extension icon — new neon "N" mark with layered glow effect, replacing the previous curly-brace design
+- Centered README header with logo, badges, and description
+- Updated `.vscodeignore` to exclude brand assets and docs from VSIX package
+
+### Added
+
+- Full logo kit in `assets/logo/` with 7 variants: mark, full (horizontal), wordmark, app icon (512x512), favicon (16x16), white, and black
+
 ## [1.0.0] - 2026-03-10
 
 ### Added

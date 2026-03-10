@@ -1,63 +1,26 @@
-# Release v1.0.0 — Neon Green VS Code Theme
+# Release v1.1.0 — New Logo & Branding
 
-**Initial release** of the Neon Green VS Code color theme.
+## What's Changed
 
-## What's New
+### Features
 
-### Three Theme Variants
+- Redesigned extension icon with a new neon **"N"** mark featuring a layered glow effect — replaces the previous curly-brace `{ | }` design
+- Added a full logo kit in `assets/logo/` with 7 SVG variants:
+  - `logo-full.svg` — Mark + wordmark (horizontal)
+  - `logo-mark.svg` — Symbol only (256x256)
+  - `logo-wordmark.svg` — Text only
+  - `logo-icon.svg` — App icon (512x512)
+  - `favicon.svg` — Optimized for 16x16
+  - `logo-white.svg` — White version for dark backgrounds
+  - `logo-black.svg` — Black version for light backgrounds
 
-- **Neon Green — Dark Terminal**: Pure dark green-black background (`#0a0f0a`) with classic hacker terminal aesthetics
-- **Neon Green — Midnight**: Deep blue-black background (`#0b1014`) for softer, late-night coding sessions
-- **Neon Green — Light**: Clean light background with neon green accents for daytime use
+### Documentation
 
-### Syntax Highlighting
+- Centered README header with the new logo, badges, and description
+- Updated project structure section to include `assets/logo/`
 
-- Vivid neon green (`#39ff14`) keywords and accent elements
-- Carefully tuned multicolor syntax for long coding sessions
-- Broad language support:
-  - JavaScript / TypeScript / JSX / TSX
-  - Python (decorators, f-strings, magic methods)
-  - Rust (lifetimes, macros)
-  - Go (packages)
-  - HTML / CSS / SCSS
-  - JSON / YAML / Markdown
-  - Shell / Bash
-  - C / C++ / Java / SQL
-  - All languages via TextMate scopes
+### Other Changes
 
-### UI Customization
+- Updated `.vscodeignore` to exclude `assets/`, `docs/`, and `.claude/` from the VSIX package for a leaner extension
 
-- Custom editor, sidebar, terminal, and status bar colors
-- Bracket pair colorization
-- Git decoration colors (modified, untracked, conflict indicators)
-- Custom terminal ANSI color palette
-
-### Project Resources
-
-- Multi-language theme showcase file for testing (`examples/theme-showcase.md`)
-- Full OSS documentation (Contributing, Code of Conduct, Security Policy)
-- GitHub issue and PR templates
-
-## Installation
-
-### VS Code Marketplace
-
-Search for **"Neon Green — Dark Terminal"** in VS Code Extensions.
-
-### From VSIX
-
-```bash
-npm install -g @vscode/vsce
-vsce package
-code --install-extension neon-green-theme-1.0.0.vsix
-```
-
-### Manual
-
-Copy to `~/.vscode/extensions/neon-green-theme` and reload VS Code.
-
-## Contributors
-
-- @luongnv89 — Luong Nguyen
-
-**Full Changelog**: https://github.com/luongnv89/vscode-theme-neon-green/commits/v1.0.0
+**Full Changelog**: https://github.com/luongnv89/vscode-theme-neon-green/compare/v1.0.0...v1.1.0
