@@ -1,0 +1,917 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Neon Green — Dark Terminal</title>
+  <meta name="description" content="VS Code theme with neon green accents inspired by luongnv.com. Three variants: Dark Terminal, Midnight, and Light. Vivid green highlights and carefully tuned multicolor syntax for long coding sessions." />
+  <style>
+    :root {
+      --bg: #0e0e1a;
+      --bg-soft: #0b0b16;
+      --panel: #0b0b16;
+      --surface: #131322;
+      --surface-muted: #111120;
+      --line: #1e1e30;
+      --text: #d5dce8;
+      --muted: #7a8599;
+      --accent: #39ff14;
+      --accent-strong: #4dff4d;
+      --selection: #39ff1425;
+      --warning: #ffb347;
+      --danger: #ff5555;
+      --info: #8394ff;
+      --shadow: #00000060;
+      --radius: 24px;
+      --radius-sm: 16px;
+      --content-width: 1180px;
+      --measure: 72ch;
+      --mono: "Iosevka", "IBM Plex Mono", "SFMono-Regular", "JetBrains Mono", ui-monospace, monospace;
+      --sans: "Satoshi", "Avenir Next", "IBM Plex Sans", "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, color-mix(in srgb, var(--accent) 12%, transparent), transparent 26%),
+        linear-gradient(180deg, color-mix(in srgb, var(--bg-soft) 65%, black) 0%, var(--bg) 100%);
+      font-family: var(--sans);
+      line-height: 1.68;
+      min-height: 100vh;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration: none;
+    }
+    a:hover { color: var(--accent); }
+
+    code, pre, .shiki { font-family: var(--mono) !important; }
+
+    .site-shell {
+      width: min(calc(100% - 32px), var(--content-width));
+      margin: 0 auto;
+      padding: 24px 0 80px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 16px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 18px;
+      margin-bottom: 28px;
+      background: color-mix(in srgb, var(--panel) 82%, transparent);
+      backdrop-filter: blur(20px);
+      border: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
+      border-radius: 999px;
+      box-shadow: 0 20px 80px color-mix(in srgb, var(--shadow) 55%, transparent);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 22%, transparent), color-mix(in srgb, var(--panel) 86%, black));
+      border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+      display: grid;
+      place-items: center;
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 10%, transparent);
+    }
+
+    .brand-mark::before {
+      content: "▣";
+      color: var(--accent);
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .topnav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 14px;
+    }
+
+    .topnav a {
+      color: var(--muted);
+      font-size: 14px;
+      padding: 8px 10px;
+      border-radius: 999px;
+    }
+
+    .topnav a:hover {
+      color: var(--text);
+      background: color-mix(in srgb, var(--selection) 95%, transparent);
+    }
+
+    main {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--panel) 88%, transparent), color-mix(in srgb, var(--bg-soft) 92%, transparent));
+      border: 1px solid color-mix(in srgb, var(--line) 90%, transparent);
+      border-radius: 34px;
+      overflow: hidden;
+      box-shadow: 0 30px 120px color-mix(in srgb, var(--shadow) 72%, transparent);
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 28px 28px 0;
+    }
+
+    .hero-badges > * {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--surface) 82%, transparent);
+      border: 1px solid color-mix(in srgb, var(--line) 85%, transparent);
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.01em;
+    }
+
+    .markdown-body {
+      padding: 24px 28px 42px;
+    }
+
+    .markdown-body > h1:first-child {
+      margin: 12px 0 18px;
+      max-width: 12ch;
+      font-size: clamp(3rem, 10vw, 5.6rem);
+      line-height: 0.92;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-wrap: balance;
+    }
+
+    .markdown-body > p:first-of-type {
+      max-width: 60ch;
+      margin: 0 0 18px;
+      font-size: clamp(1.12rem, 2vw, 1.35rem);
+      color: color-mix(in srgb, var(--text) 88%, var(--muted));
+    }
+
+    .markdown-body > blockquote:first-of-type {
+      margin: 0 0 24px;
+      padding: 18px 22px;
+      max-width: 64ch;
+      border-left: 3px solid var(--accent);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--selection) 72%, transparent), color-mix(in srgb, var(--surface) 64%, transparent));
+      border-radius: 18px;
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .markdown-body > p:nth-of-type(2) {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 0 0 30px;
+    }
+
+    .markdown-body > p:nth-of-type(2) a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+      background: color-mix(in srgb, var(--surface) 72%, transparent);
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .markdown-body > p:nth-of-type(2) a:first-child {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 20%, transparent), color-mix(in srgb, var(--surface) 88%, transparent));
+      color: var(--accent-strong);
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 12%, transparent);
+    }
+
+    .markdown-body > hr:first-of-type {
+      display: none;
+    }
+
+    .markdown-body > :not(h1):not(p):not(blockquote):not(hr):not(:nth-of-type(2)) {
+      max-width: 100%;
+    }
+
+    .markdown-body h2,
+    .markdown-body h3,
+    .markdown-body h4 {
+      scroll-margin-top: 110px;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-top: 54px;
+      margin-bottom: 16px;
+    }
+
+    .markdown-body h2 {
+      font-size: clamp(2rem, 4vw, 3.15rem);
+      max-width: 16ch;
+    }
+
+    .markdown-body h3 {
+      font-size: clamp(1.35rem, 2.8vw, 1.9rem);
+    }
+
+    .markdown-body h4 {
+      font-size: 1.05rem;
+      color: var(--accent-strong);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .markdown-body p,
+    .markdown-body ul,
+    .markdown-body ol,
+    .markdown-body blockquote,
+    .markdown-body table,
+    .markdown-body .shiki,
+    .markdown-body pre,
+    .markdown-body img {
+      max-width: var(--measure);
+    }
+
+    .markdown-body ul,
+    .markdown-body ol {
+      padding-left: 1.35rem;
+    }
+
+    .markdown-body li + li {
+      margin-top: 0.45rem;
+    }
+
+    .markdown-body strong {
+      color: var(--accent-strong);
+      font-weight: 800;
+    }
+
+    .markdown-body em {
+      color: color-mix(in srgb, var(--text) 92%, var(--info));
+    }
+
+    .markdown-body code:not(pre code) {
+      display: inline-block;
+      padding: 0.18rem 0.48rem;
+      border-radius: 10px;
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
+      border: 1px solid color-mix(in srgb, var(--line) 85%, transparent);
+      color: var(--accent-strong);
+      font-size: 0.92em;
+    }
+
+    .markdown-body hr {
+      border: 0;
+      height: 1px;
+      margin: 42px 0;
+      background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 30%, transparent), transparent);
+    }
+
+    .markdown-body img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 22px;
+      border: 1px solid color-mix(in srgb, var(--line) 85%, transparent);
+      background: color-mix(in srgb, var(--surface) 58%, transparent);
+      box-shadow: 0 22px 60px color-mix(in srgb, var(--shadow) 52%, transparent);
+    }
+
+    .markdown-body table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid color-mix(in srgb, var(--line) 90%, transparent);
+      background: color-mix(in srgb, var(--surface) 56%, transparent);
+      margin: 16px 0 26px;
+    }
+
+    .markdown-body th,
+    .markdown-body td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
+    }
+
+    .markdown-body th {
+      color: var(--accent-strong);
+      background: color-mix(in srgb, var(--surface) 82%, transparent);
+    }
+
+    .markdown-body blockquote {
+      margin: 18px 0;
+      padding: 16px 20px;
+      border-left: 3px solid color-mix(in srgb, var(--accent) 88%, transparent);
+      background: color-mix(in srgb, var(--surface) 72%, transparent);
+      border-radius: 16px;
+      color: color-mix(in srgb, var(--text) 92%, var(--muted));
+    }
+
+    .shiki {
+      width: 100%;
+      overflow: auto;
+      padding: 22px 24px !important;
+      margin: 18px 0 28px !important;
+      border-radius: 22px;
+      border: 1px solid color-mix(in srgb, var(--line) 92%, transparent);
+      background: color-mix(in srgb, var(--bg) 78%, black) !important;
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 8%, transparent);
+    }
+
+    .shiki code {
+      counter-reset: step;
+      display: grid;
+      gap: 2px;
+      min-width: 100%;
+    }
+
+    .variant-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 100%;
+    }
+
+    .variant-card,
+    .swatch-card {
+      border-radius: 24px;
+      border: 1px solid color-mix(in srgb, var(--line) 90%, transparent);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 78%, transparent), color-mix(in srgb, var(--panel) 92%, transparent));
+      box-shadow: 0 18px 42px color-mix(in srgb, var(--shadow) 42%, transparent);
+    }
+
+    .variant-card {
+      padding: 16px;
+    }
+
+    .variant-window {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid color-mix(in srgb, var(--variant-line) 85%, transparent);
+      background: var(--variant-bg);
+      margin-bottom: 16px;
+    }
+
+    .variant-window-bar {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      padding: 12px 14px;
+      background: color-mix(in srgb, var(--variant-panel) 90%, black);
+      border-bottom: 1px solid color-mix(in srgb, var(--variant-line) 86%, transparent);
+    }
+
+    .variant-window-bar span {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--variant-accent) 24%, white);
+      opacity: 0.8;
+    }
+
+    .variant-window-body {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      min-height: 190px;
+    }
+
+    .variant-sidebar {
+      background: var(--variant-panel);
+      border-right: 1px solid color-mix(in srgb, var(--variant-line) 76%, transparent);
+    }
+
+    .variant-editor {
+      padding: 18px;
+      background: var(--variant-bg);
+    }
+
+    .variant-line {
+      height: 11px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      background: color-mix(in srgb, var(--variant-text) 16%, transparent);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .variant-line::after {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 38%;
+      background: color-mix(in srgb, var(--variant-accent) 66%, transparent);
+      opacity: 0.7;
+    }
+
+    .variant-line-2::after { width: 62%; }
+    .variant-line-3::after { width: 28%; }
+    .variant-line-4::after { width: 54%; }
+
+    .variant-meta h3 {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+    }
+
+    .variant-meta p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      max-width: none;
+    }
+
+    .variant-meta dl {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+    }
+
+    .variant-meta dl div {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 10px;
+      border-top: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
+    }
+
+    .variant-meta dt {
+      color: var(--muted);
+    }
+
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 100%;
+    }
+
+    .swatch-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px;
+    }
+
+    .swatch-chip {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      border: 1px solid color-mix(in srgb, white 8%, var(--line));
+      background: var(--chip);
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, white 8%, transparent);
+      flex: 0 0 auto;
+    }
+
+    .swatch-copy {
+      display: grid;
+      gap: 4px;
+    }
+
+    .swatch-copy strong {
+      color: var(--text);
+    }
+
+    footer {
+      width: min(calc(100% - 32px), var(--content-width));
+      margin: 16px auto 32px;
+      padding: 0 6px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .topbar {
+        border-radius: 24px;
+        padding: 16px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .topnav {
+        justify-content: flex-start;
+      }
+      .variant-grid,
+      .swatch-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .site-shell {
+        width: min(calc(100% - 18px), var(--content-width));
+        padding-top: 12px;
+      }
+      .hero-badges,
+      .markdown-body {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+      .markdown-body > h1:first-child {
+        max-width: 8.5ch;
+      }
+      footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark"></div>
+        <div>
+          <div>Neon Green — Dark Terminal</div>
+        </div>
+      </div>
+      <nav class="topnav"><a href="#why-this-theme-exists">Why this theme exists</a><a href="#theme-variants">Theme variants</a><a href="#screenshots">Screenshots</a><a href="#installation">Installation</a><a href="#what-the-theme-covers">What the theme covers</a><a href="#markdown-rendering-gallery">Markdown rendering gallery</a><a href="#syntax-showcase">Syntax showcase</a><a href="#open-source-details">Open source details</a><a href="#final-call">Final call</a></nav>
+    </header>
+
+    <main>
+      
+<div class="hero-badges">
+  <a href="https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme">Marketplace</a>
+  <span>v1.1.0</span>
+  <span>MIT</span>
+  <span>by luongnv89</span>
+  <a href="https://github.com/luongnv89/vscode-theme-neon-green">GitHub repository</a>
+</div>
+      <article class="markdown-body">
+        <h1 id="neon-green-vs-code-theme">Neon Green — VS Code Theme</h1><p>A vibrant neon green VS Code theme with three variants built for people who want their editor to feel sharp, electric, and unmistakably alive.</p>
+<blockquote>
+<p>Deep midnight backgrounds. Vivid neon green accents. Carefully tuned syntax that stays readable during long coding sessions.</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme" target="_blank" rel="noreferrer">Install from Marketplace</a> · <a href="https://github.com/luongnv89/vscode-theme-neon-green" target="_blank" rel="noreferrer">View on GitHub</a> · <a href="../README.md">Read the README</a></p>
+<hr>
+<h2 id="why-this-theme-exists">Why this theme exists</h2><p>Most themes choose one of two extremes:</p>
+<ul>
+<li>visually loud, but tiring after an hour</li>
+<li>safe and readable, but forgettable</li>
+</ul>
+<p><strong>Neon Green</strong> tries to hit the better balance:</p>
+<ul>
+<li>a strong identity</li>
+<li>clear syntax separation</li>
+<li>a dark terminal aesthetic that still feels modern</li>
+<li>enough contrast to stay useful during real work</li>
+</ul>
+<hr>
+<h2 id="theme-variants">Theme variants</h2><div class="variant-grid">
+
+  <article class="variant-card" style="--variant-bg:#0e0e1a;--variant-panel:#0b0b16;--variant-surface:#131322;--variant-accent:#39ff14;--variant-text:#d5dce8;--variant-muted:#7a8599;--variant-line:#1e1e30;">
+    <div class="variant-window">
+      <div class="variant-window-bar">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="variant-window-body">
+        <div class="variant-sidebar"></div>
+        <div class="variant-editor">
+          <div class="variant-line variant-line-1"></div>
+          <div class="variant-line variant-line-2"></div>
+          <div class="variant-line variant-line-3"></div>
+          <div class="variant-line variant-line-4"></div>
+        </div>
+      </div>
+    </div>
+    <div class="variant-meta">
+      <h3>Dark Terminal</h3>
+      <p>Classic hacker-terminal energy with deep contrast and sharp green accents.</p>
+      <dl>
+        <div><dt>Background</dt><dd><code>#0e0e1a</code></dd></div>
+        <div><dt>Accent</dt><dd><code>#39ff14</code></dd></div>
+      </dl>
+    </div>
+  </article>
+
+  <article class="variant-card" style="--variant-bg:#0e0e1a;--variant-panel:#0b0b16;--variant-surface:#131322;--variant-accent:#39ff14;--variant-text:#d5dce8;--variant-muted:#6a7590;--variant-line:#1e1e30;">
+    <div class="variant-window">
+      <div class="variant-window-bar">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="variant-window-body">
+        <div class="variant-sidebar"></div>
+        <div class="variant-editor">
+          <div class="variant-line variant-line-1"></div>
+          <div class="variant-line variant-line-2"></div>
+          <div class="variant-line variant-line-3"></div>
+          <div class="variant-line variant-line-4"></div>
+        </div>
+      </div>
+    </div>
+    <div class="variant-meta">
+      <h3>Midnight</h3>
+      <p>Softer blue-black base for a calmer late-night editor.</p>
+      <dl>
+        <div><dt>Background</dt><dd><code>#0e0e1a</code></dd></div>
+        <div><dt>Accent</dt><dd><code>#39ff14</code></dd></div>
+      </dl>
+    </div>
+  </article>
+
+  <article class="variant-card" style="--variant-bg:#f9f9fc;--variant-panel:#f5f5fa;--variant-surface:#f9f9fc;--variant-accent:#0d9e00;--variant-text:#2a2d3e;--variant-muted:#5a5e78;--variant-line:#d5d5e0;">
+    <div class="variant-window">
+      <div class="variant-window-bar">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="variant-window-body">
+        <div class="variant-sidebar"></div>
+        <div class="variant-editor">
+          <div class="variant-line variant-line-1"></div>
+          <div class="variant-line variant-line-2"></div>
+          <div class="variant-line variant-line-3"></div>
+          <div class="variant-line variant-line-4"></div>
+        </div>
+      </div>
+    </div>
+    <div class="variant-meta">
+      <h3>Light</h3>
+      <p>Clean daytime version with neon accents still doing the heavy lifting.</p>
+      <dl>
+        <div><dt>Background</dt><dd><code>#f9f9fc</code></dd></div>
+        <div><dt>Accent</dt><dd><code>#0d9e00</code></dd></div>
+      </dl>
+    </div>
+  </article>
+</div>
+
+<hr>
+<h2 id="screenshots">Screenshots</h2><h3 id="dark-terminal">Dark Terminal</h3><p><img src="../screenshot-dark.png" alt="Neon Green Dark Theme screenshot" loading="lazy" /></p>
+<h3 id="light-variant">Light Variant</h3><p><img src="../screenshot-light.png" alt="Neon Green Light Theme screenshot" loading="lazy" /></p>
+<hr>
+<h2 id="installation">Installation</h2><h3 id="marketplace">Marketplace</h3><p>Open VS Code, search for <strong>Neon Green — Dark Terminal</strong>, then click <strong>Install</strong>.</p>
+<h3 id="vsix">VSIX</h3><pre class="shiki Neon Green — Dark Terminal" style="background-color:#0e0e1a;color:#d5dce8" tabindex="0"><code><span class="line"><span style="color:#82AAFF;font-weight:bold">npm</span><span style="color:#C3E88D"> install</span><span style="color:#F78C6C"> -g</span><span style="color:#C3E88D"> @vscode/vsce</span></span>
+<span class="line"><span style="color:#82AAFF;font-weight:bold">vsce</span><span style="color:#C3E88D"> package</span></span>
+<span class="line"><span style="color:#82AAFF;font-weight:bold">code</span><span style="color:#F78C6C"> --install-extension</span><span style="color:#C3E88D"> neon-green-theme-1.0.0.vsix</span></span></code></pre><h3 id="manual">Manual</h3><p>Copy the project folder into your VS Code extensions directory:</p>
+<ul>
+<li>macOS/Linux: <code>~/.vscode/extensions/neon-green-theme</code></li>
+<li>Windows: <code>%USERPROFILE%\.vscode\extensions\neon-green-theme</code></li>
+</ul>
+<hr>
+<h2 id="what-the-theme-covers">What the theme covers</h2><ul>
+<li>editor chrome</li>
+<li>tabs, sidebar, panels, activity bar, status bar</li>
+<li>terminal colors</li>
+<li>git decorations</li>
+<li>bracket colors</li>
+<li>markdown</li>
+<li>syntax highlighting for common languages like JavaScript, TypeScript, Python, Rust, Go, JSON, YAML, Shell, HTML, and CSS</li>
+</ul>
+<h3 id="palette-snapshot">Palette snapshot</h3><div class="swatch-grid">
+
+  <div class="swatch-card">
+    <div class="swatch-chip" style="--chip:#0e0e1a"></div>
+    <div class="swatch-copy">
+      <strong>Editor background</strong>
+      <code>#0e0e1a</code>
+    </div>
+  </div>
+
+  <div class="swatch-card">
+    <div class="swatch-chip" style="--chip:#d5dce8"></div>
+    <div class="swatch-copy">
+      <strong>Editor foreground</strong>
+      <code>#d5dce8</code>
+    </div>
+  </div>
+
+  <div class="swatch-card">
+    <div class="swatch-chip" style="--chip:#39ff14"></div>
+    <div class="swatch-copy">
+      <strong>Accent</strong>
+      <code>#39ff14</code>
+    </div>
+  </div>
+
+  <div class="swatch-card">
+    <div class="swatch-chip" style="--chip:#39ff1425"></div>
+    <div class="swatch-copy">
+      <strong>Selection</strong>
+      <code>#39ff1425</code>
+    </div>
+  </div>
+
+  <div class="swatch-card">
+    <div class="swatch-chip" style="--chip:#0b0b16"></div>
+    <div class="swatch-copy">
+      <strong>Sidebar</strong>
+      <code>#0b0b16</code>
+    </div>
+  </div>
+
+  <div class="swatch-card">
+    <div class="swatch-chip" style="--chip:#0b0b16"></div>
+    <div class="swatch-copy">
+      <strong>Panel</strong>
+      <code>#0b0b16</code>
+    </div>
+  </div>
+
+  <div class="swatch-card">
+    <div class="swatch-chip" style="--chip:#080812"></div>
+    <div class="swatch-copy">
+      <strong>Status bar</strong>
+      <code>#080812</code>
+    </div>
+  </div>
+
+  <div class="swatch-card">
+    <div class="swatch-chip" style="--chip:#ff5555"></div>
+    <div class="swatch-copy">
+      <strong>Error</strong>
+      <code>#ff5555</code>
+    </div>
+  </div>
+
+  <div class="swatch-card">
+    <div class="swatch-chip" style="--chip:#ffb347"></div>
+    <div class="swatch-copy">
+      <strong>Warning</strong>
+      <code>#ffb347</code>
+    </div>
+  </div>
+
+  <div class="swatch-card">
+    <div class="swatch-chip" style="--chip:#8394ff"></div>
+    <div class="swatch-copy">
+      <strong>Info</strong>
+      <code>#8394ff</code>
+    </div>
+  </div>
+</div>
+
+<hr>
+<h2 id="markdown-rendering-gallery">Markdown rendering gallery</h2><p>This section intentionally shows many Markdown element types so the generated page can act as a living visual reference.</p>
+<h3 id="text-styles">Text styles</h3><p>This is a normal paragraph with <strong>bold text</strong>, <em>italic text</em>, <em><strong>bold italic text</strong></em>, <del>strikethrough</del>, and <code>inline code</code>.</p>
+<p>You can also check a standard link style here: <a href="https://marketplace.visualstudio.com/" target="_blank" rel="noreferrer">VS Code Marketplace</a>.</p>
+<h3 id="lists">Lists</h3><h4 id="ordered">Ordered</h4><ol>
+<li>Install the theme</li>
+<li>Select the variant you like</li>
+<li>Open a real project</li>
+<li>See if it still feels good after a full work session</li>
+</ol>
+<h4 id="unordered">Unordered</h4><ul>
+<li>Dark Terminal for classic neon contrast</li>
+<li>Midnight for a softer dark setup</li>
+<li>Light for daytime work</li>
+</ul>
+<h4 id="nested">Nested</h4><ul>
+<li>Editor experience<ul>
+<li>syntax contrast</li>
+<li>bracket readability</li>
+<li>git decorations</li>
+</ul>
+</li>
+<li>UI chrome<ul>
+<li>sidebar</li>
+<li>status bar</li>
+<li>tabs</li>
+</ul>
+</li>
+</ul>
+<h4 id="task-list">Task list</h4><ul>
+<li><input checked="" disabled="" type="checkbox"> Dark variant</li>
+<li><input checked="" disabled="" type="checkbox"> Midnight variant</li>
+<li><input checked="" disabled="" type="checkbox"> Light variant</li>
+<li><input disabled="" type="checkbox"> Your own favorite setup</li>
+</ul>
+<h3 id="quote">Quote</h3><blockquote>
+<p>A theme should have a point of view, but it should still help you ship.</p>
+</blockquote>
+<h3 id="table">Table</h3><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>What to look for</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Headings</td>
+<td>hierarchy and spacing</td>
+</tr>
+<tr>
+<td>Inline code</td>
+<td>contrast and readability</td>
+</tr>
+<tr>
+<td>Tables</td>
+<td>borders, density, scanability</td>
+</tr>
+<tr>
+<td>Quotes</td>
+<td>separation without noise</td>
+</tr>
+<tr>
+<td>Lists</td>
+<td>rhythm and indentation</td>
+</tr>
+</tbody></table>
+<h3 id="horizontal-rule">Horizontal rule</h3><hr>
+<h3 id="images">Images</h3><p><img src="../icon.png" alt="Neon Green icon" loading="lazy" /></p>
+<hr>
+<h2 id="syntax-showcase">Syntax showcase</h2><h3 id="typescript">TypeScript</h3><pre class="shiki Neon Green — Dark Terminal" style="background-color:#0e0e1a;color:#d5dce8" tabindex="0"><code><span class="line"><span style="color:#39FF14;font-weight:bold">import</span><span style="color:#8AAA8A"> {</span><span style="color:#C8D6C8"> EventEmitter</span><span style="color:#8AAA8A"> }</span><span style="color:#39FF14;font-weight:bold"> from</span><span style="color:#C3E88D"> 'node:events'</span><span style="color:#546E54">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#00E5FF">type</span><span style="color:#18FFDC"> ThemeVariant</span><span style="color:#89DDFF"> =</span><span style="color:#C3E88D"> 'dark'</span><span style="color:#89DDFF"> |</span><span style="color:#C3E88D"> 'midnight'</span><span style="color:#89DDFF"> |</span><span style="color:#C3E88D"> 'light'</span><span style="color:#546E54">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#00E5FF">interface</span><span style="color:#18FFDC"> InstallGuide</span><span style="color:#8AAA8A"> {</span></span>
+<span class="line"><span style="color:#C8D6C8">  variant</span><span style="color:#89DDFF">:</span><span style="color:#00E5FF"> ThemeVariant</span><span style="color:#546E54">;</span></span>
+<span class="line"><span style="color:#C8D6C8">  accent</span><span style="color:#89DDFF">:</span><span style="color:#18FFDC;font-style:italic"> string</span><span style="color:#546E54">;</span></span>
+<span class="line"><span style="color:#C8D6C8">  isRecommended</span><span style="color:#89DDFF">:</span><span style="color:#18FFDC;font-style:italic"> boolean</span><span style="color:#546E54">;</span></span>
+<span class="line"><span style="color:#8AAA8A">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#39FF14">const</span><span style="color:#D4BFFF"> VARIANTS</span><span style="color:#89DDFF">:</span><span style="color:#00E5FF"> InstallGuide</span><span style="color:#8AAA8A">[]</span><span style="color:#89DDFF"> =</span><span style="color:#8AAA8A"> [</span></span>
+<span class="line"><span style="color:#8AAA8A">  {</span><span style="color:#B8E986"> variant</span><span style="color:#6A8A6A">:</span><span style="color:#C3E88D"> 'dark'</span><span style="color:#546E54">,</span><span style="color:#B8E986"> accent</span><span style="color:#6A8A6A">:</span><span style="color:#C3E88D"> '#39ff14'</span><span style="color:#546E54">,</span><span style="color:#B8E986"> isRecommended</span><span style="color:#6A8A6A">:</span><span style="color:#FF6B81;font-style:italic"> true</span><span style="color:#8AAA8A"> }</span><span style="color:#546E54">,</span></span>
+<span class="line"><span style="color:#8AAA8A">  {</span><span style="color:#B8E986"> variant</span><span style="color:#6A8A6A">:</span><span style="color:#C3E88D"> 'midnight'</span><span style="color:#546E54">,</span><span style="color:#B8E986"> accent</span><span style="color:#6A8A6A">:</span><span style="color:#C3E88D"> '#4dff4d'</span><span style="color:#546E54">,</span><span style="color:#B8E986"> isRecommended</span><span style="color:#6A8A6A">:</span><span style="color:#FF6B81;font-style:italic"> true</span><span style="color:#8AAA8A"> }</span><span style="color:#546E54">,</span></span>
+<span class="line"><span style="color:#8AAA8A">  {</span><span style="color:#B8E986"> variant</span><span style="color:#6A8A6A">:</span><span style="color:#C3E88D"> 'light'</span><span style="color:#546E54">,</span><span style="color:#B8E986"> accent</span><span style="color:#6A8A6A">:</span><span style="color:#C3E88D"> '#00a63e'</span><span style="color:#546E54">,</span><span style="color:#B8E986"> isRecommended</span><span style="color:#6A8A6A">:</span><span style="color:#FF6B81;font-style:italic"> false</span><span style="color:#8AAA8A"> }</span><span style="color:#546E54">,</span></span>
+<span class="line"><span style="color:#8AAA8A">]</span><span style="color:#546E54">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#39FF14;font-weight:bold">export</span><span style="color:#39FF14"> class</span><span style="color:#00E5FF;font-weight:bold"> ThemeRegistry</span><span style="color:#89DDFF;font-style:italic"> extends</span><span> </span><span style="color:#00E5FF;font-style:italic;text-decoration:underline">EventEmitter</span><span style="color:#8AAA8A"> {</span></span>
+<span class="line"><span style="color:#39FF14">  constructor</span><span style="color:#8AAA8A">(</span><span style="color:#89DDFF;font-style:italic">private</span><span style="color:#89DDFF;font-style:italic"> readonly</span><span style="color:#FFD700;font-style:italic"> variants</span><span style="color:#89DDFF">:</span><span style="color:#00E5FF"> InstallGuide</span><span style="color:#8AAA8A">[])</span><span style="color:#8AAA8A"> {</span></span>
+<span class="line"><span style="color:#FF6B81;font-style:italic">    super</span><span style="color:#8AAA8A">()</span><span style="color:#546E54">;</span></span>
+<span class="line"><span style="color:#8AAA8A">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#82AAFF;font-weight:bold">  find</span><span style="color:#8AAA8A">(</span><span style="color:#FFD700;font-style:italic">variant</span><span style="color:#89DDFF">:</span><span style="color:#00E5FF"> ThemeVariant</span><span style="color:#8AAA8A">)</span><span style="color:#89DDFF">:</span><span style="color:#00E5FF"> InstallGuide</span><span style="color:#89DDFF"> |</span><span style="color:#00E5FF"> undefined</span><span style="color:#8AAA8A"> {</span></span>
+<span class="line"><span style="color:#39FF14;font-weight:bold">    return</span><span style="color:#FF6B81;font-style:italic"> this</span><span style="color:#89DDFF">.</span><span style="color:#B8E986">variants</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF;font-weight:bold">find</span><span style="color:#8AAA8A">((</span><span style="color:#FFD700;font-style:italic">item</span><span style="color:#8AAA8A">)</span><span style="color:#89DDFF"> =></span><span style="color:#C8D6C8"> item</span><span style="color:#89DDFF">.</span><span style="color:#B8E986">variant</span><span style="color:#89DDFF"> ===</span><span style="color:#C8D6C8"> variant</span><span style="color:#8AAA8A">)</span><span style="color:#546E54">;</span></span>
+<span class="line"><span style="color:#8AAA8A">  }</span></span>
+<span class="line"><span style="color:#8AAA8A">}</span></span></code></pre><h3 id="python">Python</h3><pre class="shiki Neon Green — Dark Terminal" style="background-color:#0e0e1a;color:#d5dce8" tabindex="0"><code><span class="line"><span style="color:#39FF14;font-weight:bold">from</span><span style="color:#D5DCE8"> dataclasses </span><span style="color:#39FF14;font-weight:bold">import</span><span style="color:#D5DCE8"> dataclass</span></span>
+<span class="line"><span style="color:#39FF14;font-weight:bold">from</span><span style="color:#D5DCE8"> typing </span><span style="color:#39FF14;font-weight:bold">import</span><span style="color:#D5DCE8"> Literal</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D5DCE8">ThemeVariant </span><span style="color:#89DDFF">=</span><span style="color:#D5DCE8"> Literal</span><span style="color:#6A8A6A">[</span><span style="color:#C3E88D">"dark"</span><span style="color:#6A8A6A">,</span><span style="color:#C3E88D"> "midnight"</span><span style="color:#6A8A6A">,</span><span style="color:#C3E88D"> "light"</span><span style="color:#6A8A6A">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA;font-style:italic">@dataclass</span></span>
+<span class="line"><span style="color:#39FF14">class</span><span style="color:#00E5FF;font-weight:bold"> ThemePreview</span><span style="color:#8AAA8A">:</span></span>
+<span class="line"><span style="color:#D5DCE8">    variant</span><span style="color:#6A8A6A">:</span><span style="color:#D5DCE8"> ThemeVariant</span></span>
+<span class="line"><span style="color:#D5DCE8">    accent</span><span style="color:#6A8A6A">:</span><span style="color:#00E5FF"> str</span></span>
+<span class="line"><span style="color:#D5DCE8">    background</span><span style="color:#6A8A6A">:</span><span style="color:#00E5FF"> str</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#39FF14">    def</span><span style="color:#82AAFF;font-weight:bold"> summary</span><span style="color:#8AAA8A">(</span><span style="color:#FF6B81;font-style:italic">self</span><span style="color:#8AAA8A">)</span><span style="color:#6A8A6A"> -></span><span style="color:#00E5FF"> str</span><span style="color:#8AAA8A">:</span></span>
+<span class="line"><span style="color:#39FF14;font-weight:bold">        return</span><span style="color:#FFCB6B"> f</span><span style="color:#C3E88D">"</span><span style="color:#C3E88D">{</span><span style="color:#FF6B81">self</span><span style="color:#6A8A6A">.</span><span style="color:#C792EA;font-style:italic">variant</span><span style="color:#C3E88D">}</span><span style="color:#C3E88D">: accent=</span><span style="color:#C3E88D">{</span><span style="color:#FF6B81">self</span><span style="color:#6A8A6A">.</span><span style="color:#C792EA;font-style:italic">accent</span><span style="color:#C3E88D">}</span><span style="color:#C3E88D">, background=</span><span style="color:#C3E88D">{</span><span style="color:#FF6B81">self</span><span style="color:#6A8A6A">.</span><span style="color:#C792EA;font-style:italic">background</span><span style="color:#C3E88D">}</span><span style="color:#C3E88D">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D5DCE8">preview </span><span style="color:#89DDFF">=</span><span style="color:#D5DCE8"> ThemePreview</span><span style="color:#6A8A6A">(</span><span style="color:#C3E88D">"dark"</span><span style="color:#6A8A6A">,</span><span style="color:#C3E88D"> "#39ff14"</span><span style="color:#6A8A6A">,</span><span style="color:#C3E88D"> "#0e0e1a"</span><span style="color:#6A8A6A">)</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#6A8A6A">(</span><span style="color:#D5DCE8">preview</span><span style="color:#6A8A6A">.</span><span style="color:#D5DCE8">summary</span><span style="color:#6A8A6A">())</span></span></code></pre><h3 id="rust">Rust</h3><pre class="shiki Neon Green — Dark Terminal" style="background-color:#0e0e1a;color:#d5dce8" tabindex="0"><code><span class="line"><span style="color:#C792EA;font-style:italic">#</span><span style="color:#6A8A6A;font-style:italic">[</span><span style="color:#C792EA;font-style:italic">derive</span><span style="color:#6A8A6A;font-style:italic">(</span><span style="color:#00E5FF;font-style:italic">Debug</span><span style="color:#6A8A6A;font-style:italic">)]</span></span>
+<span class="line"><span style="color:#39FF14">enum</span><span style="color:#00E5FF"> Variant</span><span style="color:#6A8A6A"> {</span></span>
+<span class="line"><span style="color:#00E5FF">    Dark</span><span style="color:#6A8A6A">,</span></span>
+<span class="line"><span style="color:#00E5FF">    Midnight</span><span style="color:#6A8A6A">,</span></span>
+<span class="line"><span style="color:#00E5FF">    Light</span><span style="color:#6A8A6A">,</span></span>
+<span class="line"><span style="color:#6A8A6A">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#39FF14">fn</span><span style="color:#82AAFF;font-weight:bold"> accent</span><span style="color:#6A8A6A">(</span><span style="color:#C8D6C8">variant</span><span style="color:#89DDFF">:</span><span style="color:#89DDFF"> &#x26;</span><span style="color:#00E5FF">Variant</span><span style="color:#6A8A6A">)</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> &#x26;</span><span style="color:#6A8A6A">'</span><span style="color:#F78C6C;font-style:italic">static</span><span style="color:#00E5FF"> str</span><span style="color:#6A8A6A"> {</span></span>
+<span class="line"><span style="color:#39FF14">    match</span><span style="color:#C8D6C8"> variant</span><span style="color:#6A8A6A"> {</span></span>
+<span class="line"><span style="color:#00E5FF">        Variant</span><span style="color:#89DDFF">::</span><span style="color:#00E5FF">Dark</span><span style="color:#89DDFF"> =></span><span style="color:#6A8A6A"> "</span><span style="color:#C3E88D">#39ff14</span><span style="color:#6A8A6A">"</span><span style="color:#6A8A6A">,</span></span>
+<span class="line"><span style="color:#00E5FF">        Variant</span><span style="color:#89DDFF">::</span><span style="color:#00E5FF">Midnight</span><span style="color:#89DDFF"> =></span><span style="color:#6A8A6A"> "</span><span style="color:#C3E88D">#4dff4d</span><span style="color:#6A8A6A">"</span><span style="color:#6A8A6A">,</span></span>
+<span class="line"><span style="color:#00E5FF">        Variant</span><span style="color:#89DDFF">::</span><span style="color:#00E5FF">Light</span><span style="color:#89DDFF"> =></span><span style="color:#6A8A6A"> "</span><span style="color:#C3E88D">#00a63e</span><span style="color:#6A8A6A">"</span><span style="color:#6A8A6A">,</span></span>
+<span class="line"><span style="color:#6A8A6A">    }</span></span>
+<span class="line"><span style="color:#6A8A6A">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#39FF14">fn</span><span style="color:#82AAFF;font-weight:bold"> main</span><span style="color:#6A8A6A">()</span><span style="color:#6A8A6A"> {</span></span>
+<span class="line"><span style="color:#39FF14">    let</span><span style="color:#C8D6C8"> current</span><span style="color:#89DDFF"> =</span><span style="color:#00E5FF"> Variant</span><span style="color:#89DDFF">::</span><span style="color:#00E5FF">Dark</span><span style="color:#6A8A6A">;</span></span>
+<span class="line"><span style="color:#FFCB6B;font-weight:bold">    println!</span><span style="color:#6A8A6A">(</span><span style="color:#6A8A6A">"</span><span style="color:#C3E88D">accent = </span><span style="color:#6A8A6A">{}"</span><span style="color:#6A8A6A">,</span><span style="color:#82AAFF;font-weight:bold"> accent</span><span style="color:#6A8A6A">(</span><span style="color:#89DDFF">&#x26;</span><span style="color:#C8D6C8">current</span><span style="color:#6A8A6A">));</span></span>
+<span class="line"><span style="color:#6A8A6A">}</span></span></code></pre><h3 id="json">JSON</h3><pre class="shiki Neon Green — Dark Terminal" style="background-color:#0e0e1a;color:#d5dce8" tabindex="0"><code><span class="line"><span style="color:#6A8A6A">{</span></span>
+<span class="line"><span style="color:#6A8A6A">  "</span><span style="color:#FF6B81">name</span><span style="color:#6A8A6A">"</span><span style="color:#6A8A6A">:</span><span style="color:#C3E88D"> "neon-green-theme"</span><span style="color:#6A8A6A">,</span></span>
+<span class="line"><span style="color:#6A8A6A">  "</span><span style="color:#FF6B81">displayName</span><span style="color:#6A8A6A">"</span><span style="color:#6A8A6A">:</span><span style="color:#C3E88D"> "Neon Green — Dark Terminal"</span><span style="color:#6A8A6A">,</span></span>
+<span class="line"><span style="color:#6A8A6A">  "</span><span style="color:#FF6B81">publisher</span><span style="color:#6A8A6A">"</span><span style="color:#6A8A6A">:</span><span style="color:#C3E88D"> "luongnv89"</span><span style="color:#6A8A6A">,</span></span>
+<span class="line"><span style="color:#6A8A6A">  "</span><span style="color:#FF6B81">variants</span><span style="color:#6A8A6A">"</span><span style="color:#6A8A6A">:</span><span style="color:#8AAA8A"> [</span><span style="color:#C3E88D">"dark"</span><span style="color:#6A8A6A">,</span><span style="color:#C3E88D"> "midnight"</span><span style="color:#6A8A6A">,</span><span style="color:#C3E88D"> "light"</span><span style="color:#8AAA8A">]</span><span style="color:#6A8A6A">,</span></span>
+<span class="line"><span style="color:#6A8A6A">  "</span><span style="color:#FF6B81">accent</span><span style="color:#6A8A6A">"</span><span style="color:#6A8A6A">:</span><span style="color:#C3E88D"> "#39ff14"</span></span>
+<span class="line"><span style="color:#6A8A6A">}</span></span></code></pre><h3 id="bash">Bash</h3><pre class="shiki Neon Green — Dark Terminal" style="background-color:#0e0e1a;color:#d5dce8" tabindex="0"><code><span class="line"><span style="color:#82AAFF;font-weight:bold">npm</span><span style="color:#C3E88D"> install</span><span style="color:#F78C6C"> -g</span><span style="color:#C3E88D"> @vscode/vsce</span></span>
+<span class="line"><span style="color:#82AAFF;font-weight:bold">vsce</span><span style="color:#C3E88D"> package</span></span>
+<span class="line"><span style="color:#82AAFF;font-weight:bold">code</span><span style="color:#F78C6C"> --install-extension</span><span style="color:#C3E88D"> neon-green-theme-1.0.0.vsix</span></span></code></pre><hr>
+<h2 id="open-source-details">Open source details</h2><ul>
+<li>License: <strong>MIT</strong></li>
+<li>Publisher: <strong>luongnv89</strong></li>
+<li>Extension type: <strong>VS Code theme</strong></li>
+<li>Repository: <a href="https://github.com/luongnv89/vscode-theme-neon-green" target="_blank" rel="noreferrer">luongnv89/vscode-theme-neon-green</a></li>
+</ul>
+<p>If you want to improve the theme, open an issue, suggest a language-specific token tweak, or send a PR.</p>
+<hr>
+<h2 id="final-call">Final call</h2><p>If you want a theme that feels like a neon terminal without becoming unreadable chaos, this one is built for that exact sweet spot.</p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme" target="_blank" rel="noreferrer">Install Neon Green now</a></p>
+
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <span>Generated from <code>docs/landing.md</code> using the Neon Green theme JSON for syntax highlighting.</span>
+    <span><a href="https://github.com/luongnv89/vscode-theme-neon-green">GitHub</a> · <a href="https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme">Marketplace</a></span>
+  </footer>
+</body>
+</html>

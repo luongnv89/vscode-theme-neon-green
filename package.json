@@ -40,6 +40,13 @@
   "bugs": {
     "url": "https://github.com/luongnv89/vscode-theme-neon-green/issues"
   },
+  "scripts": {
+    "build:landing": "node scripts/generate-landing.mjs"
+  },
+  "devDependencies": {
+    "marked": "^15.0.12",
+    "shiki": "^3.2.1"
+  },
   "contributes": {
     "themes": [
       {
