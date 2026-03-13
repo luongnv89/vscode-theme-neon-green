@@ -43,6 +43,29 @@ npm install -g ovsx
 ovsx publish -p <token>
 ```
 
+## GitHub Pages Landing Page
+
+This repo also ships a single-file landing page generated from Markdown.
+
+### Source and build
+
+- Source markdown: `docs/landing.md`
+- Generated HTML: `docs/index.html`
+- Generator script: `scripts/generate-landing.mjs`
+
+Build it locally with:
+
+```bash
+npm install
+npm run build:landing
+```
+
+### CI/CD behavior
+
+- `CI` rebuilds `docs/index.html` and fails if the generated file is out of sync with `docs/landing.md` or theme data.
+- `Deploy landing page` publishes the landing page to **GitHub Pages** on every push to `main`.
+- The Pages workflow prepares a root-level artifact from the generated HTML plus screenshots/icons so the site renders correctly.
+
 ## Manual Distribution
 
 Package the extension and distribute the `.vsix` file:

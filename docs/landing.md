@@ -4,7 +4,7 @@ A vibrant neon green VS Code theme with three variants built for people who want
 
 > Deep midnight backgrounds. Vivid neon green accents. Carefully tuned syntax that stays readable during long coding sessions.
 
-[Install from Marketplace](https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme) · [View on GitHub](https://github.com/luongnv89/vscode-theme-neon-green) · [Read the README](../README.md)
+[Install from Marketplace](https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme) · [View on GitHub](https://github.com/luongnv89/vscode-theme-neon-green) · [Read the README](https://github.com/luongnv89/vscode-theme-neon-green/blob/main/README.md)
 
 ---
 
