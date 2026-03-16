@@ -214,12 +214,18 @@ const buildPage = async () => {
         const target = external ? ' target="_blank" rel="noreferrer"' : '';
         return `<a href="${href}"${title}${target}>${text}</a>`;
       },
-      image(token) {
-        const title = token.title ? ` title="${token.title}"` : '';
-        const alt = token.text || '';
-        const href = token.href || '';
-        return `<img src="${href}" alt="${alt}"${title} loading="lazy" />`;
-      },
+      image: (() => {
+        let imageIndex = 0;
+        return (token) => {
+          const title = token.title ? ` title="${token.title}"` : '';
+          const alt = token.text || '';
+          const href = token.href || '';
+          const isFirst = imageIndex === 0;
+          imageIndex++;
+          const loading = isFirst ? ' loading="eager" fetchpriority="high"' : ' loading="lazy"';
+          return `<img src="${href}" alt="${alt}"${title}${loading} width="1200" height="800" />`;
+        };
+      })(),
     },
   });
 
@@ -245,13 +251,54 @@ const buildPage = async () => {
   const info = darkTheme.colors['terminal.ansiBlue'] || '#82aaff';
   const shadow = darkTheme.colors['widget.shadow'] || '#00000066';
 
+  const seoDescription = 'Neon green VS Code theme with three variants: Dark Terminal, Midnight, and Light. Vivid accents and tuned syntax for long coding sessions.';
+  const siteUrl = 'https://luongnv89.github.io/vscode-theme-neon-green';
+  const ogImage = `${siteUrl}/screenshot-dark.png`;
+
   const html = `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>${pkg.displayName}</title>
-  <meta name="description" content="${pkg.description}" />
+  <meta name="description" content="${seoDescription}" />
+  <link rel="canonical" href="${siteUrl}/" />
+  <meta property="og:title" content="${pkg.displayName}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="${siteUrl}/" />
+  <meta property="og:image" content="${ogImage}" />
+  <meta property="og:description" content="${seoDescription}" />
+  <meta property="og:site_name" content="${pkg.displayName}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${pkg.displayName}" />
+  <meta name="twitter:description" content="${seoDescription}" />
+  <meta name="twitter:image" content="${ogImage}" />
+  <meta name="twitter:image:alt" content="Neon Green VS Code theme screenshot" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "${pkg.displayName}",
+    "description": "${seoDescription}",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Windows, macOS, Linux",
+    "url": "${siteUrl}/",
+    "image": "${ogImage}",
+    "author": {
+      "@type": "Person",
+      "name": "${pkg.author.name}",
+      "url": "${pkg.author.url}"
+    },
+    "license": "https://opensource.org/licenses/MIT",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "downloadUrl": "${marketplaceUrl}",
+    "softwareVersion": "${pkg.version}"
+  }
+  </script>
   <style>
     :root {
       --bg: ${bg};
@@ -362,6 +409,31 @@ const buildPage = async () => {
     }
 
     .topnav a:hover {
+      color: var(--text);
+      background: color-mix(in srgb, var(--selection) 95%, transparent);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
+      border-radius: 12px;
+      padding: 8px;
+      cursor: pointer;
+      color: var(--muted);
+      line-height: 0;
+    }
+
+    .nav-toggle svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+
+    .nav-toggle:hover {
       color: var(--text);
       background: color-mix(in srgb, var(--selection) 95%, transparent);
     }
@@ -751,11 +823,24 @@ const buildPage = async () => {
       .topbar {
         border-radius: 24px;
         padding: 16px;
-        align-items: flex-start;
-        flex-direction: column;
+        flex-wrap: wrap;
+      }
+      .brand {
+        flex: 1;
+      }
+      .nav-toggle {
+        display: inline-flex;
       }
       .topnav {
+        display: none;
+        width: 100%;
         justify-content: flex-start;
+        padding-top: 12px;
+        border-top: 1px solid color-mix(in srgb, var(--line) 60%, transparent);
+        margin-top: 12px;
+      }
+      .topnav.open {
+        display: flex;
       }
       .variant-grid,
       .swatch-grid {
@@ -791,6 +876,9 @@ const buildPage = async () => {
           <div>${pkg.displayName}</div>
         </div>
       </div>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
       <nav class="topnav">${navHtml}</nav>
     </header>
 
@@ -812,10 +900,24 @@ const buildPage = async () => {
     <span>Generated from <code>docs/landing.md</code> using the Neon Green theme JSON for syntax highlighting.</span>
     <span><a href="${repoUrl}">GitHub</a> · <a href="${marketplaceUrl}">Marketplace</a></span>
   </footer>
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', function () {
+      var nav = document.querySelector('.topnav');
+      var open = nav.classList.toggle('open');
+      this.setAttribute('aria-expanded', open);
+    });
+    document.querySelectorAll('.topnav a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        document.querySelector('.topnav').classList.remove('open');
+        document.querySelector('.nav-toggle').setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
 </body>
 </html>`;
 
-  await fs.writeFile(path.join(repoRoot, 'docs', 'index.html'), html, 'utf8');
+  const cleaned = html.replace(/[^\S\n]+$/gm, '').replace(/\n*$/, '\n');
+  await fs.writeFile(path.join(repoRoot, 'docs', 'index.html'), cleaned, 'utf8');
   console.log('Generated docs/index.html');
 };
 

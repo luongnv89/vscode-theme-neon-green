@@ -39,6 +39,7 @@ jobs:
           rm -rf .site
           mkdir -p .site
           cp docs/index.html .site/index.html
+          cp docs/robots.txt docs/sitemap.xml docs/llms.txt .site/
           cp screenshot-dark.png screenshot-light.png icon.png icon.svg .site/
           sed -i \
             -e 's#\.\./screenshot-dark\.png#./screenshot-dark.png#g' \

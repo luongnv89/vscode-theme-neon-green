@@ -1,26 +1,23 @@
-# Release v1.1.0 — New Logo & Branding
+# Release v1.2.0 — Mobile Nav, SEO & Light Theme Refresh
 
 ## What's Changed
 
 ### Features
 
-- Redesigned extension icon with a new neon **"N"** mark featuring a layered glow effect — replaces the previous curly-brace `{ | }` design
-- Added a full logo kit in `assets/logo/` with 7 SVG variants:
-  - `logo-full.svg` — Mark + wordmark (horizontal)
-  - `logo-mark.svg` — Symbol only (256x256)
-  - `logo-wordmark.svg` — Text only
-  - `logo-icon.svg` — App icon (512x512)
-  - `favicon.svg` — Optimized for 16x16
-  - `logo-white.svg` — White version for dark backgrounds
-  - `logo-black.svg` — Black version for light backgrounds
+- **Responsive mobile navigation** — added hamburger menu that appears on screens under 980px with smooth toggle and auto-close on link tap
+- **Full SEO optimization** — OpenGraph tags, Twitter Cards, JSON-LD structured data (SoftwareApplication schema), canonical URL, and optimized meta description
+- **AI discoverability** — added `robots.txt` (allows all bots), `sitemap.xml`, and `llms.txt` for AI crawler and LLM consumption
+- **Light theme background update** — warm off-white (`#efe9e5`) with matching secondary surfaces (`#e9e3df`)
 
-### Documentation
+### Bug Fixes
 
-- Centered README header with the new logo, badges, and description
-- Updated project structure section to include `assets/logo/`
+- Fixed CI failure from trailing whitespace in generated HTML
+- Fixed missing trailing newline in `docs/landing.md`
+- First image now uses `loading="eager"` with `fetchpriority="high"` (was lazy)
+- All images include `width`/`height` attributes to prevent layout shift
 
-### Other Changes
+### CI / Infrastructure
 
-- Updated `.vscodeignore` to exclude `assets/`, `docs/`, and `.claude/` from the VSIX package for a leaner extension
+- Updated GitHub Pages workflow to deploy SEO files (`robots.txt`, `sitemap.xml`, `llms.txt`)
 
-**Full Changelog**: https://github.com/luongnv89/vscode-theme-neon-green/compare/v1.0.0...v1.1.0
+**Full Changelog**: https://github.com/luongnv89/vscode-theme-neon-green/compare/v1.1.0...v1.2.0

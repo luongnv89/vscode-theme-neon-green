@@ -1,0 +1,20 @@
+# Neon Green — VS Code Theme
+
+> A vibrant neon green VS Code theme with three variants (Dark Terminal, Midnight, Light) built for developers who want their editor to feel sharp, electric, and readable during long coding sessions. Free and open source under MIT.
+
+## Main
+
+- [Landing Page](https://luongnv89.github.io/vscode-theme-neon-green/): Theme overview, screenshots, installation guide, and syntax showcase
+- [GitHub Repository](https://github.com/luongnv89/vscode-theme-neon-green): Source code, issues, and contributions
+- [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme): Install directly in VS Code
+
+## Theme Variants
+
+- Dark Terminal: Classic hacker-terminal energy with deep contrast and sharp green accents (#0e0e1a background, #39ff14 accent)
+- Midnight: Softer blue-black base for a calmer late-night editor
+- Light: Clean daytime version with neon accents still doing the heavy lifting (#efe9e5 background, #0d9e00 accent)
+
+## Optional
+
+- [README](https://github.com/luongnv89/vscode-theme-neon-green/blob/main/README.md): Full documentation
+- [Changelog](https://github.com/luongnv89/vscode-theme-neon-green/blob/main/CHANGELOG.md): Version history

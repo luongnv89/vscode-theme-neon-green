@@ -4,7 +4,44 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Neon Green — Dark Terminal</title>
-  <meta name="description" content="VS Code theme with neon green accents inspired by luongnv.com. Three variants: Dark Terminal, Midnight, and Light. Vivid green highlights and carefully tuned multicolor syntax for long coding sessions." />
+  <meta name="description" content="Neon green VS Code theme with three variants: Dark Terminal, Midnight, and Light. Vivid accents and tuned syntax for long coding sessions." />
+  <link rel="canonical" href="https://luongnv89.github.io/vscode-theme-neon-green/" />
+  <meta property="og:title" content="Neon Green — Dark Terminal" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://luongnv89.github.io/vscode-theme-neon-green/" />
+  <meta property="og:image" content="https://luongnv89.github.io/vscode-theme-neon-green/screenshot-dark.png" />
+  <meta property="og:description" content="Neon green VS Code theme with three variants: Dark Terminal, Midnight, and Light. Vivid accents and tuned syntax for long coding sessions." />
+  <meta property="og:site_name" content="Neon Green — Dark Terminal" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Neon Green — Dark Terminal" />
+  <meta name="twitter:description" content="Neon green VS Code theme with three variants: Dark Terminal, Midnight, and Light. Vivid accents and tuned syntax for long coding sessions." />
+  <meta name="twitter:image" content="https://luongnv89.github.io/vscode-theme-neon-green/screenshot-dark.png" />
+  <meta name="twitter:image:alt" content="Neon Green VS Code theme screenshot" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Neon Green — Dark Terminal",
+    "description": "Neon green VS Code theme with three variants: Dark Terminal, Midnight, and Light. Vivid accents and tuned syntax for long coding sessions.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Windows, macOS, Linux",
+    "url": "https://luongnv89.github.io/vscode-theme-neon-green/",
+    "image": "https://luongnv89.github.io/vscode-theme-neon-green/screenshot-dark.png",
+    "author": {
+      "@type": "Person",
+      "name": "Luong Nguyen",
+      "url": "https://luongnv.com"
+    },
+    "license": "https://opensource.org/licenses/MIT",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "downloadUrl": "https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme",
+    "softwareVersion": "1.2.0"
+  }
+  </script>
   <style>
     :root {
       --bg: #0e0e1a;
@@ -115,6 +152,31 @@
     }
 
     .topnav a:hover {
+      color: var(--text);
+      background: color-mix(in srgb, var(--selection) 95%, transparent);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
+      border-radius: 12px;
+      padding: 8px;
+      cursor: pointer;
+      color: var(--muted);
+      line-height: 0;
+    }
+
+    .nav-toggle svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+
+    .nav-toggle:hover {
       color: var(--text);
       background: color-mix(in srgb, var(--selection) 95%, transparent);
     }
@@ -504,11 +566,24 @@
       .topbar {
         border-radius: 24px;
         padding: 16px;
-        align-items: flex-start;
-        flex-direction: column;
+        flex-wrap: wrap;
+      }
+      .brand {
+        flex: 1;
+      }
+      .nav-toggle {
+        display: inline-flex;
       }
       .topnav {
+        display: none;
+        width: 100%;
         justify-content: flex-start;
+        padding-top: 12px;
+        border-top: 1px solid color-mix(in srgb, var(--line) 60%, transparent);
+        margin-top: 12px;
+      }
+      .topnav.open {
+        display: flex;
       }
       .variant-grid,
       .swatch-grid {
@@ -544,14 +619,17 @@
           <div>Neon Green — Dark Terminal</div>
         </div>
       </div>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
       <nav class="topnav"><a href="#why-this-theme-exists">Why this theme exists</a><a href="#theme-variants">Theme variants</a><a href="#screenshots">Screenshots</a><a href="#installation">Installation</a><a href="#what-the-theme-covers">What the theme covers</a><a href="#markdown-rendering-gallery">Markdown rendering gallery</a><a href="#syntax-showcase">Syntax showcase</a><a href="#open-source-details">Open source details</a><a href="#final-call">Final call</a></nav>
     </header>
 
     <main>
-      
+
 <div class="hero-badges">
   <a href="https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme">Marketplace</a>
-  <span>v1.1.0</span>
+  <span>v1.2.0</span>
   <span>MIT</span>
   <span>by luongnv89</span>
   <a href="https://github.com/luongnv89/vscode-theme-neon-green">GitHub repository</a>
@@ -628,7 +706,7 @@
     </div>
   </article>
 
-  <article class="variant-card" style="--variant-bg:#f9f9fc;--variant-panel:#f5f5fa;--variant-surface:#f9f9fc;--variant-accent:#0d9e00;--variant-text:#2a2d3e;--variant-muted:#5a5e78;--variant-line:#d5d5e0;">
+  <article class="variant-card" style="--variant-bg:#efe9e5;--variant-panel:#e9e3df;--variant-surface:#efe9e5;--variant-accent:#0d9e00;--variant-text:#2a2d3e;--variant-muted:#5a5e78;--variant-line:#d5d5e0;">
     <div class="variant-window">
       <div class="variant-window-bar">
         <span></span><span></span><span></span>
@@ -647,7 +725,7 @@
       <h3>Light</h3>
       <p>Clean daytime version with neon accents still doing the heavy lifting.</p>
       <dl>
-        <div><dt>Background</dt><dd><code>#f9f9fc</code></dd></div>
+        <div><dt>Background</dt><dd><code>#efe9e5</code></dd></div>
         <div><dt>Accent</dt><dd><code>#0d9e00</code></dd></div>
       </dl>
     </div>
@@ -655,8 +733,8 @@
 </div>
 
 <hr>
-<h2 id="screenshots">Screenshots</h2><h3 id="dark-terminal">Dark Terminal</h3><p><img src="../screenshot-dark.png" alt="Neon Green Dark Theme screenshot" loading="lazy" /></p>
-<h3 id="light-variant">Light Variant</h3><p><img src="../screenshot-light.png" alt="Neon Green Light Theme screenshot" loading="lazy" /></p>
+<h2 id="screenshots">Screenshots</h2><h3 id="dark-terminal">Dark Terminal</h3><p><img src="../screenshot-dark.png" alt="Neon Green Dark Theme screenshot" loading="eager" fetchpriority="high" width="1200" height="800" /></p>
+<h3 id="light-variant">Light Variant</h3><p><img src="../screenshot-light.png" alt="Neon Green Light Theme screenshot" loading="lazy" width="1200" height="800" /></p>
 <hr>
 <h2 id="installation">Installation</h2><h3 id="marketplace">Marketplace</h3><p>Open VS Code, search for <strong>Neon Green — Dark Terminal</strong>, then click <strong>Install</strong>.</p>
 <h3 id="vsix">VSIX</h3><pre class="shiki Neon Green — Dark Terminal" style="background-color:#0e0e1a;color:#d5dce8" tabindex="0"><code><span class="line"><span style="color:#82AAFF;font-weight:bold">npm</span><span style="color:#C3E88D"> install</span><span style="color:#F78C6C"> -g</span><span style="color:#C3E88D"> @vscode/vsce</span></span>
@@ -826,7 +904,7 @@
 </tr>
 </tbody></table>
 <h3 id="horizontal-rule">Horizontal rule</h3><hr>
-<h3 id="images">Images</h3><p><img src="../icon.png" alt="Neon Green icon" loading="lazy" /></p>
+<h3 id="images">Images</h3><p><img src="../icon.png" alt="Neon Green icon" loading="lazy" width="1200" height="800" /></p>
 <hr>
 <h2 id="syntax-showcase">Syntax showcase</h2><h3 id="typescript">TypeScript</h3><pre class="shiki Neon Green — Dark Terminal" style="background-color:#0e0e1a;color:#d5dce8" tabindex="0"><code><span class="line"><span style="color:#39FF14;font-weight:bold">import</span><span style="color:#8AAA8A"> {</span><span style="color:#C8D6C8"> EventEmitter</span><span style="color:#8AAA8A"> }</span><span style="color:#39FF14;font-weight:bold"> from</span><span style="color:#C3E88D"> 'node:events'</span><span style="color:#546E54">;</span></span>
 <span class="line"></span>
@@ -913,5 +991,18 @@
     <span>Generated from <code>docs/landing.md</code> using the Neon Green theme JSON for syntax highlighting.</span>
     <span><a href="https://github.com/luongnv89/vscode-theme-neon-green">GitHub</a> · <a href="https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme">Marketplace</a></span>
   </footer>
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', function () {
+      var nav = document.querySelector('.topnav');
+      var open = nav.classList.toggle('open');
+      this.setAttribute('aria-expanded', open);
+    });
+    document.querySelectorAll('.topnav a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        document.querySelector('.topnav').classList.remove('open');
+        document.querySelector('.nav-toggle').setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
 </body>
 </html>
