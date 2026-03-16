@@ -1,10 +1,18 @@
-# Release v1.2.1 — Light Theme Mint-Green Palette
+# Release v1.3.0 — iTerm2 Terminal Themes
 
 ## What's Changed
 
-### Theme
+### Features
 
-- **Light theme overhaul** — replaced warm beige backgrounds with a fresh mint-green palette (`#f0faf0` editor, `#e2f5e3` sidebar/panel), green-tinted borders, muted text, and selection highlights
-- Removed "inspired by luongnv.com" from package description
+- **iTerm2 terminal themes** — added matching color profiles for iTerm2:
+  - `Neon Green Dark.itermcolors` — deep midnight background with neon green cursor and accents
+  - `Neon Green Light.itermcolors` — mint-green background with green accents
+- Double-click to install, or import via iTerm2 Settings → Profiles → Colors → Color Presets
 
-**Full Changelog**: https://github.com/luongnv89/vscode-theme-neon-green/compare/v1.2.0...v1.2.1
+### Documentation
+
+- Added iTerm2 section to README with install instructions
+- Added iTerm2 section to landing page with direct download links
+- Updated project structure in README
+
+**Full Changelog**: https://github.com/luongnv89/vscode-theme-neon-green/compare/v1.2.1...v1.3.0

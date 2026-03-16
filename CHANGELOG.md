@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.3.0 — 2026-03-16
+
+### Features
+
+- **iTerm2 terminal themes** — added `Neon Green Dark.itermcolors` and `Neon Green Light.itermcolors` matching the VS Code theme palette
+
+### Documentation
+
+- Added iTerm2 section to README with install instructions and project structure update
+- Added iTerm2 section to landing page with download links
+
+**Full Changelog**: https://github.com/luongnv89/vscode-theme-neon-green/compare/v1.2.1...v1.3.0
+
 ## v1.2.1 — 2026-03-16
 
 ### Changes

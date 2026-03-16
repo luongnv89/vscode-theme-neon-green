@@ -2,7 +2,7 @@
   "name": "neon-green-theme",
   "displayName": "Neon Green — Dark Terminal",
   "description": "VS Code theme with neon green accents. Three variants: Dark Terminal, Midnight, and Light. Vivid green highlights and carefully tuned multicolor syntax for long coding sessions.",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "publisher": "luongnv89",
   "author": {
     "name": "Luong Nguyen",

@@ -65,6 +65,17 @@ Copy this folder to your VS Code extensions directory:
 
 Then reload VS Code and select the theme via `Preferences: Color Theme`.
 
+## iTerm2 Terminal Themes
+
+Matching iTerm2 color profiles are included for a consistent look across your editor and terminal.
+
+| File | Variant |
+|------|---------|
+| `themes/Neon Green Dark.itermcolors` | Dark Terminal — deep midnight background with neon green cursor |
+| `themes/Neon Green Light.itermcolors` | Light — mint-green background with green accents |
+
+**Install:** Double-click the `.itermcolors` file to auto-import, or go to iTerm2 → Settings → Profiles → Colors → Color Presets → Import.
+
 ## Color Palette
 
 | Role | Hex | Preview |
@@ -122,7 +133,9 @@ vscode-theme-neon-green/
 ├── themes/
 │   ├── neon-green-color-theme.json       # Dark Terminal variant
 │   ├── neon-green-midnight-color-theme.json  # Midnight variant
-│   └── neon-green-light-color-theme.json     # Light variant
+│   ├── neon-green-light-color-theme.json     # Light variant
+│   ├── Neon Green Dark.itermcolors       # iTerm2 Dark Terminal profile
+│   └── Neon Green Light.itermcolors      # iTerm2 Light profile
 ├── examples/
 │   └── theme-showcase.md                 # Multi-language syntax showcase
 ├── icon.png                              # Extension icon
