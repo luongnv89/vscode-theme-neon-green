@@ -12,7 +12,7 @@
 
 - Dark Terminal: Classic hacker-terminal energy with deep contrast and sharp green accents (#0e0e1a background, #39ff14 accent)
 - Midnight: Softer blue-black base for a calmer late-night editor
-- Light: Clean daytime version with neon accents still doing the heavy lifting (#efe9e5 background, #0d9e00 accent)
+- Light: Clean daytime version with soft mint-green background and neon accents (#f0faf0 background, #0d9e00 accent)
 
 ## Optional
 

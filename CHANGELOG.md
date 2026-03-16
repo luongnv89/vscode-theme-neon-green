@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.2.1 — 2026-03-16
+
+### Changes
+
+- **Light theme**: refreshed to mint-green palette — editor background `#f0faf0`, sidebar `#e2f5e3`, green-tinted borders and muted text throughout
+- **Description**: removed "inspired by luongnv.com" from package.json
+- **llms.txt**: updated light theme color description
+
+**Full Changelog**: https://github.com/luongnv89/vscode-theme-neon-green/compare/v1.2.0...v1.2.1
+
 ## v1.2.0 — 2026-03-16
 
 ### Features
