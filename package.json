@@ -1,8 +1,8 @@
 {
   "name": "neon-green-theme",
   "displayName": "Neon Green — Dark Terminal",
-  "description": "VS Code theme with neon green accents. Three variants: Dark Terminal, Midnight, and Light. Vivid green highlights and carefully tuned multicolor syntax for long coding sessions.",
-  "version": "1.3.0",
+  "description": "VS Code theme collection: Neon Green (Dark Terminal, Midnight, Light, Liquid Glass) + Soft Glow (Dark & Light). Vivid green highlights and warm eye-friendly pastels for long coding sessions.",
+  "version": "1.4.0",
   "publisher": "luongnv89",
   "author": {
     "name": "Luong Nguyen",
@@ -22,9 +22,9 @@
     "neon",
     "green",
     "terminal",
-    "hacker",
-    "matrix",
-    "developer",
+    "soft",
+    "warm",
+    "eye-friendly",
     "coding",
     "theme"
   ],
@@ -63,6 +63,21 @@
         "label": "Neon Green — Light",
         "uiTheme": "vs",
         "path": "./themes/neon-green-light-color-theme.json"
+      },
+      {
+        "label": "Neon Green — Liquid Glass",
+        "uiTheme": "vs-dark",
+        "path": "./themes/neon-green-liquid-glass-color-theme.json"
+      },
+      {
+        "label": "Soft Glow — Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/soft-glow-dark-color-theme.json"
+      },
+      {
+        "label": "Soft Glow — Light",
+        "uiTheme": "vs",
+        "path": "./themes/soft-glow-light-color-theme.json"
       }
     ]
   }
