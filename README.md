@@ -1,16 +1,16 @@
 <p align="center">
-  <img src="icon.png" alt="Neon Green Logo" width="128" height="128" />
+  <img src="icon.png" alt="Neon Green Theme Collection" width="128" height="128" />
 </p>
 
-<h1 align="center">Neon Green — VS Code Theme</h1>
+<h1 align="center">Neon Green Theme Collection</h1>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT"></a>
   <a href="https://code.visualstudio.com/"><img src="https://img.shields.io/badge/VS%20Code-^1.70.0-blue.svg" alt="VS Code"></a>
-  <a href="https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme"><img src="https://img.shields.io/badge/Marketplace-Neon%20Green-brightgreen.svg" alt="Marketplace"></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme"><img src="https://img.shields.io/badge/Marketplace-Theme%20Collection-brightgreen.svg" alt="Marketplace"></a>
 </p>
 
-<p align="center">A meticulously crafted VS Code theme featuring deep charcoal/midnight backgrounds with vivid neon green (<code>#39ff14</code>) accents.</p>
+<p align="center">6 meticulously crafted VS Code themes in 2 families: vivid <strong>Neon Green</strong> with electric accents and warm <strong>Soft Glow</strong> with eye-friendly pastels.</p>
 
 ## Screenshots
 
@@ -42,9 +42,9 @@
 
 ## Key Features
 
-- Vivid neon green accents throughout the UI
+- **Two distinct aesthetics**: vivid neon green accents (Neon Green family) and warm amber/pastel tones (Soft Glow family)
+- 6 themes across 2 families for different moods and lighting conditions
 - Carefully tuned multicolor syntax for long coding sessions
-- Six variants across two theme families for different moods and environments
 - Broad language support: JavaScript, TypeScript, Python, Rust, Go, HTML/CSS, JSON, YAML, Markdown, Shell, and more
 - Custom terminal colors, bracket colorization, and git decoration colors
 
@@ -54,7 +54,7 @@
 
 1. Open VS Code
 2. Go to Extensions (`Ctrl+Shift+X` / `Cmd+Shift+X`)
-3. Search for **"Neon Green — Dark Terminal"**
+3. Search for **"Neon Green Theme Collection"**
 4. Click **Install**
 5. Select the theme via `Preferences: Color Theme` (`Ctrl+K Ctrl+T`)
 
@@ -63,7 +63,7 @@
 ```bash
 npm install -g @vscode/vsce
 vsce package
-code --install-extension neon-green-theme-1.4.0.vsix
+code --install-extension neon-green-theme-1.5.0.vsix
 ```
 
 ### Manual Installation
@@ -86,7 +86,9 @@ Matching iTerm2 color profiles are included for a consistent look across your ed
 
 **Install:** Double-click the `.itermcolors` file to auto-import, or go to iTerm2 → Settings → Profiles → Colors → Color Presets → Import.
 
-## Color Palette
+## Color Palettes
+
+### Neon Green Family
 
 | Role | Hex | Preview |
 |------|-----|---------|
@@ -97,13 +99,27 @@ Matching iTerm2 color profiles are included for a consistent look across your ed
 | Soft Green | `#7dcea0` | Strings, attributes |
 | Teal | `#4dd9c0` | Numbers, types, links |
 | Mint | `#66d9a0` | Classes, constants |
-| Forest | `#4dbd74` | Namespaces, untracked files |
 | Red | `#ff5555` | Errors, deletions |
 | Orange | `#ffb347` | Warnings, modifications |
-| Blue | `#5599ff` | Debug, info accents |
-| Purple | `#c47dff` | Lifetimes, conflicts |
+
+### Soft Glow Family
+
+| Role | Hex | Preview |
+|------|-----|---------|
+| Background | `#12100e` | Deep warm charcoal |
+| Foreground | `#c8c0b8` | Warm gray |
+| Amber (accent) | `#d4a87a` | UI accents, cursor, active elements |
+| Keywords | `#c090e0` | Soft purple |
+| Functions | `#70a0e0` | Muted blue |
+| Strings | `#b8cc70` | Yellow-green |
+| Properties | `#90c880` | True green |
+| Types | `#5cb8d0` | Soft cyan |
+| Numbers | `#e08070` | Warm coral |
+| Parameters | `#e0c060` | Golden yellow |
 
 ## Syntax Highlights
+
+### Neon Green
 
 - **Keywords** — Bold neon green `#39ff14`
 - **Strings** — Warm soft green `#7dcea0`
@@ -111,8 +127,15 @@ Matching iTerm2 color profiles are included for a consistent look across your ed
 - **Types/Classes** — Mint green `#66d9a0`
 - **Numbers** — Teal `#4dd9c0`
 - **Comments** — Muted forest italic `#3a5a3a`
-- **Operators** — Emerald `#00e676`
-- **Properties** — Sea green `#8acea0`
+
+### Soft Glow
+
+- **Keywords** — Soft purple `#c090e0`
+- **Strings** — Yellow-green `#b8cc70`
+- **Functions** — Muted blue `#70a0e0`
+- **Types/Classes** — Soft cyan `#5cb8d0`
+- **Numbers** — Warm coral `#e08070`
+- **Comments** — Warm gray italic `#5a5248`
 
 ## Language Support
 

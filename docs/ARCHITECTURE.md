@@ -2,7 +2,7 @@
 
 ## Overview
 
-Neon Green is a VS Code color theme extension that provides three variants of a neon green-accented color scheme. The extension is purely declarative — it contains no executable code, only JSON theme definitions.
+Neon Green Theme Collection is a VS Code color theme extension that provides six themes across two families: Neon Green (4 variants) and Soft Glow (2 variants). The extension is purely declarative — it contains no executable code, only JSON theme definitions.
 
 ## Components
 
@@ -13,6 +13,9 @@ Each theme variant is a standalone JSON file following the [VS Code Color Theme]
 - **`neon-green-color-theme.json`** — Dark Terminal variant with pure dark green-black background (`#0a0f0a`)
 - **`neon-green-midnight-color-theme.json`** — Midnight variant with deep blue-black background (`#0b1014`)
 - **`neon-green-light-color-theme.json`** — Light variant for daytime use
+- **`neon-green-liquid-glass-color-theme.json`** — Liquid Glass variant with modern translucent feel
+- **`soft-glow-dark-color-theme.json`** — Soft Glow Dark with warm charcoal background (`#12100e`)
+- **`soft-glow-light-color-theme.json`** — Soft Glow Light with warm cream background (`#faf7f4`)
 
 Each theme file contains two main sections:
 
@@ -21,7 +24,7 @@ Each theme file contains two main sections:
 
 ### Extension Manifest (`package.json`)
 
-Defines the extension metadata and registers all three themes via the `contributes.themes` section.
+Defines the extension metadata and registers all six themes via the `contributes.themes` section.
 
 ### Assets
 
@@ -32,11 +35,11 @@ Defines the extension metadata and registers all three themes via the `contribut
 
 ### Color Palette
 
-The palette is centered around neon green (`#39ff14`) as the primary accent. Supporting colors are chosen to:
+The Neon Green family is centered around neon green (`#39ff14`) as the primary accent, staying within the green/teal color family. The Soft Glow family uses warm amber (`#d4a87a`) as its accent with a desaturated jewel-tone palette. Both families share these principles:
 
 - Maintain readability with sufficient contrast ratios
 - Provide distinct semantic meaning (errors = red, warnings = orange, etc.)
-- Stay within the green/teal color family for a cohesive look
+- Keep colors cohesive within each family's aesthetic
 
 ### TextMate Scope Strategy
 

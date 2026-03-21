@@ -1,8 +1,8 @@
-# Neon Green — VS Code Theme
+# Neon Green Theme Collection
 
-A vibrant neon green VS Code theme with three variants built for people who want their editor to feel sharp, electric, and unmistakably alive.
+6 VS Code themes in 2 families — vivid **Neon Green** and warm **Soft Glow** — built for developers who want their editor to feel sharp, comfortable, and unmistakably alive.
 
-> Deep midnight backgrounds. Vivid neon green accents. Carefully tuned syntax that stays readable during long coding sessions.
+> Two aesthetics, one collection. Neon Green for electric terminal energy. Soft Glow for warm, eye-friendly coding. Both tuned for long sessions.
 
 [Install from Marketplace](https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme) · [View on GitHub](https://github.com/luongnv89/vscode-theme-neon-green) · [Read the README](https://github.com/luongnv89/vscode-theme-neon-green/blob/main/README.md)
 
@@ -15,12 +15,12 @@ Most themes choose one of two extremes:
 - visually loud, but tiring after an hour
 - safe and readable, but forgettable
 
-**Neon Green** tries to hit the better balance:
+**Neon Green Theme Collection** offers two approaches:
 
-- a strong identity
-- clear syntax separation
-- a dark terminal aesthetic that still feels modern
-- enough contrast to stay useful during real work
+- **Neon Green** — bold, electric identity with a dark terminal aesthetic
+- **Soft Glow** — warm, desaturated tones that never tire your eyes
+- Both with clear syntax separation and enough contrast for real work
+- Both tuned for long coding sessions in any lighting
 
 ---
 
@@ -46,7 +46,7 @@ Most themes choose one of two extremes:
 
 ### Marketplace
 
-Open VS Code, search for **Neon Green — Dark Terminal**, then click **Install**.
+Open VS Code, search for **Neon Green Theme Collection**, then click **Install**.
 
 ### VSIX
 
@@ -115,9 +115,12 @@ You can also check a standard link style here: [VS Code Marketplace](https://mar
 
 #### Unordered
 
-- Dark Terminal for classic neon contrast
-- Midnight for a softer dark setup
-- Light for daytime work
+- Neon Green — Dark Terminal for classic neon contrast
+- Neon Green — Midnight for a softer dark setup
+- Neon Green — Light for daytime work
+- Neon Green — Liquid Glass for modern translucent feel
+- Soft Glow — Dark for warm, cozy coding
+- Soft Glow — Light for gentle daylight work
 
 #### Nested
 
@@ -132,9 +135,12 @@ You can also check a standard link style here: [VS Code Marketplace](https://mar
 
 #### Task list
 
-- [x] Dark variant
-- [x] Midnight variant
-- [x] Light variant
+- [x] Neon Green — Dark Terminal
+- [x] Neon Green — Midnight
+- [x] Neon Green — Light
+- [x] Neon Green — Liquid Glass
+- [x] Soft Glow — Dark
+- [x] Soft Glow — Light
 - [ ] Your own favorite setup
 
 ### Quote
@@ -243,9 +249,9 @@ fn main() {
 ```json
 {
   "name": "neon-green-theme",
-  "displayName": "Neon Green — Dark Terminal",
+  "displayName": "Neon Green Theme Collection",
   "publisher": "luongnv89",
-  "variants": ["dark", "midnight", "light"],
+  "variants": ["dark", "midnight", "light", "liquid-glass", "soft-glow-dark", "soft-glow-light"],
   "accent": "#39ff14"
 }
 ```
@@ -273,6 +279,6 @@ If you want to improve the theme, open an issue, suggest a language-specific tok
 
 ## Final call
 
-If you want a theme that feels like a neon terminal without becoming unreadable chaos, this one is built for that exact sweet spot.
+Whether you want the electric energy of Neon Green or the cozy warmth of Soft Glow, this collection is built for developers who care about their editor.
 
-[Install Neon Green now](https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme)
+[Install Neon Green Theme Collection](https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme)

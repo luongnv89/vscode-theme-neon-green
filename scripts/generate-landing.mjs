@@ -42,14 +42,20 @@ const normalizeLang = (lang) => {
 };
 
 const themeLabelFromFilename = (filename) => {
+  if (filename.includes('soft-glow-dark')) return 'Soft Glow — Dark';
+  if (filename.includes('soft-glow-light')) return 'Soft Glow — Light';
+  if (filename.includes('liquid-glass')) return 'Liquid Glass';
   if (filename.includes('midnight')) return 'Midnight';
-  if (filename.includes('light')) return 'Light';
+  if (filename.includes('neon-green-light')) return 'Light';
   return 'Dark Terminal';
 };
 
 const humanDescription = (filename) => {
+  if (filename.includes('soft-glow-dark')) return 'Warm, cozy dark theme with amber accents and desaturated syntax.';
+  if (filename.includes('soft-glow-light')) return 'Gentle cream background with muted jewel-tone highlights.';
+  if (filename.includes('liquid-glass')) return 'Modern translucent feel with glass-like editor surfaces.';
   if (filename.includes('midnight')) return 'Softer blue-black base for a calmer late-night editor.';
-  if (filename.includes('light')) return 'Clean daytime version with neon accents still doing the heavy lifting.';
+  if (filename.includes('neon-green-light')) return 'Clean daytime version with neon accents still doing the heavy lifting.';
   return 'Classic hacker-terminal energy with deep contrast and sharp green accents.';
 };
 
@@ -160,6 +166,9 @@ const buildPage = async () => {
     'themes/neon-green-color-theme.json',
     'themes/neon-green-midnight-color-theme.json',
     'themes/neon-green-light-color-theme.json',
+    'themes/neon-green-liquid-glass-color-theme.json',
+    'themes/soft-glow-dark-color-theme.json',
+    'themes/soft-glow-light-color-theme.json',
   ];
 
   const themes = await Promise.all(
@@ -251,7 +260,7 @@ const buildPage = async () => {
   const info = darkTheme.colors['terminal.ansiBlue'] || '#82aaff';
   const shadow = darkTheme.colors['widget.shadow'] || '#00000066';
 
-  const seoDescription = 'Neon green VS Code theme with three variants: Dark Terminal, Midnight, and Light. Vivid accents and tuned syntax for long coding sessions.';
+  const seoDescription = '6 VS Code themes in 2 families: Neon Green (Dark Terminal, Midnight, Light, Liquid Glass) and Soft Glow (Dark, Light). Vivid accents and warm pastels for long coding sessions.';
   const siteUrl = 'https://luongnv89.github.io/vscode-theme-neon-green';
   const ogImage = `${siteUrl}/screenshot-dark.png`;
 
@@ -273,7 +282,7 @@ const buildPage = async () => {
   <meta name="twitter:title" content="${pkg.displayName}" />
   <meta name="twitter:description" content="${seoDescription}" />
   <meta name="twitter:image" content="${ogImage}" />
-  <meta name="twitter:image:alt" content="Neon Green VS Code theme screenshot" />
+  <meta name="twitter:image:alt" content="Neon Green Theme Collection screenshot" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -897,7 +906,7 @@ const buildPage = async () => {
   </div>
 
   <footer>
-    <span>Generated from <code>docs/landing.md</code> using the Neon Green theme JSON for syntax highlighting.</span>
+    <span>Generated from <code>docs/landing.md</code> using theme JSON for syntax highlighting.</span>
     <span><a href="${repoUrl}">GitHub</a> · <a href="${marketplaceUrl}">Marketplace</a></span>
   </footer>
   <script>

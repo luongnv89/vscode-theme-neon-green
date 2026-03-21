@@ -1,4 +1,4 @@
-# Contributing to Neon Green Theme
+# Contributing to Neon Green Theme Collection
 
 Thank you for your interest in contributing! This guide will help you get started.
 
@@ -50,9 +50,12 @@ code .
 
 Theme JSON files are located in `themes/`:
 
-- `neon-green-color-theme.json` — Dark Terminal variant
-- `neon-green-midnight-color-theme.json` — Midnight variant
-- `neon-green-light-color-theme.json` — Light variant
+- `neon-green-color-theme.json` — Neon Green Dark Terminal
+- `neon-green-midnight-color-theme.json` — Neon Green Midnight
+- `neon-green-light-color-theme.json` — Neon Green Light
+- `neon-green-liquid-glass-color-theme.json` — Neon Green Liquid Glass
+- `soft-glow-dark-color-theme.json` — Soft Glow Dark
+- `soft-glow-light-color-theme.json` — Soft Glow Light
 
 Each file contains:
 - `colors` — UI element colors (editor, sidebar, terminal, etc.)
@@ -81,7 +84,7 @@ style: adjust sidebar background opacity
 - Use descriptive hex color comments in theme JSON files
 - Test changes across multiple languages using the showcase file
 - Ensure sufficient contrast ratios for accessibility
-- Keep the color palette consistent across all three variants
+- Keep the color palette consistent within each theme family
 
 ## Pull Request Process
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.5.0 — 2026-03-21
+
+### Rebrand
+
+- Renamed display name from "Neon Green — Dark Terminal" to **"Neon Green Theme Collection"**
+- Updated description, keywords, and all documentation to present both theme families equally
+- Updated landing page generator to include all 6 themes (was 3)
+- Updated issue templates, contributing guide, and architecture docs
+
 ## v1.4.0 — 2026-03-21
 
 ### Features
