@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.4.0 — 2026-03-21
+
+### Features
+
+- **Soft Glow — Dark** theme: warm, eye-friendly dark theme with deep charcoal background (`#12100e`) and high-contrast desaturated syntax colors — designed for long coding sessions in any lighting
+- **Soft Glow — Light** theme: warm cream background (`#faf7f4`) with muted jewel-tone syntax highlighting — comfortable for daylight coding
+- **Neon Green — Liquid Glass** dark variant
+
+### Design Highlights
+
+- Follows "Don't Make Me Think" principles: semantic color consistency, clear visual hierarchy, no cognitive overload
+- Warm undertones throughout — no pure black or white
+- Distinct hue separation between syntax elements (strings are yellow-green, properties are true green, functions are blue, keywords are purple)
+- WCAG AA contrast compliance while remaining soft on the eyes
+
+**Full Changelog**: https://github.com/luongnv89/vscode-theme-neon-green/compare/v1.3.0...v1.4.0
+
 ## v1.3.0 — 2026-03-16
 
 ### Features

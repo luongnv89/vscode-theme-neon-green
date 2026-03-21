@@ -22,19 +22,29 @@
 
 ![Light Theme](screenshot-light.png)
 
-## Three Variants
+## Theme Variants
+
+### Neon Green Family
 
 | Variant | Base | Vibe |
 |---------|------|------|
 | **Dark Terminal** | Pure dark green-black (`#0a0f0a`) | Classic hacker terminal |
 | **Midnight** | Deep blue-black (`#0b1014`) | Softer, midnight coding |
 | **Light** | Clean light background | Daytime-friendly neon green |
+| **Liquid Glass** | Dark with glass effects | Modern translucent feel |
+
+### Soft Glow Family
+
+| Variant | Base | Vibe |
+|---------|------|------|
+| **Dark** | Deep warm charcoal (`#12100e`) | Cozy, eye-friendly dark — warm amber accents |
+| **Light** | Warm cream (`#faf7f4`) | Gentle daylight theme — muted jewel tones |
 
 ## Key Features
 
 - Vivid neon green accents throughout the UI
 - Carefully tuned multicolor syntax for long coding sessions
-- Three variants for different moods and environments
+- Six variants across two theme families for different moods and environments
 - Broad language support: JavaScript, TypeScript, Python, Rust, Go, HTML/CSS, JSON, YAML, Markdown, Shell, and more
 - Custom terminal colors, bracket colorization, and git decoration colors
 
@@ -53,7 +63,7 @@
 ```bash
 npm install -g @vscode/vsce
 vsce package
-code --install-extension neon-green-theme-1.0.0.vsix
+code --install-extension neon-green-theme-1.4.0.vsix
 ```
 
 ### Manual Installation
@@ -134,6 +144,9 @@ vscode-theme-neon-green/
 │   ├── neon-green-color-theme.json       # Dark Terminal variant
 │   ├── neon-green-midnight-color-theme.json  # Midnight variant
 │   ├── neon-green-light-color-theme.json     # Light variant
+│   ├── neon-green-liquid-glass-color-theme.json  # Liquid Glass variant
+│   ├── soft-glow-dark-color-theme.json       # Soft Glow Dark variant
+│   ├── soft-glow-light-color-theme.json      # Soft Glow Light variant
 │   ├── Neon Green Dark.itermcolors       # iTerm2 Dark Terminal profile
 │   └── Neon Green Light.itermcolors      # iTerm2 Light profile
 ├── examples/
