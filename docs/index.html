@@ -622,7 +622,7 @@
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
-      <nav class="topnav"><a href="#why-this-theme-exists">Why this theme exists</a><a href="#theme-variants">Theme variants</a><a href="#screenshots">Screenshots</a><a href="#installation">Installation</a><a href="#iterm2-terminal-themes">iTerm2 terminal themes</a><a href="#what-the-theme-covers">What the theme covers</a><a href="#markdown-rendering-gallery">Markdown rendering gallery</a><a href="#syntax-showcase">Syntax showcase</a><a href="#open-source-details">Open source details</a><a href="#final-call">Final call</a></nav>
+      <nav class="topnav"><a href="#why-this-theme-exists">Why this theme exists</a><a href="#theme-variants">Theme variants</a><a href="#screenshots">Screenshots</a><a href="#installation">Installation</a><a href="#iterm2-terminal-themes">iTerm2 terminal themes</a><a href="#warp-terminal-themes">Warp terminal themes</a><a href="#what-the-theme-covers">What the theme covers</a><a href="#markdown-rendering-gallery">Markdown rendering gallery</a><a href="#syntax-showcase">Syntax showcase</a><a href="#open-source-details">Open source details</a><a href="#final-call">Final call</a></nav>
     </header>
 
     <main>
@@ -825,8 +825,36 @@
 <li><strong>Neon Green Dark</strong> — deep midnight background (<code>#0b0b16</code>) with neon green (<code>#39ff14</code>) cursor and accents</li>
 <li><strong>Neon Green Light</strong> — mint-green background (<code>#e2f5e3</code>) with green accents</li>
 </ul>
-<p><strong>Install:</strong> Double-click the <code>.itermcolors</code> file to auto-import into iTerm2, or go to Settings → Profiles → Colors → Color Presets → Import.</p>
 <p>Download: <a href="https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/Neon%20Green%20Dark.itermcolors" target="_blank" rel="noreferrer">Dark</a> · <a href="https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/Neon%20Green%20Light.itermcolors" target="_blank" rel="noreferrer">Light</a></p>
+<h3 id="install-in-iterm2-manual">Install in iTerm2 (manual)</h3><ol>
+<li>Download the <code>.itermcolors</code> file(s) from the links above (or clone the repo).</li>
+<li>Open <strong>iTerm2 → Settings</strong> (<code>⌘,</code>), then go to <strong>Profiles → Colors</strong>.</li>
+<li>Click the <strong>Color Presets…</strong> dropdown at the bottom right and choose <strong>Import…</strong>.</li>
+<li>Pick the downloaded <code>.itermcolors</code> file and confirm.</li>
+<li>Open <strong>Color Presets…</strong> again and select the imported preset (e.g. <em>Neon Green Dark</em>) to apply it.</li>
+<li>Repeat for every iTerm2 profile you want themed.</li>
+</ol>
+<p>Double-clicking the file in Finder also imports it, but the manual route lets you target the exact profile you want.</p>
+<hr>
+<h2 id="warp-terminal-themes">Warp terminal themes</h2><p>Six Warp themes ship alongside the editor themes — one per variant. YAML files live in <a href="https://github.com/luongnv89/vscode-theme-neon-green/tree/main/themes/warp" target="_blank" rel="noreferrer"><code>themes/warp/</code></a>.</p>
+<p><img src="../assets/warp-themes-preview.png" alt="Warp showing all six Neon Green and Soft Glow themes in the Themes picker" loading="lazy" width="1200" height="800" /></p>
+<p>Download: <a href="https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/warp/neon-green-dark.yaml" target="_blank" rel="noreferrer">Dark</a> · <a href="https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/warp/neon-green-midnight.yaml" target="_blank" rel="noreferrer">Midnight</a> · <a href="https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/warp/neon-green-liquid-glass.yaml" target="_blank" rel="noreferrer">Liquid Glass</a> · <a href="https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/warp/neon-green-light.yaml" target="_blank" rel="noreferrer">Light</a> · <a href="https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/warp/soft-glow-dark.yaml" target="_blank" rel="noreferrer">Soft Glow Dark</a> · <a href="https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/warp/soft-glow-light.yaml" target="_blank" rel="noreferrer">Soft Glow Light</a></p>
+<h3 id="install-in-warp">Install in Warp</h3><p>Warp loads custom themes from <code>~/.warp/themes/</code>. Copy the YAML files there and they show up in the theme picker.</p>
+<ol>
+<li><p>Clone the repo, or download individual YAML files from the links above.</p>
+</li>
+<li><p>Create the themes directory (if needed) and copy the files:</p>
+<pre class="shiki Neon Green — Dark Terminal" style="background-color:#0e0e1a;color:#d5dce8" tabindex="0"><code><span class="line"><span style="color:#82AAFF;font-weight:bold">mkdir</span><span style="color:#F78C6C"> -p</span><span style="color:#C3E88D"> ~/.warp/themes</span></span>
+<span class="line"><span style="color:#82AAFF;font-weight:bold">cp</span><span style="color:#C3E88D"> themes/warp/</span><span style="color:#FF6B81">*</span><span style="color:#C3E88D">.yaml</span><span style="color:#C3E88D"> ~/.warp/themes/</span></span></code></pre><p>Only want one variant? Copy a single file instead, e.g. <code>cp themes/warp/neon-green-dark.yaml ~/.warp/themes/</code>.</p>
+</li>
+<li><p>Open <strong>Warp → Settings</strong> (<code>⌘,</code>) → <strong>Appearance</strong>.</p>
+</li>
+<li><p>In the <strong>Themes</strong> list pick one of: <strong>Neon Green Dark</strong>, <strong>Neon Green Midnight</strong>, <strong>Neon Green Liquid Glass</strong>, <strong>Neon Green Light</strong>, <strong>Soft Glow Dark</strong>, or <strong>Soft Glow Light</strong>.</p>
+</li>
+<li><p>The theme applies instantly. If the list doesn&#39;t refresh, close and reopen the Settings window — no Warp restart needed.</p>
+</li>
+</ol>
+<p>Uninstall: delete the YAML files from <code>~/.warp/themes/</code> and pick a built-in Warp theme.</p>
 <hr>
 <h2 id="what-the-theme-covers">What the theme covers</h2><ul>
 <li>editor chrome</li>

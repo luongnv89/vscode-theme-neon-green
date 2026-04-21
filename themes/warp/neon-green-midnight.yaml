@@ -1,0 +1,26 @@
+# Neon Green — Midnight
+# Warp terminal theme. Drop this file into ~/.warp/themes/ and pick it in Warp → Settings → Appearance → Themes.
+name: Neon Green Midnight
+accent: '#39ff14'
+background: '#0b0b16'
+foreground: '#d5dce8'
+details: darker
+terminal_colors:
+  normal:
+    black: '#1b1a2e'
+    red: '#ff5555'
+    green: '#39ff14'
+    yellow: '#ffb347'
+    blue: '#8394ff'
+    magenta: '#bf41ff'
+    cyan: '#00ffe2'
+    white: '#d9e0eb'
+  bright:
+    black: '#505370'
+    red: '#ff7777'
+    green: '#4dff4d'
+    yellow: '#ffc87d'
+    blue: '#a1afff'
+    magenta: '#d770ff'
+    cyan: '#33ffeb'
+    white: '#f0f3fa'

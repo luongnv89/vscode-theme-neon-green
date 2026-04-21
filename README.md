@@ -84,7 +84,56 @@ Matching iTerm2 color profiles are included for a consistent look across your ed
 | `themes/Neon Green Dark.itermcolors` | Dark Terminal — deep midnight background with neon green cursor |
 | `themes/Neon Green Light.itermcolors` | Light — mint-green background with green accents |
 
-**Install:** Double-click the `.itermcolors` file to auto-import, or go to iTerm2 → Settings → Profiles → Colors → Color Presets → Import.
+### Install in iTerm2 (manual)
+
+1. Download or clone this repo so you have the `.itermcolors` files locally.
+2. Open **iTerm2 → Settings** (`⌘,`) → **Profiles** → **Colors** tab.
+3. Click the **Color Presets…** dropdown at the bottom right → **Import…**.
+4. Select `themes/Neon Green Dark.itermcolors` (or `Neon Green Light.itermcolors`) and click **Open**.
+5. Open the **Color Presets…** dropdown again and pick the imported preset by name (e.g. *Neon Green Dark*).
+6. The new colors apply immediately to the active profile. Repeat for any other iTerm2 profiles you want themed.
+
+> Tip: double-clicking a `.itermcolors` file in Finder will also import it, but the manual route above lets you apply it to the exact profile you want.
+
+## Warp Terminal Themes
+
+Matching Warp themes are included for every variant. YAML files live in `themes/warp/`.
+
+![Warp showing all six Neon Green / Soft Glow themes in the Themes picker](assets/warp-themes-preview.png)
+
+| File | Variant |
+|------|---------|
+| `themes/warp/neon-green-dark.yaml` | Neon Green — Dark Terminal |
+| `themes/warp/neon-green-midnight.yaml` | Neon Green — Midnight |
+| `themes/warp/neon-green-liquid-glass.yaml` | Neon Green — Liquid Glass |
+| `themes/warp/neon-green-light.yaml` | Neon Green — Light |
+| `themes/warp/soft-glow-dark.yaml` | Soft Glow — Dark |
+| `themes/warp/soft-glow-light.yaml` | Soft Glow — Light |
+
+### Install in Warp
+
+Warp loads custom themes from `~/.warp/themes/`. Copy the YAML files there and they show up in the theme picker.
+
+1. Clone or download this repo.
+2. Create the themes directory if it doesn't exist and copy the files over:
+
+   ```bash
+   mkdir -p ~/.warp/themes
+   cp themes/warp/*.yaml ~/.warp/themes/
+   ```
+
+   Prefer only one variant? Copy a single file instead, e.g. `cp themes/warp/neon-green-dark.yaml ~/.warp/themes/`.
+3. Open **Warp → Settings** (`⌘,`) → **Appearance**.
+4. Under **Themes**, scroll the left panel (or type in the search box) and pick one of:
+   - **Neon Green Dark**
+   - **Neon Green Midnight**
+   - **Neon Green Liquid Glass**
+   - **Neon Green Light**
+   - **Soft Glow Dark**
+   - **Soft Glow Light**
+5. The theme applies instantly. If the list doesn't refresh, close and reopen the Settings window (no Warp restart required).
+
+> Uninstall: delete the YAML files from `~/.warp/themes/` and switch Warp back to a built-in theme.
 
 ## Color Palettes
 
@@ -171,7 +220,8 @@ vscode-theme-neon-green/
 │   ├── soft-glow-dark-color-theme.json       # Soft Glow Dark variant
 │   ├── soft-glow-light-color-theme.json      # Soft Glow Light variant
 │   ├── Neon Green Dark.itermcolors       # iTerm2 Dark Terminal profile
-│   └── Neon Green Light.itermcolors      # iTerm2 Light profile
+│   ├── Neon Green Light.itermcolors      # iTerm2 Light profile
+│   └── warp/                             # Warp terminal themes (all 6 variants)
 ├── examples/
 │   └── theme-showcase.md                 # Multi-language syntax showcase
 ├── icon.png                              # Extension icon

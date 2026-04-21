@@ -41,10 +41,12 @@ jobs:
           cp docs/index.html .site/index.html
           cp docs/robots.txt docs/sitemap.xml docs/llms.txt .site/
           cp screenshot-dark.png screenshot-light.png icon.png icon.svg .site/
+          cp assets/warp-themes-preview.png .site/
           sed -i \
             -e 's#\.\./screenshot-dark\.png#./screenshot-dark.png#g' \
             -e 's#\.\./screenshot-light\.png#./screenshot-light.png#g' \
             -e 's#\.\./icon\.png#./icon.png#g' \
+            -e 's#\.\./assets/warp-themes-preview\.png#./warp-themes-preview.png#g' \
             .site/index.html
           touch .site/.nojekyll
 

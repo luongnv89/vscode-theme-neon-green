@@ -1,0 +1,26 @@
+# Soft Glow — Light
+# Warp terminal theme. Drop this file into ~/.warp/themes/ and pick it in Warp → Settings → Appearance → Themes.
+name: Soft Glow Light
+accent: '#a07838'
+background: '#f2eeea'
+foreground: '#3a3530'
+details: lighter
+terminal_colors:
+  normal:
+    black: '#3a3530'
+    red: '#a04545'
+    green: '#467046'
+    yellow: '#8a6a20'
+    blue: '#4a6a90'
+    magenta: '#7a5a9a'
+    cyan: '#3a756a'
+    white: '#f2eeea'
+  bright:
+    black: '#706860'
+    red: '#b85555'
+    green: '#5a8a50'
+    yellow: '#a07838'
+    blue: '#5a7aa0'
+    magenta: '#8a6aaa'
+    cyan: '#4a8578'
+    white: '#faf7f4'
