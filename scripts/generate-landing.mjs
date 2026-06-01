@@ -42,6 +42,7 @@ const normalizeLang = (lang) => {
 };
 
 const themeLabelFromFilename = (filename) => {
+  if (filename.includes('opencode')) return 'OpenCode — Dark';
   if (filename.includes('soft-glow-dark')) return 'Soft Glow — Dark';
   if (filename.includes('soft-glow-light')) return 'Soft Glow — Light';
   if (filename.includes('liquid-glass')) return 'Liquid Glass';
@@ -51,6 +52,7 @@ const themeLabelFromFilename = (filename) => {
 };
 
 const humanDescription = (filename) => {
+  if (filename.includes('opencode')) return 'Minimal terminal-agent look on a flat near-black canvas — warm peach accent with purple keywords.';
   if (filename.includes('soft-glow-dark')) return 'Warm, cozy dark theme with amber accents and desaturated syntax.';
   if (filename.includes('soft-glow-light')) return 'Gentle cream background with muted jewel-tone highlights.';
   if (filename.includes('liquid-glass')) return 'Modern translucent feel with glass-like editor surfaces.';
@@ -218,6 +220,7 @@ const buildPage = async () => {
     'themes/neon-green-liquid-glass-color-theme.json',
     'themes/soft-glow-dark-color-theme.json',
     'themes/soft-glow-light-color-theme.json',
+    'themes/opencode-color-theme.json',
   ];
 
   const themes = await Promise.all(
@@ -309,7 +312,7 @@ const buildPage = async () => {
   const info = darkTheme.colors['terminal.ansiBlue'] || '#82aaff';
   const shadow = darkTheme.colors['widget.shadow'] || '#00000066';
 
-  const seoDescription = '6 VS Code themes in 2 families: Neon Green (Dark Terminal, Midnight, Light, Liquid Glass) and Soft Glow (Dark, Light). Vivid accents and warm pastels for long coding sessions.';
+  const seoDescription = '7 VS Code themes in 3 families: Neon Green (Dark Terminal, Midnight, Light, Liquid Glass), Soft Glow (Dark, Light), and OpenCode (Dark). Vivid accents, warm pastels, and a minimal flat-black canvas for long coding sessions.';
   const siteUrl = 'https://luongnv89.github.io/vscode-theme-neon-green';
   const ogImage = `${siteUrl}/screenshot-dark.png`;
 

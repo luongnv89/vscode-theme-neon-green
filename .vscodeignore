@@ -1,8 +1,32 @@
+# --- VCS / editor / tooling ---
 .git/**
 .gitignore
 .vscode/**
 .claude/**
-assets/**
+.gstack/**
+.github/**
+.pre-commit-config.yaml
+.DS_Store
+**/.DS_Store
+
+# --- Source & build scripts (not needed at runtime) ---
+scripts/**
+examples/**
 docs/**
+assets/**
+
+# --- Dev dependencies & lockfiles ---
+node_modules/**
+package-lock.json
+yarn.lock
+
+# --- Non-VS Code terminal themes (Warp / iTerm) ---
+themes/warp/**
+themes/**/*.itermcolors
+
+# --- Prior packaged artifacts ---
+*.vsix
+
+# --- Markdown docs: ship only the README ---
 *.md
 !README.md

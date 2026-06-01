@@ -1,8 +1,8 @@
 {
   "name": "neon-green-theme",
   "displayName": "Neon Green Theme Collection",
-  "description": "6 VS Code themes in 2 families: Neon Green (Dark Terminal, Midnight, Light, Liquid Glass) and Soft Glow (Dark, Light). Vivid neon accents and warm eye-friendly pastels for long coding sessions.",
-  "version": "1.5.0",
+  "description": "7 VS Code themes in 3 families: Neon Green (Dark Terminal, Midnight, Light, Liquid Glass), Soft Glow (Dark, Light), and OpenCode (Dark). Vivid neon accents, warm eye-friendly pastels, and a minimal flat-black canvas for long coding sessions.",
+  "version": "1.6.0",
   "publisher": "luongnv89",
   "author": {
     "name": "Luong Nguyen",
@@ -80,6 +80,11 @@
         "label": "Soft Glow — Light",
         "uiTheme": "vs",
         "path": "./themes/soft-glow-light-color-theme.json"
+      },
+      {
+        "label": "OpenCode — Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/opencode-color-theme.json"
       }
     ]
   }

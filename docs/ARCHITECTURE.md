@@ -2,7 +2,7 @@
 
 ## Overview
 
-Neon Green Theme Collection is a VS Code color theme extension that provides six themes across two families: Neon Green (4 variants) and Soft Glow (2 variants). The extension is purely declarative — it contains no executable code, only JSON theme definitions.
+Neon Green Theme Collection is a VS Code color theme extension that provides seven themes across three families: Neon Green (4 variants), Soft Glow (2 variants), and OpenCode (1 variant). The extension is purely declarative — it contains no executable code, only JSON theme definitions.
 
 ## Components
 
@@ -16,6 +16,7 @@ Each theme variant is a standalone JSON file following the [VS Code Color Theme]
 - **`neon-green-liquid-glass-color-theme.json`** — Liquid Glass variant with modern translucent feel
 - **`soft-glow-dark-color-theme.json`** — Soft Glow Dark with warm charcoal background (`#12100e`)
 - **`soft-glow-light-color-theme.json`** — Soft Glow Light with warm cream background (`#faf7f4`)
+- **`opencode-color-theme.json`** — OpenCode Dark with minimal flat near-black canvas (`#0a0a0a`) and warm peach accents (`#fab283`)
 
 Each theme file contains two main sections:
 
@@ -24,7 +25,7 @@ Each theme file contains two main sections:
 
 ### Extension Manifest (`package.json`)
 
-Defines the extension metadata and registers all six themes via the `contributes.themes` section.
+Defines the extension metadata and registers all seven themes via the `contributes.themes` section.
 
 ### Assets
 

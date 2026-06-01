@@ -1,5 +1,20 @@
 # Changelog
 
+## v1.6.0 — 2026-06-02
+
+### Features
+
+- **OpenCode — Dark** theme: minimal flat near-black canvas (`#0a0a0a`) with warm peach accents (`#fab283`) and soft purple keywords (`#9d7cd8`) — a third theme family alongside Neon Green and Soft Glow, bringing the collection to seven themes
+- **Warp terminal themes** for all six (now seven) variants — matching `.yaml` configs for every theme, including the new `themes/warp/opencode.yaml`
+- Redesigned landing page top navigation as a terminal HUD bar
+
+### Documentation
+
+- Updated README and landing page to document the OpenCode family, its palette, and Warp install steps
+- Added `scripts/make-opencode-theme.py` generator for the OpenCode theme
+
+**Full Changelog**: https://github.com/luongnv89/vscode-theme-neon-green/compare/v1.5.0...v1.6.0
+
 ## v1.5.0 — 2026-03-21
 
 ### Rebrand

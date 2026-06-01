@@ -10,7 +10,7 @@
   <a href="https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme"><img src="https://img.shields.io/badge/Marketplace-Theme%20Collection-brightgreen.svg" alt="Marketplace"></a>
 </p>
 
-<p align="center">6 meticulously crafted VS Code themes in 2 families: vivid <strong>Neon Green</strong> with electric accents and warm <strong>Soft Glow</strong> with eye-friendly pastels.</p>
+<p align="center">7 meticulously crafted VS Code themes in 3 families: vivid <strong>Neon Green</strong> with electric accents, warm <strong>Soft Glow</strong> with eye-friendly pastels, and minimal <strong>OpenCode</strong> with a flat-black canvas.</p>
 
 ## Screenshots
 
@@ -40,10 +40,16 @@
 | **Dark** | Deep warm charcoal (`#12100e`) | Cozy, eye-friendly dark — warm amber accents |
 | **Light** | Warm cream (`#faf7f4`) | Gentle daylight theme — muted jewel tones |
 
+### OpenCode Family
+
+| Variant | Base | Vibe |
+|---------|------|------|
+| **Dark** | Flat near-black (`#0a0a0a`) | Minimal terminal-agent look — warm peach accent, purple keywords |
+
 ## Key Features
 
-- **Two distinct aesthetics**: vivid neon green accents (Neon Green family) and warm amber/pastel tones (Soft Glow family)
-- 6 themes across 2 families for different moods and lighting conditions
+- **Three distinct aesthetics**: vivid neon green accents (Neon Green family), warm amber/pastel tones (Soft Glow family), and the minimal flat-black OpenCode look (warm peach + purple)
+- 7 themes across 3 families for different moods and lighting conditions
 - Carefully tuned multicolor syntax for long coding sessions
 - Broad language support: JavaScript, TypeScript, Python, Rust, Go, HTML/CSS, JSON, YAML, Markdown, Shell, and more
 - Custom terminal colors, bracket colorization, and git decoration colors
@@ -63,7 +69,7 @@
 ```bash
 npm install -g @vscode/vsce
 vsce package
-code --install-extension neon-green-theme-1.5.0.vsix
+code --install-extension neon-green-theme-1.6.0.vsix
 ```
 
 ### Manual Installation
@@ -109,6 +115,7 @@ Matching Warp themes are included for every variant. YAML files live in `themes/
 | `themes/warp/neon-green-light.yaml` | Neon Green — Light |
 | `themes/warp/soft-glow-dark.yaml` | Soft Glow — Dark |
 | `themes/warp/soft-glow-light.yaml` | Soft Glow — Light |
+| `themes/warp/opencode.yaml` | OpenCode — Dark |
 
 ### Install in Warp
 
@@ -131,6 +138,7 @@ Warp loads custom themes from `~/.warp/themes/`. Copy the YAML files there and t
    - **Neon Green Light**
    - **Soft Glow Dark**
    - **Soft Glow Light**
+   - **OpenCode Dark**
 5. The theme applies instantly. If the list doesn't refresh, close and reopen the Settings window (no Warp restart required).
 
 > Uninstall: delete the YAML files from `~/.warp/themes/` and switch Warp back to a built-in theme.
@@ -166,6 +174,21 @@ Warp loads custom themes from `~/.warp/themes/`. Copy the YAML files there and t
 | Numbers | `#e08070` | Warm coral |
 | Parameters | `#e0c060` | Golden yellow |
 
+### OpenCode Family
+
+| Role | Hex | Preview |
+|------|-----|---------|
+| Background | `#0a0a0a` | Flat near-black |
+| Foreground | `#eeeeee` | Soft off-white ink |
+| Peach (accent) | `#fab283` | UI accents, cursor, functions, numbers |
+| Keywords | `#9d7cd8` | Soft purple |
+| Strings | `#7fd88f` | Green |
+| Properties | `#56b6c2` | Cyan |
+| Types | `#e5c07b` | Soft yellow |
+| Variables | `#e06c75` | Red |
+| Constants | `#f5a742` | Amber |
+| Comments | `#808080` | Muted gray |
+
 ## Syntax Highlights
 
 ### Neon Green
@@ -184,6 +207,15 @@ Warp loads custom themes from `~/.warp/themes/`. Copy the YAML files there and t
 - **Functions** — Muted blue `#70a0e0`
 - **Types/Classes** — Soft cyan `#5cb8d0`
 - **Numbers** — Warm coral `#e08070`
+
+### OpenCode
+
+- **Keywords** — Soft purple `#9d7cd8`
+- **Strings** — Green `#7fd88f`
+- **Functions** — Warm peach `#fab283`
+- **Types/Classes** — Soft yellow `#e5c07b`
+- **Numbers** — Warm peach `#fab283`
+- **Comments** — Muted gray `#808080`
 - **Comments** — Warm gray italic `#5a5248`
 
 ## Language Support
@@ -221,7 +253,7 @@ vscode-theme-neon-green/
 │   ├── soft-glow-light-color-theme.json      # Soft Glow Light variant
 │   ├── Neon Green Dark.itermcolors       # iTerm2 Dark Terminal profile
 │   ├── Neon Green Light.itermcolors      # iTerm2 Light profile
-│   └── warp/                             # Warp terminal themes (all 6 variants)
+│   └── warp/                             # Warp terminal themes (all 7 variants)
 ├── examples/
 │   └── theme-showcase.md                 # Multi-language syntax showcase
 ├── icon.png                              # Extension icon

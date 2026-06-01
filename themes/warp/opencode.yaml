@@ -1,0 +1,31 @@
+# OpenCode — Dark
+# Warp terminal companion to the "OpenCode — Dark" VS Code theme.
+# Palette: sst/opencode default theme (dark). Drop into ~/.warp/themes/ and
+# pick it in Warp -> Settings -> Appearance -> Themes.
+name: OpenCode Dark
+# Signature warm-peach primary as the cursor/selection accent.
+accent: '#fab283'
+# Near-pure black canvas — opencode's defining trait.
+background: '#0a0a0a'
+# Soft off-white ink (not pure white) for comfortable contrast.
+foreground: '#eeeeee'
+details: darker
+terminal_colors:
+  normal:
+    black: '#2a2a2a'
+    red: '#e06c75'
+    green: '#7fd88f'
+    yellow: '#f5a742'
+    blue: '#fab283'
+    magenta: '#9d7cd8'
+    cyan: '#56b6c2'
+    white: '#eeeeee'
+  bright:
+    black: '#808080'
+    red: '#e8838b'
+    green: '#9be0a6'
+    yellow: '#f7bb6a'
+    blue: '#fcc9a3'
+    magenta: '#b69ce2'
+    cyan: '#7cc7d1'
+    white: '#ffffff'

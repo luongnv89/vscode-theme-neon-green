@@ -1,6 +1,6 @@
 # Neon Green Theme Collection
 
-> 6 VS Code themes in 2 families: Neon Green (Dark Terminal, Midnight, Light, Liquid Glass) and Soft Glow (Dark, Light). Vivid neon accents and warm eye-friendly pastels for long coding sessions. Free and open source under MIT.
+> 7 VS Code themes in 3 families: Neon Green (Dark Terminal, Midnight, Light, Liquid Glass), Soft Glow (Dark, Light), and OpenCode (Dark). Vivid neon accents, warm eye-friendly pastels, and a minimal flat-black canvas for long coding sessions. Free and open source under MIT.
 
 ## Main
 
@@ -19,6 +19,9 @@
 ### Soft Glow
 - Dark: Warm charcoal background (#12100e) with amber accents and desaturated syntax colors — designed for long sessions in any lighting
 - Light: Warm cream background (#faf7f4) with muted jewel-tone syntax — comfortable for daylight coding
+
+### OpenCode
+- Dark: Minimal flat near-black canvas (#0a0a0a) with warm peach accents (#fab283) and soft purple keywords (#9d7cd8) — a clean, low-distraction editor surface
 
 ## Optional
 

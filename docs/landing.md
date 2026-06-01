@@ -1,8 +1,8 @@
 # Neon Green Theme Collection
 
-6 VS Code themes in 2 families — vivid **Neon Green** and warm **Soft Glow** — built for developers who want their editor to feel sharp, comfortable, and unmistakably alive.
+7 VS Code themes in 3 families — vivid **Neon Green**, warm **Soft Glow**, and minimal **OpenCode** — built for developers who want their editor to feel sharp, comfortable, and unmistakably alive.
 
-> Two aesthetics, one collection. Neon Green for electric terminal energy. Soft Glow for warm, eye-friendly coding. Both tuned for long sessions.
+> Three aesthetics, one collection. Neon Green for electric terminal energy. Soft Glow for warm, eye-friendly coding. OpenCode for a minimal flat-black canvas. All tuned for long sessions.
 
 [Install from Marketplace](https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme) · [View on GitHub](https://github.com/luongnv89/vscode-theme-neon-green) · [Read the README](https://github.com/luongnv89/vscode-theme-neon-green/blob/main/README.md)
 
@@ -15,12 +15,13 @@ Most themes choose one of two extremes:
 - visually loud, but tiring after an hour
 - safe and readable, but forgettable
 
-**Neon Green Theme Collection** offers two approaches:
+**Neon Green Theme Collection** offers three approaches:
 
 - **Neon Green** — bold, electric identity with a dark terminal aesthetic
 - **Soft Glow** — warm, desaturated tones that never tire your eyes
-- Both with clear syntax separation and enough contrast for real work
-- Both tuned for long coding sessions in any lighting
+- **OpenCode** — minimal flat near-black with a warm peach accent and purple keywords
+- All with clear syntax separation and enough contrast for real work
+- All tuned for long coding sessions in any lighting
 
 ---
 
@@ -89,11 +90,11 @@ Double-clicking the file in Finder also imports it, but the manual route lets yo
 
 ## Warp terminal themes
 
-Six Warp themes ship alongside the editor themes — one per variant. YAML files live in [`themes/warp/`](https://github.com/luongnv89/vscode-theme-neon-green/tree/main/themes/warp).
+Seven Warp themes ship alongside the editor themes — one per variant. YAML files live in [`themes/warp/`](https://github.com/luongnv89/vscode-theme-neon-green/tree/main/themes/warp).
 
 ![Warp showing all six Neon Green and Soft Glow themes in the Themes picker](../assets/warp-themes-preview.png)
 
-Download: [Dark](https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/warp/neon-green-dark.yaml) · [Midnight](https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/warp/neon-green-midnight.yaml) · [Liquid Glass](https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/warp/neon-green-liquid-glass.yaml) · [Light](https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/warp/neon-green-light.yaml) · [Soft Glow Dark](https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/warp/soft-glow-dark.yaml) · [Soft Glow Light](https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/warp/soft-glow-light.yaml)
+Download: [Dark](https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/warp/neon-green-dark.yaml) · [Midnight](https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/warp/neon-green-midnight.yaml) · [Liquid Glass](https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/warp/neon-green-liquid-glass.yaml) · [Light](https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/warp/neon-green-light.yaml) · [Soft Glow Dark](https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/warp/soft-glow-dark.yaml) · [Soft Glow Light](https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/warp/soft-glow-light.yaml) · [OpenCode Dark](https://github.com/luongnv89/vscode-theme-neon-green/raw/main/themes/warp/opencode.yaml)
 
 ### Install in Warp
 
@@ -109,7 +110,7 @@ Warp loads custom themes from `~/.warp/themes/`. Copy the YAML files there and t
 
    Only want one variant? Copy a single file instead, e.g. `cp themes/warp/neon-green-dark.yaml ~/.warp/themes/`.
 3. Open **Warp → Settings** (`⌘,`) → **Appearance**.
-4. In the **Themes** list pick one of: **Neon Green Dark**, **Neon Green Midnight**, **Neon Green Liquid Glass**, **Neon Green Light**, **Soft Glow Dark**, or **Soft Glow Light**.
+4. In the **Themes** list pick one of: **Neon Green Dark**, **Neon Green Midnight**, **Neon Green Liquid Glass**, **Neon Green Light**, **Soft Glow Dark**, **Soft Glow Light**, or **OpenCode Dark**.
 5. The theme applies instantly. If the list doesn't refresh, close and reopen the Settings window — no Warp restart needed.
 
 Uninstall: delete the YAML files from `~/.warp/themes/` and pick a built-in Warp theme.
@@ -159,6 +160,7 @@ You can also check a standard link style here: [VS Code Marketplace](https://mar
 - Neon Green — Liquid Glass for modern translucent feel
 - Soft Glow — Dark for warm, cozy coding
 - Soft Glow — Light for gentle daylight work
+- OpenCode — Dark for a minimal flat-black canvas
 
 #### Nested
 
@@ -179,6 +181,7 @@ You can also check a standard link style here: [VS Code Marketplace](https://mar
 - [x] Neon Green — Liquid Glass
 - [x] Soft Glow — Dark
 - [x] Soft Glow — Light
+- [x] OpenCode — Dark
 - [ ] Your own favorite setup
 
 ### Quote
