@@ -1,0 +1,55 @@
+{
+  "name": "Soft Glow — Dark",
+  "base": "dark",
+  "overrides": {
+    "claude": "#d4a87a",
+    "claudeShimmer": "#ddb88a",
+
+    "text": "#c8c0b8",
+    "inverseText": "#0d0b09",
+    "inactive": "#50493f",
+    "inactiveShimmer": "#6a6256",
+    "subtle": "#1c1915",
+    "suggestion": "#8fa7c9",
+    "remember": "#b094c4",
+
+    "success": "#8bab8b",
+    "error": "#c97070",
+    "warning": "#d4a87a",
+    "warningShimmer": "#ddb88a",
+    "merged": "#b094c4",
+
+    "permission": "#7fb5a5",
+    "permissionShimmer": "#95c9b9",
+    "promptBorder": "#d4a87a",
+    "promptBorderShimmer": "#ddb88a",
+    "planMode": "#8fa7c9",
+    "autoAccept": "#7fb5a5",
+    "bashBorder": "#d4a87a",
+    "ide": "#7fb5a5",
+    "fastMode": "#b094c4",
+    "fastModeShimmer": "#c4aad4",
+
+    "diffAdded": "#1a2418",
+    "diffAddedDimmed": "#141a12",
+    "diffAddedWord": "#34492e",
+    "diffRemoved": "#2a1c1a",
+    "diffRemovedDimmed": "#1c1311",
+    "diffRemovedWord": "#523634",
+
+    "rate_limit_fill": "#d4a87a",
+    "rate_limit_empty": "#1c1915",
+
+    "briefLabelYou": "#8fa7c9",
+    "briefLabelClaude": "#d4a87a",
+
+    "red_FOR_SUBAGENTS_ONLY": "#c97070",
+    "blue_FOR_SUBAGENTS_ONLY": "#8fa7c9",
+    "green_FOR_SUBAGENTS_ONLY": "#8bab8b",
+    "yellow_FOR_SUBAGENTS_ONLY": "#d4a87a",
+    "purple_FOR_SUBAGENTS_ONLY": "#b094c4",
+    "orange_FOR_SUBAGENTS_ONLY": "#cf9b6a",
+    "pink_FOR_SUBAGENTS_ONLY": "#c48fa8",
+    "cyan_FOR_SUBAGENTS_ONLY": "#7fb5a5"
+  }
+}

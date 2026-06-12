@@ -1,0 +1,55 @@
+{
+  "name": "Soft Glow — Light",
+  "base": "light",
+  "overrides": {
+    "claude": "#a07838",
+    "claudeShimmer": "#8a6a20",
+
+    "text": "#3a3530",
+    "inverseText": "#f2eeea",
+    "inactive": "#706860",
+    "inactiveShimmer": "#5a544c",
+    "subtle": "#ddd6cd",
+    "suggestion": "#4a6a90",
+    "remember": "#7a5a9a",
+
+    "success": "#467046",
+    "error": "#a04545",
+    "warning": "#8a6a20",
+    "warningShimmer": "#a07838",
+    "merged": "#7a5a9a",
+
+    "permission": "#3a756a",
+    "permissionShimmer": "#4a8578",
+    "promptBorder": "#a07838",
+    "promptBorderShimmer": "#8a6a20",
+    "planMode": "#4a6a90",
+    "autoAccept": "#3a756a",
+    "bashBorder": "#8a6a20",
+    "ide": "#3a756a",
+    "fastMode": "#7a5a9a",
+    "fastModeShimmer": "#8a6aaa",
+
+    "diffAdded": "#d6e4d6",
+    "diffAddedDimmed": "#e4eee4",
+    "diffAddedWord": "#aecaae",
+    "diffRemoved": "#ecd4d4",
+    "diffRemovedDimmed": "#f2e2e2",
+    "diffRemovedWord": "#d9a8a8",
+
+    "rate_limit_fill": "#a07838",
+    "rate_limit_empty": "#ddd6cd",
+
+    "briefLabelYou": "#4a6a90",
+    "briefLabelClaude": "#a07838",
+
+    "red_FOR_SUBAGENTS_ONLY": "#a04545",
+    "blue_FOR_SUBAGENTS_ONLY": "#4a6a90",
+    "green_FOR_SUBAGENTS_ONLY": "#467046",
+    "yellow_FOR_SUBAGENTS_ONLY": "#8a6a20",
+    "purple_FOR_SUBAGENTS_ONLY": "#7a5a9a",
+    "orange_FOR_SUBAGENTS_ONLY": "#a86a28",
+    "pink_FOR_SUBAGENTS_ONLY": "#9a5a7a",
+    "cyan_FOR_SUBAGENTS_ONLY": "#3a756a"
+  }
+}

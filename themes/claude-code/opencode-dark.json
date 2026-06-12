@@ -1,0 +1,55 @@
+{
+  "name": "OpenCode — Dark",
+  "base": "dark",
+  "overrides": {
+    "claude": "#fab283",
+    "claudeShimmer": "#fcc9a3",
+
+    "text": "#eeeeee",
+    "inverseText": "#0a0a0a",
+    "inactive": "#808080",
+    "inactiveShimmer": "#9a9a9a",
+    "subtle": "#2a2a2a",
+    "suggestion": "#9d7cd8",
+    "remember": "#b69ce2",
+
+    "success": "#7fd88f",
+    "error": "#e06c75",
+    "warning": "#f5a742",
+    "warningShimmer": "#f7bb6a",
+    "merged": "#9d7cd8",
+
+    "permission": "#56b6c2",
+    "permissionShimmer": "#7cc7d1",
+    "promptBorder": "#fab283",
+    "promptBorderShimmer": "#fcc9a3",
+    "planMode": "#9d7cd8",
+    "autoAccept": "#56b6c2",
+    "bashBorder": "#f5a742",
+    "ide": "#56b6c2",
+    "fastMode": "#9d7cd8",
+    "fastModeShimmer": "#b69ce2",
+
+    "diffAdded": "#13261a",
+    "diffAddedDimmed": "#0e1a12",
+    "diffAddedWord": "#2a5538",
+    "diffRemoved": "#2e1416",
+    "diffRemovedDimmed": "#1f0e0f",
+    "diffRemovedWord": "#5e2a2e",
+
+    "rate_limit_fill": "#fab283",
+    "rate_limit_empty": "#2a2a2a",
+
+    "briefLabelYou": "#9d7cd8",
+    "briefLabelClaude": "#fab283",
+
+    "red_FOR_SUBAGENTS_ONLY": "#e06c75",
+    "blue_FOR_SUBAGENTS_ONLY": "#7aa2f7",
+    "green_FOR_SUBAGENTS_ONLY": "#7fd88f",
+    "yellow_FOR_SUBAGENTS_ONLY": "#f5a742",
+    "purple_FOR_SUBAGENTS_ONLY": "#9d7cd8",
+    "orange_FOR_SUBAGENTS_ONLY": "#fab283",
+    "pink_FOR_SUBAGENTS_ONLY": "#d772a8",
+    "cyan_FOR_SUBAGENTS_ONLY": "#56b6c2"
+  }
+}
