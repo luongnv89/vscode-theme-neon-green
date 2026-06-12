@@ -1,0 +1,55 @@
+{
+  "name": "Neon Green — Light",
+  "base": "light",
+  "overrides": {
+    "claude": "#0d9e00",
+    "claudeShimmer": "#18b818",
+
+    "text": "#2a2d3e",
+    "inverseText": "#e2f5e3",
+    "inactive": "#5a7a5c",
+    "inactiveShimmer": "#3e6e40",
+    "subtle": "#c2dcc4",
+    "suggestion": "#5a6ad6",
+    "remember": "#a020e0",
+
+    "success": "#0d9e00",
+    "error": "#c4284a",
+    "warning": "#b37800",
+    "warningShimmer": "#d09000",
+    "merged": "#a020e0",
+
+    "permission": "#00a896",
+    "permissionShimmer": "#00c8b4",
+    "promptBorder": "#0d9e00",
+    "promptBorderShimmer": "#18b818",
+    "planMode": "#5a6ad6",
+    "autoAccept": "#00a896",
+    "bashBorder": "#b37800",
+    "ide": "#00a896",
+    "fastMode": "#a020e0",
+    "fastModeShimmer": "#bf41ff",
+
+    "diffAdded": "#c6efc8",
+    "diffAddedDimmed": "#dcf3dd",
+    "diffAddedWord": "#9fdfa3",
+    "diffRemoved": "#f5cdd5",
+    "diffRemovedDimmed": "#f7dde2",
+    "diffRemovedWord": "#ec9fae",
+
+    "rate_limit_fill": "#0d9e00",
+    "rate_limit_empty": "#c2dcc4",
+
+    "briefLabelYou": "#5a6ad6",
+    "briefLabelClaude": "#0d9e00",
+
+    "red_FOR_SUBAGENTS_ONLY": "#c4284a",
+    "blue_FOR_SUBAGENTS_ONLY": "#5a6ad6",
+    "green_FOR_SUBAGENTS_ONLY": "#0d9e00",
+    "yellow_FOR_SUBAGENTS_ONLY": "#b37800",
+    "purple_FOR_SUBAGENTS_ONLY": "#a020e0",
+    "orange_FOR_SUBAGENTS_ONLY": "#d2691e",
+    "pink_FOR_SUBAGENTS_ONLY": "#d12d8a",
+    "cyan_FOR_SUBAGENTS_ONLY": "#00a896"
+  }
+}

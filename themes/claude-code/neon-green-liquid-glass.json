@@ -1,0 +1,55 @@
+{
+  "name": "Neon Green — Liquid Glass",
+  "base": "dark",
+  "overrides": {
+    "claude": "#39ff14",
+    "claudeShimmer": "#4dff4d",
+
+    "text": "#dce4f0",
+    "inverseText": "#080c12",
+    "inactive": "#4a5570",
+    "inactiveShimmer": "#65708c",
+    "subtle": "#1a2030",
+    "suggestion": "#8394ff",
+    "remember": "#bf41ff",
+
+    "success": "#39ff14",
+    "error": "#ff5555",
+    "warning": "#ffb347",
+    "warningShimmer": "#ffc87d",
+    "merged": "#bf41ff",
+
+    "permission": "#00ffe2",
+    "permissionShimmer": "#33ffeb",
+    "promptBorder": "#39ff14",
+    "promptBorderShimmer": "#4dff4d",
+    "planMode": "#8394ff",
+    "autoAccept": "#00ffe2",
+    "bashBorder": "#ffb347",
+    "ide": "#00ffe2",
+    "fastMode": "#bf41ff",
+    "fastModeShimmer": "#d770ff",
+
+    "diffAdded": "#0c2810",
+    "diffAddedDimmed": "#0a1810",
+    "diffAddedWord": "#1c5418",
+    "diffRemoved": "#321618",
+    "diffRemovedDimmed": "#200e10",
+    "diffRemovedWord": "#642426",
+
+    "rate_limit_fill": "#39ff14",
+    "rate_limit_empty": "#1a2030",
+
+    "briefLabelYou": "#8394ff",
+    "briefLabelClaude": "#39ff14",
+
+    "red_FOR_SUBAGENTS_ONLY": "#ff5555",
+    "blue_FOR_SUBAGENTS_ONLY": "#8394ff",
+    "green_FOR_SUBAGENTS_ONLY": "#39ff14",
+    "yellow_FOR_SUBAGENTS_ONLY": "#ffb347",
+    "purple_FOR_SUBAGENTS_ONLY": "#bf41ff",
+    "orange_FOR_SUBAGENTS_ONLY": "#ff9e64",
+    "pink_FOR_SUBAGENTS_ONLY": "#d770ff",
+    "cyan_FOR_SUBAGENTS_ONLY": "#00ffe2"
+  }
+}
