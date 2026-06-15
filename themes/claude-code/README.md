@@ -3,7 +3,8 @@
 Custom color themes for [Claude Code](https://docs.anthropic.com/claude-code), the
 Anthropic CLI. Same DNA as the VS Code collection: the signature `#39ff14` neon green
 drives the brand accent on the Neon Green variants, plus a warm-peach OpenCode
-companion — palettes mapped straight from their VS Code counterparts.
+companion and a gold-on-midnight Hermes Agent variant — palettes mapped straight from
+their source themes.
 
 Requires Claude Code **v2.1.118+** (custom themes).
 
@@ -18,10 +19,11 @@ Requires Claude Code **v2.1.118+** (custom themes).
 | `soft-glow-dark.json` | Soft Glow — Dark | `dark` |
 | `soft-glow-light.json` | Soft Glow — Light | `light` |
 | `opencode-dark.json` | OpenCode — Dark | `dark` |
+| `hermes-agent-dark.json` | Hermes Agent — Dark | `dark` |
 
-Three families, matching the VS Code collection: **Neon Green** (Dark, Midnight,
-Liquid Glass, Light), **Soft Glow** (warm eye-friendly pastels — Dark, Light), and
-**OpenCode** (Dark).
+Four families, matching the VS Code collection: **Neon Green** (Dark, Midnight,
+Liquid Glass, Light), **Soft Glow** (warm eye-friendly pastels — Dark, Light),
+**OpenCode** (Dark), and **Hermes Agent** (gold-on-midnight — Dark).
 
 ## Install
 
@@ -38,7 +40,7 @@ Then select it inside Claude Code:
 /theme
 ```
 
-Pick any of the seven (e.g. **Neon Green — Dark**, **Soft Glow — Light**, **OpenCode — Dark**) from the list. Claude Code watches the
+Pick any of the eight (e.g. **Neon Green — Dark**, **Soft Glow — Light**, **OpenCode — Dark**, **Hermes Agent — Dark**) from the list. Claude Code watches the
 themes directory, so edits to the JSON apply to the running session immediately — no
 restart needed.
 
@@ -83,3 +85,4 @@ Other variants keep the same token roles, recolored from their VS Code counterpa
 | Soft Glow — Dark | `#d4a87a` | `#8bab8b` | `#7fb5a5` | `#c97070` |
 | Soft Glow — Light | `#a07838` | `#467046` | `#3a756a` | `#a04545` |
 | OpenCode — Dark | `#fab283` | `#7fd88f` | `#56b6c2` | `#e06c75` |
+| Hermes Agent — Dark | `#FFD700` | `#4CAF50` | `#6ED7D2` | `#EF5350` |
