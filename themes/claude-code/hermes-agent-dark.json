@@ -1,0 +1,55 @@
+{
+  "name": "Hermes Agent — Dark",
+  "base": "dark",
+  "overrides": {
+    "claude": "#FFD700",
+    "claudeShimmer": "#FFBF00",
+
+    "text": "#FFF8DC",
+    "inverseText": "#0b0b16",
+    "inactive": "#8B8682",
+    "inactiveShimmer": "#a39e99",
+    "subtle": "#1a1a2e",
+    "suggestion": "#B28DFF",
+    "remember": "#DAA520",
+
+    "success": "#4CAF50",
+    "error": "#EF5350",
+    "warning": "#FFA726",
+    "warningShimmer": "#ffc15c",
+    "merged": "#B28DFF",
+
+    "permission": "#6ED7D2",
+    "permissionShimmer": "#92e2de",
+    "promptBorder": "#FFD700",
+    "promptBorderShimmer": "#FFBF00",
+    "planMode": "#B28DFF",
+    "autoAccept": "#6ED7D2",
+    "bashBorder": "#FFBF00",
+    "ide": "#6ED7D2",
+    "fastMode": "#B28DFF",
+    "fastModeShimmer": "#c7adff",
+
+    "diffAdded": "#122218",
+    "diffAddedDimmed": "#0c1710",
+    "diffAddedWord": "#27462e",
+    "diffRemoved": "#2a1618",
+    "diffRemovedDimmed": "#1c0f10",
+    "diffRemovedWord": "#5a2c30",
+
+    "rate_limit_fill": "#FFD700",
+    "rate_limit_empty": "#1a1a2e",
+
+    "briefLabelYou": "#B28DFF",
+    "briefLabelClaude": "#FFD700",
+
+    "red_FOR_SUBAGENTS_ONLY": "#EF5350",
+    "blue_FOR_SUBAGENTS_ONLY": "#6ED7D2",
+    "green_FOR_SUBAGENTS_ONLY": "#4CAF50",
+    "yellow_FOR_SUBAGENTS_ONLY": "#FFD700",
+    "purple_FOR_SUBAGENTS_ONLY": "#B28DFF",
+    "orange_FOR_SUBAGENTS_ONLY": "#FFA726",
+    "pink_FOR_SUBAGENTS_ONLY": "#FF6B6B",
+    "cyan_FOR_SUBAGENTS_ONLY": "#6ED7D2"
+  }
+}
