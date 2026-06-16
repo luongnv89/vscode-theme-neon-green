@@ -46,6 +46,12 @@
 |---------|------|------|
 | **Dark** | Flat near-black (`#0a0a0a`) | Minimal terminal-agent look — warm peach accent, purple keywords |
 
+### Hermes Agent Family
+
+| Variant | Base | Vibe |
+|---------|------|------|
+| **Dark** | Deep midnight navy (`#0b0b16`) | Warm gold-on-navy — cornsilk text, gold brand accent, purple suggestions |
+
 ## Key Features
 
 - **Three distinct aesthetics**: vivid neon green accents (Neon Green family), warm amber/pastel tones (Soft Glow family), and the minimal flat-black OpenCode look (warm peach + purple)
@@ -89,6 +95,7 @@ Matching iTerm2 color profiles are included for a consistent look across your ed
 |------|---------|
 | `themes/Neon Green Dark.itermcolors` | Dark Terminal — deep midnight background with neon green cursor |
 | `themes/Neon Green Light.itermcolors` | Light — mint-green background with green accents |
+| `themes/Hermes Agent Dark.itermcolors` | Hermes Agent — cornsilk text on midnight navy with gold cursor |
 
 ### Install in iTerm2 (manual)
 
@@ -116,6 +123,7 @@ Matching Warp themes are included for every variant. YAML files live in `themes/
 | `themes/warp/soft-glow-dark.yaml` | Soft Glow — Dark |
 | `themes/warp/soft-glow-light.yaml` | Soft Glow — Light |
 | `themes/warp/opencode.yaml` | OpenCode — Dark |
+| `themes/warp/hermes-agent-dark.yaml` | Hermes Agent — Dark |
 
 ### Install in Warp
 
@@ -139,6 +147,7 @@ Warp loads custom themes from `~/.warp/themes/`. Copy the YAML files there and t
    - **Soft Glow Dark**
    - **Soft Glow Light**
    - **OpenCode Dark**
+   - **Hermes Agent Dark**
 5. The theme applies instantly. If the list doesn't refresh, close and reopen the Settings window (no Warp restart required).
 
 > Uninstall: delete the YAML files from `~/.warp/themes/` and switch Warp back to a built-in theme.
@@ -189,6 +198,21 @@ Warp loads custom themes from `~/.warp/themes/`. Copy the YAML files there and t
 | Constants | `#f5a742` | Amber |
 | Comments | `#808080` | Muted gray |
 
+### Hermes Agent Family
+
+| Role | Hex | Preview |
+|------|-----|---------|
+| Background | `#0b0b16` | Deep midnight navy |
+| Foreground | `#FFF8DC` | Warm cornsilk text |
+| Gold (brand accent) | `#FFD700` | Cursor, functions, keywords, numbers |
+| Purple (suggestions) | `#B28DFF` | Plan mode, suggestions, readonly vars |
+| Teal (permission) | `#6ED7D2` | IDE, properties, types |
+| Green (success) | `#4CAF50` | Strings, namespaces, git untracked |
+| Goldenrod (memory) | `#DAA520` | Decorators, annotations |
+| Red (error) | `#EF5350` | Errors, variable defaults |
+| Orange (warning) | `#FFA726` | Arrays, warnings |
+| Gray (inactive) | `#8B8682` | Comments, inactive elements |
+
 ## Syntax Highlights
 
 ### Neon Green
@@ -217,6 +241,17 @@ Warp loads custom themes from `~/.warp/themes/`. Copy the YAML files there and t
 - **Numbers** — Warm peach `#fab283`
 - **Comments** — Muted gray `#808080`
 - **Comments** — Warm gray italic `#5a5248`
+
+### Hermes Agent
+
+- **Keywords** — Gold `#FFD700`
+- **Strings** — Green `#4CAF50`
+- **Functions** — Gold `#FFD700`
+- **Types/Classes** — Gold `#FFD700`
+- **Numbers** — Gold `#FFD700`
+- **Suggestions** — Purple `#B28DFF`
+- **Permissions** — Teal `#6ED7D2`
+- **Comments** — Warm gray `#8B8682`
 
 ## Language Support
 
@@ -253,7 +288,8 @@ vscode-theme-neon-green/
 │   ├── soft-glow-light-color-theme.json      # Soft Glow Light variant
 │   ├── Neon Green Dark.itermcolors       # iTerm2 Dark Terminal profile
 │   ├── Neon Green Light.itermcolors      # iTerm2 Light profile
-│   └── warp/                             # Warp terminal themes (all 7 variants)
+│   └── hermes-agent-dark.yaml          # Warp Hermes Agent theme
+│   └── warp/                             # Warp terminal themes (all 8 variants)
 ├── examples/
 │   └── theme-showcase.md                 # Multi-language syntax showcase
 ├── icon.png                              # Extension icon

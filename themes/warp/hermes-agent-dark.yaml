@@ -1,0 +1,31 @@
+# Hermes Agent — Dark
+# Warp terminal companion to the "Hermes Agent — Dark" VS Code theme.
+# Palette: gold-on-midnight — warm cornsilk text on deep navy, with gold brand accent.
+# Drop into ~/.warp/themes/ and pick it in Warp -> Settings -> Appearance -> Themes.
+name: Hermes Agent Dark
+# Gold brand accent — cursor, selection, and highlights.
+accent: '#FFD700'
+# Deep midnight navy canvas — matches the subtle/inverse background.
+background: '#0b0b16'
+# Cornsilk foreground — warm off-white text (not pure white for comfort).
+foreground: '#FFF8DC'
+details: darker
+terminal_colors:
+  normal:
+    black: '#1a1a2e'
+    red: '#EF5350'
+    green: '#4CAF50'
+    yellow: '#FFD700'
+    blue: '#B28DFF'
+    magenta: '#DAA520'
+    cyan: '#6ED7D2'
+    white: '#FFF8DC'
+  bright:
+    black: '#3a3a5e'
+    red: '#f07c7a'
+    green: '#72c072'
+    yellow: '#ffe44d'
+    blue: '#c7adff'
+    magenta: '#e8c040'
+    cyan: '#92e2de'
+    white: '#FFFFFF'
