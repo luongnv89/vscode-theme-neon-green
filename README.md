@@ -152,6 +152,34 @@ Warp loads custom themes from `~/.warp/themes/`. Copy the YAML files there and t
 
 > Uninstall: delete the YAML files from `~/.warp/themes/` and switch Warp back to a built-in theme.
 
+## cmux Terminal Themes
+
+[cmux](https://cmux.com) renders terminal colors through [Ghostty](https://ghostty.org), so the cmux companion theme is a Ghostty theme file. It lives in `themes/cmux/`.
+
+| File | Variant |
+|------|---------|
+| `themes/cmux/hermes-agent-dark.conf` | Hermes Agent — Dark (gold cursor on midnight navy, cornsilk text) |
+
+### Install in cmux
+
+1. Clone or download this repo.
+2. Copy the theme into Ghostty's themes directory (the theme name is the filename, so drop the `.conf` extension and use a friendly name):
+
+   ```bash
+   mkdir -p ~/.config/ghostty/themes
+   cp "themes/cmux/hermes-agent-dark.conf" ~/.config/ghostty/themes/"Hermes Agent Dark"
+   ```
+
+3. Add the theme to your Ghostty config (`~/.config/ghostty/config`):
+
+   ```
+   theme = Hermes Agent Dark
+   ```
+
+4. Reload open cmux terminals so the theme takes effect.
+
+> Note: cmux's built-in **Dark**/**Light** theme picker writes a managed Ghostty theme that overrides custom terminal colors. To keep this theme, set it via the Ghostty `config` above rather than the cmux Dark/Light toggle.
+
 ## Color Palettes
 
 ### Neon Green Family
@@ -289,7 +317,9 @@ vscode-theme-neon-green/
 │   ├── Neon Green Dark.itermcolors       # iTerm2 Dark Terminal profile
 │   ├── Neon Green Light.itermcolors      # iTerm2 Light profile
 │   └── hermes-agent-dark.yaml          # Warp Hermes Agent theme
-│   └── warp/                             # Warp terminal themes (all 8 variants)
+│   ├── warp/                             # Warp terminal themes (all 8 variants)
+│   └── cmux/                             # cmux (Ghostty) terminal themes
+│       └── hermes-agent-dark.conf        # cmux Hermes Agent theme
 ├── examples/
 │   └── theme-showcase.md                 # Multi-language syntax showcase
 ├── icon.png                              # Extension icon
