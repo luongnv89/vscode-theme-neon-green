@@ -1,8 +1,8 @@
 {
   "name": "neon-green-theme",
   "displayName": "Neon Green Theme Collection",
-  "description": "7 VS Code themes in 3 families: Neon Green (Dark Terminal, Midnight, Light, Liquid Glass), Soft Glow (Dark, Light), and OpenCode (Dark). Vivid neon accents, warm eye-friendly pastels, and a minimal flat-black canvas for long coding sessions.",
-  "version": "1.6.0",
+  "description": "8 VS Code themes in 4 families: Neon Green (Dark Terminal, Midnight, Light, Liquid Glass), Soft Glow (Dark, Light), OpenCode (Dark), and Hermes Agent (gold-on-midnight). Vivid neon accents, warm eye-friendly pastels, minimal flat-black canvas, and warm gold-on-navy.",
+  "version": "1.7.0",
   "publisher": "luongnv89",
   "author": {
     "name": "Luong Nguyen",
@@ -52,39 +52,44 @@
   "contributes": {
     "themes": [
       {
-        "label": "Neon Green — Dark Terminal",
+        "label": "Neon Green \u2014 Dark Terminal",
         "uiTheme": "vs-dark",
         "path": "./themes/neon-green-color-theme.json"
       },
       {
-        "label": "Neon Green — Midnight",
+        "label": "Neon Green \u2014 Midnight",
         "uiTheme": "vs-dark",
         "path": "./themes/neon-green-midnight-color-theme.json"
       },
       {
-        "label": "Neon Green — Light",
+        "label": "Neon Green \u2014 Light",
         "uiTheme": "vs",
         "path": "./themes/neon-green-light-color-theme.json"
       },
       {
-        "label": "Neon Green — Liquid Glass",
+        "label": "Neon Green \u2014 Liquid Glass",
         "uiTheme": "vs-dark",
         "path": "./themes/neon-green-liquid-glass-color-theme.json"
       },
       {
-        "label": "Soft Glow — Dark",
+        "label": "Soft Glow \u2014 Dark",
         "uiTheme": "vs-dark",
         "path": "./themes/soft-glow-dark-color-theme.json"
       },
       {
-        "label": "Soft Glow — Light",
+        "label": "Soft Glow \u2014 Light",
         "uiTheme": "vs",
         "path": "./themes/soft-glow-light-color-theme.json"
       },
       {
-        "label": "OpenCode — Dark",
+        "label": "OpenCode \u2014 Dark",
         "uiTheme": "vs-dark",
         "path": "./themes/opencode-color-theme.json"
+      },
+      {
+        "label": "Hermes Agent \u2014 Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/hermes-agent-dark-color-theme.json"
       }
     ]
   }
