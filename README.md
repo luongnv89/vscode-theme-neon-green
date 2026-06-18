@@ -180,6 +180,51 @@ Warp loads custom themes from `~/.warp/themes/`. Copy the YAML files there and t
 
 > Note: cmux's built-in **Dark**/**Light** theme picker writes a managed Ghostty theme that overrides custom terminal colors. To keep this theme, set it via the Ghostty `config` above rather than the cmux Dark/Light toggle.
 
+## Firefox Theme
+
+A matching Firefox WebExtension theme brings the Hermes Agent gold-on-midnight aesthetic to your browser — address bar, tab bar, sidebar, and popups all styled to the same palette.
+
+### Installation
+
+#### Temporary (testing)
+
+1. Open Firefox and navigate to `about:debugging#addons`
+2. Click **This Firefox** → **Load Temporary Add-on…**
+3. Select `themes/firefox/manifest.json` from this repository
+4. The theme activates immediately — browse around to verify
+
+> Temporary add-ons are removed when Firefox closes. Use the permanent method below for a lasting install.
+
+#### Permanent
+
+1. Open Firefox and navigate to `about:debugging#addons`
+2. Click **This Firefox** → **Load Temporary Add-on…**
+3. Select `themes/firefox/manifest.json` — this registers the add-on persistently
+4. Open `about:preferences#appearance` → set the theme to **Hermes Agent**
+
+Alternatively, package the add-on and install from `about:addons` → ⚙️ → **Install Add-on From File…**
+
+### Screenshot
+
+![Firefox Hermes Agent Theme](themes/firefox/screenshot-dark.png)
+
+### VS Code → Firefox Color Mapping
+
+| VS Code Token | Firefox Surface | Hex |
+|---------------|----------------|-----|
+| Background | `theme.background` | `#0b0b16` |
+| Surface | `theme.toolbarBackground` | `#1a1a2e` |
+| Elevated | `theme.tabBackground` | `#1e1e35` |
+| Gold (brand) | `theme.toolbarColor` | `#FFD700` |
+| Cornsilk text | `theme.toolbarForeground` | `#FFF8DC` |
+| Muted gray | `theme.tabForeground` | `#8B8682` |
+| Purple | `theme.popupBackground` | `#B28DFF` |
+| Teal | `theme.sidebarBackground` | `#6ED7D2` |
+| Green | `theme.tabSelectedBackground` | `#4CAF50` |
+| Red | `theme.tabSelectedForeground` | `#EF5350` |
+
+> **Note:** This theme uses Manifest V2 and is compatible with Firefox 89+. Some deprecated color properties have been dropped to keep the manifest clean.
+
 ## Color Palettes
 
 ### Neon Green Family
@@ -318,8 +363,9 @@ vscode-theme-neon-green/
 │   ├── Neon Green Light.itermcolors      # iTerm2 Light profile
 │   └── hermes-agent-dark.yaml          # Warp Hermes Agent theme
 │   ├── warp/                             # Warp terminal themes (all 8 variants)
-│   └── cmux/                             # cmux (Ghostty) terminal themes
-│       └── hermes-agent-dark.conf        # cmux Hermes Agent theme
+│   ├── cmux/                             # cmux (Ghostty) terminal themes
+│   │   └── hermes-agent-dark.conf        # cmux Hermes Agent theme
+│   └── firefox/                          # Firefox WebExtension theme (Hermes Agent)
 ├── examples/
 │   └── theme-showcase.md                 # Multi-language syntax showcase
 ├── icon.png                              # Extension icon
