@@ -152,6 +152,30 @@ Warp loads custom themes from `~/.warp/themes/`. Copy the YAML files there and t
 
 > Uninstall: delete the YAML files from `~/.warp/themes/` and switch Warp back to a built-in theme.
 
+## macOS Terminal.app Themes
+
+Matching profiles for the built-in macOS **Terminal** app are included for every variant. `.terminal` files live in `themes/terminal/`.
+
+| File | Variant |
+|------|---------|
+| `themes/terminal/Neon Green Dark.terminal` | Neon Green — Dark Terminal |
+| `themes/terminal/Neon Green Midnight.terminal` | Neon Green — Midnight |
+| `themes/terminal/Neon Green Liquid Glass.terminal` | Neon Green — Liquid Glass |
+| `themes/terminal/Neon Green Light.terminal` | Neon Green — Light |
+| `themes/terminal/Soft Glow Dark.terminal` | Soft Glow — Dark |
+| `themes/terminal/Soft Glow Light.terminal` | Soft Glow — Light |
+| `themes/terminal/OpenCode Dark.terminal` | OpenCode — Dark |
+| `themes/terminal/Hermes Agent Dark.terminal` | Hermes Agent — Dark |
+
+### Install in Terminal.app
+
+1. Clone or download this repo.
+2. Double-click a `.terminal` file in Finder (or run `open "themes/terminal/Neon Green Dark.terminal"`). Terminal adds it as a new profile and opens a preview window using it.
+3. Open **Terminal → Settings** (`⌘,`) → **Profiles**, select the new profile in the sidebar, and click **Default** to make it the profile new windows use (optional).
+4. Repeat for any other variants you want installed.
+
+> Uninstall: select the profile under **Terminal → Settings → Profiles**, click the gear menu → **Delete Profile…**.
+
 ## cmux Terminal Themes
 
 [cmux](https://cmux.com) renders terminal colors through [Ghostty](https://ghostty.org), so the cmux companion theme is a Ghostty theme file. It lives in `themes/cmux/`.
@@ -363,6 +387,7 @@ vscode-theme-neon-green/
 │   ├── Neon Green Light.itermcolors      # iTerm2 Light profile
 │   └── hermes-agent-dark.yaml          # Warp Hermes Agent theme
 │   ├── warp/                             # Warp terminal themes (all 8 variants)
+│   ├── terminal/                         # macOS Terminal.app profiles (all 8 variants)
 │   ├── cmux/                             # cmux (Ghostty) terminal themes
 │   │   └── hermes-agent-dark.conf        # cmux Hermes Agent theme
 │   └── firefox/                          # Firefox WebExtension theme (Hermes Agent)
