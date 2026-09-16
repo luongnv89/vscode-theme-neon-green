@@ -1,0 +1,28 @@
+# SynthWave '84 (dark)
+# Ported from the SynthWave '84 Pi theme (pi-extensions/themes/synthwave-84.json),
+# cross-checked against the VS Code theme terminal palette (robb0wen/synthwave-vscode).
+
+background = #262335
+foreground = #b6b1b1
+cursor-color = #03edf9
+cursor-text = #262335
+selection-background = #413f4e
+selection-foreground = #ffffff
+
+# 0-7 normal / 8-15 bright
+palette = 0=#171520
+palette = 1=#fe4450
+palette = 2=#72f1b8
+palette = 3=#f3e70f
+palette = 4=#03edf9
+palette = 5=#ff7edb
+palette = 6=#03edf9
+palette = 7=#e5e5e5
+palette = 8=#6b6380
+palette = 9=#fe4450
+palette = 10=#72f1b8
+palette = 11=#fede5d
+palette = 12=#03edf9
+palette = 13=#ff7edb
+palette = 14=#03edf9
+palette = 15=#ffffff

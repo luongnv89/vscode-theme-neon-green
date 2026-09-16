@@ -1,0 +1,27 @@
+# OpenCode (dark)
+# Ported from the OpenCode default TUI theme (anomalyco/opencode, packages/tui/src/theme/assets/opencode.json)
+
+background = #0a0a0a
+foreground = #eeeeee
+cursor-color = #fab283
+cursor-text = #0a0a0a
+selection-background = #282828
+selection-foreground = #eeeeee
+
+# 0-7 normal / 8-15 bright
+palette = 0=#1e1e1e
+palette = 1=#e06c75
+palette = 2=#7fd88f
+palette = 3=#e5c07b
+palette = 4=#5c9cf5
+palette = 5=#9d7cd8
+palette = 6=#56b6c2
+palette = 7=#eeeeee
+palette = 8=#606060
+palette = 9=#e26a75
+palette = 10=#b8db87
+palette = 11=#f5a742
+palette = 12=#5c9cf5
+palette = 13=#9d7cd8
+palette = 14=#4fd6be
+palette = 15=#ffffff
