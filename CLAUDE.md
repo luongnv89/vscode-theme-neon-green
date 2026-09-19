@@ -46,7 +46,7 @@ Recorded commands an agent can run from a fresh checkout:
 - Pre-commit hooks (`pre-commit install` once): trailing whitespace, EOF
   fixer, YAML/JSON validation, `check-added-large-files` (2048 KB),
   `detect-private-key`, merge-conflict check
-- CI (`.github/workflows/ci.yml`): Node 20 → `npm ci` → `npm audit
+- CI (`.github/workflows/ci.yml`): Node 24 → `npm ci` → `npm audit
   --audit-level=high` → JSON-validate `package.json` and every
   `themes/**/*.json` (recursive) → `npm test` → `npm run build:landing`
 - Manual theme check: VS Code `F5` → Extension Development Host →

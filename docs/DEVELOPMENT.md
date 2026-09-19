@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - [VS Code](https://code.visualstudio.com/) ^1.70.0
-- [Node.js](https://nodejs.org/) — provides `node` and `npm`; used for `npm ci`, `npm run build:landing`, and packaging with vsce. CI pins Node 20 today (CI target: 24 LTS after phase P2); local development may run newer (e.g. Node 26)
+- [Node.js](https://nodejs.org/) — provides `node` and `npm`; used for `npm ci`, `npm run build:landing`, and packaging with vsce. CI pins Node 24 (Active LTS, declared as `engines.node >=24` in `package.json`); local development may run newer (e.g. Node 26)
 - [Python 3](https://www.python.org/) — provides `python3`, required for the theme generators under `scripts/` (`make-pi-themes.py`, `make-opencode-theme.py`)
 
 ## Setup
