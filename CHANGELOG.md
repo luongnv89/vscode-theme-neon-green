@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+### Features
+
+- **Aura — Dark** theme: deep purple-black canvas (`#15141b`) with violet keywords (`#a277ff`), mint types (`#61ffca`), and warm amber functions — ported from the Pi agent `aura` theme
+- **Omarchy — Dark** theme: slate gray-black canvas (`#101315`) with neon green strings (`#00ff99`) and cyan keywords (`#33ccff`) — ported from the Pi agent `omarchy` theme
+- **Synthwave '84 — Dark** theme: retro purple dusk canvas (`#262335`) with hot pink keywords (`#ff7edb`), cyan types (`#03edf9`), and sunset orange functions — ported from the Pi agent `synthwave-84` theme
+- **Zed — Dark** and **Zed — Light** themes: Zed editor's neutral palette (`#282c33` / `#fafafa`) with blue functions, purple keywords, and green strings — ported from the Pi agent `zed-dark` / `zed-light` themes, bringing the collection to thirteen themes
+- Added `scripts/make-pi-themes.py` generator: role-table hex remapper that ports any Pi agent theme palette onto the full VS Code theme skeleton (dark and light bases)
+
 ## v1.6.0 — 2026-06-02
 
 ### Features

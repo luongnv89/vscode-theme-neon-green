@@ -10,7 +10,7 @@
   <a href="https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme"><img src="https://img.shields.io/badge/Marketplace-Theme%20Collection-brightgreen.svg" alt="Marketplace"></a>
 </p>
 
-<p align="center">7 meticulously crafted VS Code themes in 3 families: vivid <strong>Neon Green</strong> with electric accents, warm <strong>Soft Glow</strong> with eye-friendly pastels, and minimal <strong>OpenCode</strong> with a flat-black canvas.</p>
+<p align="center">13 meticulously crafted VS Code themes in 8 families: vivid <strong>Neon Green</strong> with electric accents, warm <strong>Soft Glow</strong> with eye-friendly pastels, minimal <strong>OpenCode</strong> with a flat-black canvas, golden <strong>Hermes Agent</strong>, purple-hazed <strong>Aura</strong>, slate <strong>Omarchy</strong>, retro <strong>Synthwave '84</strong>, and clean <strong>Zed</strong>.</p>
 
 ## Screenshots
 
@@ -52,10 +52,35 @@
 |---------|------|------|
 | **Dark** | Deep midnight navy (`#0b0b16`) | Warm gold-on-navy — cornsilk text, gold brand accent, purple suggestions |
 
+### Aura Family
+
+| Variant | Base | Vibe |
+|---------|------|------|
+| **Dark** | Deep purple-black (`#15141b`) | Purple haze — violet keywords, mint types, warm amber functions |
+
+### Omarchy Family
+
+| Variant | Base | Vibe |
+|---------|------|------|
+| **Dark** | Slate gray-black (`#101315`) | Minimal DHH-style — neon green strings on slate, cyan keywords |
+
+### Synthwave '84 Family
+
+| Variant | Base | Vibe |
+|---------|------|------|
+| **Dark** | Retro purple dusk (`#262335`) | Outrun neon — hot pink keywords, cyan types, sunset orange functions |
+
+### Zed Family
+
+| Variant | Base | Vibe |
+|---------|------|------|
+| **Dark** | Neutral editor gray (`#282c33`) | Zed-inspired One Dark — blue functions, purple keywords |
+| **Light** | Clean neutral white (`#fafafa`) | Zed-inspired One Light — same palette tuned for daylight |
+
 ## Key Features
 
-- **Three distinct aesthetics**: vivid neon green accents (Neon Green family), warm amber/pastel tones (Soft Glow family), and the minimal flat-black OpenCode look (warm peach + purple)
-- 7 themes across 3 families for different moods and lighting conditions
+- **Eight distinct aesthetics**: vivid neon green accents (Neon Green), warm amber/pastel tones (Soft Glow), minimal flat-black OpenCode (warm peach + purple), gold-on-navy Hermes Agent, purple-hazed Aura, slate-green Omarchy, retro Synthwave '84, and clean neutral Zed
+- 13 themes across 8 families for different moods and lighting conditions
 - Carefully tuned multicolor syntax for long coding sessions
 - Broad language support: JavaScript, TypeScript, Python, Rust, Go, HTML/CSS, JSON, YAML, Markdown, Shell, and more
 - Custom terminal colors, bracket colorization, and git decoration colors

@@ -43,6 +43,12 @@ const normalizeLang = (lang) => {
 
 const themeLabelFromFilename = (filename) => {
   if (filename.includes('opencode')) return 'OpenCode — Dark';
+  if (filename.includes('hermes-agent')) return 'Hermes Agent — Dark';
+  if (filename.includes('aura')) return 'Aura — Dark';
+  if (filename.includes('omarchy')) return 'Omarchy — Dark';
+  if (filename.includes('synthwave-84')) return "Synthwave '84 — Dark";
+  if (filename.includes('zed-dark')) return 'Zed — Dark';
+  if (filename.includes('zed-light')) return 'Zed — Light';
   if (filename.includes('soft-glow-dark')) return 'Soft Glow — Dark';
   if (filename.includes('soft-glow-light')) return 'Soft Glow — Light';
   if (filename.includes('liquid-glass')) return 'Liquid Glass';
@@ -53,6 +59,12 @@ const themeLabelFromFilename = (filename) => {
 
 const humanDescription = (filename) => {
   if (filename.includes('opencode')) return 'Minimal terminal-agent look on a flat near-black canvas — warm peach accent with purple keywords.';
+  if (filename.includes('hermes-agent')) return 'Warm gold-on-navy — cornsilk text, gold brand accent, purple suggestions.';
+  if (filename.includes('aura')) return 'Purple haze on a deep purple-black canvas — violet keywords, mint types, amber functions.';
+  if (filename.includes('omarchy')) return 'Minimal DHH-style slate theme — neon green strings with cyan keywords.';
+  if (filename.includes('synthwave-84')) return 'Retro outrun neon — hot pink keywords, cyan types, sunset orange functions.';
+  if (filename.includes('zed-dark')) return 'Zed-inspired neutral dark — blue functions, purple keywords, green strings.';
+  if (filename.includes('zed-light')) return 'Zed-inspired neutral light — the same palette tuned for daylight.';
   if (filename.includes('soft-glow-dark')) return 'Warm, cozy dark theme with amber accents and desaturated syntax.';
   if (filename.includes('soft-glow-light')) return 'Gentle cream background with muted jewel-tone highlights.';
   if (filename.includes('liquid-glass')) return 'Modern translucent feel with glass-like editor surfaces.';
@@ -221,6 +233,12 @@ const buildPage = async () => {
     'themes/soft-glow-dark-color-theme.json',
     'themes/soft-glow-light-color-theme.json',
     'themes/opencode-color-theme.json',
+    'themes/hermes-agent-dark-color-theme.json',
+    'themes/aura-color-theme.json',
+    'themes/omarchy-color-theme.json',
+    'themes/synthwave-84-color-theme.json',
+    'themes/zed-dark-color-theme.json',
+    'themes/zed-light-color-theme.json',
   ];
 
   const themes = await Promise.all(
@@ -312,7 +330,7 @@ const buildPage = async () => {
   const info = darkTheme.colors['terminal.ansiBlue'] || '#82aaff';
   const shadow = darkTheme.colors['widget.shadow'] || '#00000066';
 
-  const seoDescription = '7 VS Code themes in 3 families: Neon Green (Dark Terminal, Midnight, Light, Liquid Glass), Soft Glow (Dark, Light), and OpenCode (Dark). Vivid accents, warm pastels, and a minimal flat-black canvas for long coding sessions.';
+  const seoDescription = '13 VS Code themes in 8 families: Neon Green (Dark Terminal, Midnight, Light, Liquid Glass), Soft Glow (Dark, Light), OpenCode (Dark), Hermes Agent (Dark), Aura (Dark), Omarchy (Dark), Synthwave \'84 (Dark), and Zed (Dark, Light). Vivid accents, warm pastels, and a minimal flat-black canvas for long coding sessions.';
   const siteUrl = 'https://luongnv89.github.io/vscode-theme-neon-green';
   const ogImage = `${siteUrl}/screenshot-dark.png`;
 
