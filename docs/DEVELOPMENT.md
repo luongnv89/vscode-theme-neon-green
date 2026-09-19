@@ -19,9 +19,20 @@ Recorded commands an agent can run from a fresh checkout:
 
 - `npm ci` — reproducible dependency install
 - `npm run build:landing` — regenerate the landing page via `scripts/generate-landing.mjs`
-- `npm test` — **does not exist yet**; no test command is defined until Task 0.1 adds the suite, so do not invoke it
+- `npm test` — run the smoke test suite (`node --test` over `tests/*.test.mjs`, with a coverage table). The generator characterization tests spawn `python3`; they are skipped when it is not on PATH
 
 ## Testing
+
+Automated smoke tests live in `tests/` and run with `npm test` (`node --test`,
+no extra dependencies):
+
+- `tests/theme-schema.test.mjs` — every `contributes.themes[].path` exists and
+  each registered theme JSON parses with `name`, `colors`, and `tokenColors`
+- `tests/generators.test.mjs` — characterization tests for the `remap`/`walk`
+  functions in the Python generators (spawned via `python3`; skipped when it is
+  not on PATH)
+
+Manual visual check:
 
 1. Open the project in VS Code
 2. Press `F5` to launch the **Extension Development Host**

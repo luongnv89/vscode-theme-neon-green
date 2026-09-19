@@ -20,8 +20,10 @@ Recorded commands an agent can run from a fresh checkout:
 - `npm ci` — reproducible dependency install (same command CI runs)
 - `npm run build:landing` — regenerate the landing page
   (`scripts/generate-landing.mjs` → `docs/index.html`); the build/CI stand-in
-- `npm test` — **does not exist yet**; the suite arrives with Task 0.1. After
-  0.1 this is the required test command; until then do not invoke it
+- `npm test` — run the smoke test suite (`node --test` over `tests/*.test.mjs`:
+  theme-JSON schema vs `contributes.themes`, plus Python generator remap/walk
+  characterization; emits a coverage table). The generator tests need `python3`
+  on PATH and are skipped when it is absent
 - `python3 scripts/make-pi-themes.py`, `python3 scripts/make-opencode-theme.py`
   — palette-driven theme generators (require Python 3)
 - `vsce package` — build the `.vsix` artifact (needs `@vscode/vsce`, optional)

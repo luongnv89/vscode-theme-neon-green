@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Tests
+
+- Added the `npm test` smoke suite (`node --test`, no new dependencies): theme-JSON schema checks against `contributes.themes` and characterization tests for the Python generators' `remap`/`walk` functions (#10)
+
 ### Fixed
 
 - Restored the documented `F5` Extension Development Host workflow: `.vscode/launch.json` is now committed (`.gitignore` narrowed to un-ignore it) (#11)
