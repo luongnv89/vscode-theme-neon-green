@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
@@ -49,6 +50,22 @@ function callGenerator(scriptRel, calls) {
   assert.equal(r.status, 0, `python driver failed for ${scriptRel}:\n${r.stderr}`);
   return JSON.parse(r.stdout);
 }
+
+test('hex-remap engine lives only in scripts/hex_remap.py', () => {
+  const ENGINE_PIECES = ['HEX_RE = re.compile', 'def remap(', 'def walk('];
+  const defsIn = (file) =>
+    ENGINE_PIECES.filter((piece) =>
+      readFileSync(join(REPO_ROOT, file), 'utf8').includes(piece));
+  for (const script of GENERATORS) {
+    assert.deepEqual(defsIn(script), [], `${script} still defines engine pieces`);
+    assert.match(
+      readFileSync(join(REPO_ROOT, script), 'utf8'),
+      /from hex_remap import/,
+      `${script} does not import the shared module`,
+    );
+  }
+  assert.deepEqual(defsIn('scripts/hex_remap.py').sort(), [...ENGINE_PIECES].sort());
+});
 
 for (const script of GENERATORS) {
   test(`generator characterization — ${script}`, { skip: SKIP }, async (t) => {
