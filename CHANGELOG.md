@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixed
+
+- Restored the documented `F5` Extension Development Host workflow: `.vscode/launch.json` is now committed (`.gitignore` narrowed to un-ignore it) (#11)
+
 ### Features
 
 - **Aura — Dark** theme: deep purple-black canvas (`#15141b`) with violet keywords (`#a277ff`), mint types (`#61ffca`), and warm amber functions — ported from the Pi agent `aura` theme
