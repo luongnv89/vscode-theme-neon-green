@@ -391,18 +391,26 @@ def fix_diff_entries(token_colors, palette):
             entry["settings"]["foreground"] = palette[slot]
 
 
+def _palette_base_green(palette):
+    if "green" in palette:
+        return palette["green"]
+    if "ansiBGreen" in palette:
+        return palette["ansiBGreen"]
+    if "diffAdd" in palette:
+        return palette["diffAdd"]
+    raise KeyError("palette has no green slot")
+
+
 def _palette_added_green(palette):
-    return palette.get("diffAdd") or palette["green"]
+    return palette.get("diffAdd") or _palette_base_green(palette)
 
 
 def _palette_bright_green(palette):
-    if "accentHi" in palette:
-        return palette["accentHi"]
+    green = _palette_base_green(palette)
     accent = palette.get("accent")
-    green = palette["green"]
     if accent and accent.lower() == green.lower():
-        return accent
-    return green
+        return palette.get("accentHi", accent)
+    return palette.get("ansiBGreen", green)
 
 
 def fix_terminal_git_green(colors, palette):
@@ -413,6 +421,10 @@ def fix_terminal_git_green(colors, palette):
     colors["terminal.ansiBrightGreen"] = bright
     colors["editorGutter.addedBackground"] = green
     colors["gitDecoration.addedResourceForeground"] = green
+    if "minimapGutter.addedBackground" in colors:
+        colors["minimapGutter.addedBackground"] = green
+    if "editorOverviewRuler.addedForeground" in colors:
+        colors["editorOverviewRuler.addedForeground"] = green + "80"
 
 
 def main():
