@@ -167,6 +167,7 @@ SYNTAX_MAP = {
     "#ffb347": OC["yellow"],
 }
 
+
 def main():
     data = json.loads(SRC.read_text(), object_pairs_hook=OrderedDict)
     data["name"] = "OpenCode — Dark"
