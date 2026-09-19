@@ -46,14 +46,16 @@ Recorded commands an agent can run from a fresh checkout:
 - Pre-commit hooks (`pre-commit install` once): trailing whitespace, EOF
   fixer, YAML/JSON validation, `check-added-large-files` (2048 KB),
   `detect-private-key`, merge-conflict check
-- CI (`.github/workflows/ci.yml`): Node 20 → `npm ci` → JSON-validate
-  `package.json` and every `themes/*.json` → `npm run build:landing`
+- CI (`.github/workflows/ci.yml`): Node 20 → `npm ci` → `npm audit
+  --audit-level=high` → JSON-validate `package.json` and every
+  `themes/**/*.json` (recursive) → `npm test` → `npm run build:landing`
 - Manual theme check: VS Code `F5` → Extension Development Host →
   `Preferences: Color Theme` (`Ctrl+K Ctrl+T`)
 
 ## Guardrails
 
-- Every `themes/*.json` must parse — CI validates all of them
+- Every `themes/**/*.json` must parse — CI validates all of them
+  recursively, including nested ports like `themes/claude-code/`
 - Never commit `.vsix` artifacts, `node_modules/`, `.env*`, `.gstack/`,
   `.gitissue/`, or `__pycache__/`
 - Local audit files (`CODE_REVIEW.md`, `MODERNIZATION_PLAN.md`,
