@@ -3,15 +3,23 @@
 ## Prerequisites
 
 - [VS Code](https://code.visualstudio.com/) ^1.70.0
-- [Node.js](https://nodejs.org/) (for packaging with vsce)
+- [Node.js](https://nodejs.org/) — provides `node` and `npm`; used for `npm ci`, `npm run build:landing`, and packaging with vsce. CI pins Node 20 today (CI target: 24 LTS after phase P2); local development may run newer (e.g. Node 26)
+- [Python 3](https://www.python.org/) — provides `python3`, required for the theme generators under `scripts/` (`make-pi-themes.py`, `make-opencode-theme.py`)
 
 ## Setup
 
 ```bash
 git clone https://github.com/luongnv89/vscode-theme-neon-green.git
 cd vscode-theme-neon-green
+npm ci   # install dependencies from package-lock.json (same command CI runs)
 code .
 ```
+
+Recorded commands an agent can run from a fresh checkout:
+
+- `npm ci` — reproducible dependency install
+- `npm run build:landing` — regenerate the landing page via `scripts/generate-landing.mjs`
+- `npm test` — **does not exist yet**; no test command is defined until Task 0.1 adds the suite, so do not invoke it
 
 ## Testing
 
