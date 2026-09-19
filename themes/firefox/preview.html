@@ -58,8 +58,9 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: var(--frame);
     color: var(--cornsilk);
-    overflow: hidden;
-    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
   /* ===== TITLE BAR ===== */
@@ -299,9 +300,12 @@
   }
 
   /* ===== CONTENT AREA ===== */
+  /* Inner scroll region: flexes to fill the window; .sidebar and .main
+     scroll internally, and the page itself scrolls on short viewports. */
   .content {
     display: flex;
-    height: calc(100vh - 38px - 40px - 44px);
+    flex: 1;
+    min-height: 0;
   }
 
   /* ===== SIDEBAR ===== */
@@ -408,7 +412,7 @@
 
   /* ===== POPUP MENU ===== */
   .popup-overlay {
-    position: fixed;
+    position: absolute;
     top: 90px;
     right: 100px;
     background: var(--popup-bg);

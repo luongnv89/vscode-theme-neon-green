@@ -5,12 +5,14 @@
 .claude/**
 .gstack/**
 .github/**
+.gitissue/**
 .pre-commit-config.yaml
 .DS_Store
 **/.DS_Store
 
-# --- Source & build scripts (not needed at runtime) ---
+# --- Source, tests & build scripts (not needed at runtime) ---
 scripts/**
+tests/**
 examples/**
 docs/**
 assets/**
@@ -20,7 +22,13 @@ node_modules/**
 package-lock.json
 yarn.lock
 
-# --- Non-VS Code terminal themes (Warp / iTerm) ---
+# --- Non-VS Code companion ports (terminal emulators & apps) ---
+# Ship only the VS Code *-color-theme.json files under themes/.
+themes/claude-code/**
+themes/firefox/**
+themes/ghostty/**
+themes/cmux/**
+themes/terminal/**
 themes/warp/**
 themes/**/*.itermcolors
 

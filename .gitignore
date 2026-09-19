@@ -9,3 +9,5 @@ node_modules/
 .gstack/
 .gitissue/
 __pycache__/
+*.pyc
+*.pyo
