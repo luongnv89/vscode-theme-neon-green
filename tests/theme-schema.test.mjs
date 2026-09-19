@@ -9,7 +9,7 @@ const pkg = JSON.parse(readFileSync(join(REPO_ROOT, 'package.json'), 'utf8'));
 const themes = pkg.contributes?.themes;
 
 const UI_THEMES = new Set(['vs', 'vs-dark', 'hc-black', 'hc-light']);
-const THEME_TYPES = new Set(['dark', 'light', 'hc-dark', 'hc-light']);
+const THEME_TYPES = new Set(['dark', 'light', 'hcDark', 'hcLight']);
 
 test('contributes.themes is a non-empty array', () => {
   assert.ok(Array.isArray(themes), 'package.json contributes.themes must be an array');
