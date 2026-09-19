@@ -54,7 +54,7 @@
     "test": "node --test --experimental-test-coverage tests/*.test.mjs"
   },
   "devDependencies": {
-    "marked": "^15.0.12",
+    "marked": "^18.0.13",
     "shiki": "^3.2.1"
   },
   "contributes": {
