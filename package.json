@@ -1,7 +1,7 @@
 {
   "name": "neon-green-theme",
   "displayName": "Neon Green Theme Collection",
-  "description": "8 VS Code themes in 4 families: Neon Green (Dark Terminal, Midnight, Light, Liquid Glass), Soft Glow (Dark, Light), OpenCode (Dark), and Hermes Agent (gold-on-midnight). Vivid neon accents, warm eye-friendly pastels, minimal flat-black canvas, and warm gold-on-navy.",
+  "description": "13 VS Code themes in 8 families: Neon Green (Dark Terminal, Midnight, Light, Liquid Glass), Soft Glow (Dark, Light), OpenCode (Dark), Hermes Agent (gold-on-midnight), Aura (purple haze), Omarchy (neon green on slate), Synthwave '84 (retro neon), and Zed (Dark, Light). Vivid neon accents, warm eye-friendly pastels, minimal flat-black canvas, and warm gold-on-navy.",
   "version": "1.7.0",
   "publisher": "luongnv89",
   "author": {
@@ -28,7 +28,13 @@
     "pastel",
     "eye-friendly",
     "color-theme",
-    "midnight"
+    "midnight",
+    "aura",
+    "omarchy",
+    "synthwave",
+    "zed",
+    "purple",
+    "retro"
   ],
   "galleryBanner": {
     "color": "#0a0f0a",
@@ -90,6 +96,31 @@
         "label": "Hermes Agent \u2014 Dark",
         "uiTheme": "vs-dark",
         "path": "./themes/hermes-agent-dark-color-theme.json"
+      },
+      {
+        "label": "Aura \u2014 Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/aura-color-theme.json"
+      },
+      {
+        "label": "Omarchy \u2014 Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/omarchy-color-theme.json"
+      },
+      {
+        "label": "Synthwave '84 \u2014 Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/synthwave-84-color-theme.json"
+      },
+      {
+        "label": "Zed \u2014 Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/zed-dark-color-theme.json"
+      },
+      {
+        "label": "Zed \u2014 Light",
+        "uiTheme": "vs",
+        "path": "./themes/zed-light-color-theme.json"
       }
     ]
   }

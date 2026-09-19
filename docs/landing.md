@@ -1,8 +1,8 @@
 # Neon Green Theme Collection
 
-7 VS Code themes in 3 families — vivid **Neon Green**, warm **Soft Glow**, and minimal **OpenCode** — built for developers who want their editor to feel sharp, comfortable, and unmistakably alive.
+13 VS Code themes in 8 families — vivid **Neon Green**, warm **Soft Glow**, minimal **OpenCode**, golden **Hermes Agent**, purple **Aura**, slate **Omarchy**, retro **Synthwave '84**, and clean **Zed** — built for developers who want their editor to feel sharp, comfortable, and unmistakably alive.
 
-> Three aesthetics, one collection. Neon Green for electric terminal energy. Soft Glow for warm, eye-friendly coding. OpenCode for a minimal flat-black canvas. All tuned for long sessions.
+> Eight aesthetics, one collection. Neon Green for electric terminal energy. Soft Glow for warm, eye-friendly coding. OpenCode for a minimal flat-black canvas. Hermes Agent for gold-on-navy warmth. Aura for purple haze. Omarchy for slate minimalism. Synthwave '84 for retro neon. Zed for clean neutrality. All tuned for long sessions.
 
 [Install from Marketplace](https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme) · [View on GitHub](https://github.com/luongnv89/vscode-theme-neon-green) · [Read the README](https://github.com/luongnv89/vscode-theme-neon-green/blob/main/README.md)
 
@@ -15,11 +15,16 @@ Most themes choose one of two extremes:
 - visually loud, but tiring after an hour
 - safe and readable, but forgettable
 
-**Neon Green Theme Collection** offers three approaches:
+**Neon Green Theme Collection** offers eight approaches:
 
 - **Neon Green** — bold, electric identity with a dark terminal aesthetic
 - **Soft Glow** — warm, desaturated tones that never tire your eyes
 - **OpenCode** — minimal flat near-black with a warm peach accent and purple keywords
+- **Hermes Agent** — warm gold-on-navy with cornsilk text
+- **Aura** — deep purple-black with violet keywords and mint types
+- **Omarchy** — slate minimalism with neon green strings and cyan keywords
+- **Synthwave '84** — retro outrun neon on purple dusk
+- **Zed** — clean neutral palette in dark and light variants
 - All with clear syntax separation and enough contrast for real work
 - All tuned for long coding sessions in any lighting
 
@@ -90,7 +95,7 @@ Double-clicking the file in Finder also imports it, but the manual route lets yo
 
 ## Warp terminal themes
 
-Seven Warp themes ship alongside the editor themes — one per variant. YAML files live in [`themes/warp/`](https://github.com/luongnv89/vscode-theme-neon-green/tree/main/themes/warp).
+Eight Warp themes ship alongside the editor themes — one per variant. YAML files live in [`themes/warp/`](https://github.com/luongnv89/vscode-theme-neon-green/tree/main/themes/warp).
 
 ![Warp showing all six Neon Green and Soft Glow themes in the Themes picker](../assets/warp-themes-preview.png)
 
