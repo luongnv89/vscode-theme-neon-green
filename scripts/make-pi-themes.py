@@ -413,6 +413,7 @@ def fix_terminal_git_green(colors, palette):
 
 
 def main():
+    failures = []
     for theme in THEME_LIST:
         is_dark = theme["base"] == "dark"
         src = DARK_BASE if is_dark else LIGHT_BASE
@@ -453,9 +454,13 @@ def main():
         allowed = {v.lower() for v in pal.values()} | {"#000000", "#ffffff"}
         leftover = leftover_hexes(dst.read_text(), allowed)
         if leftover:
-            print(f"  WARNING leftover unmapped hexes: {leftover}")
+            print(f"  ERROR leftover unmapped hexes in {dst.name}: {leftover}")
+            failures.append(theme["name"])
         else:
             print("  OK: all base hexes map to the palette.")
+
+    if failures:
+        raise SystemExit(f"leftover unmapped hexes in: {', '.join(failures)}")
 
 
 if __name__ == "__main__":

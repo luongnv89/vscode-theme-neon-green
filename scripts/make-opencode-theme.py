@@ -198,9 +198,9 @@ def main():
     }
     leftover = leftover_hexes(DST.read_text(), allowed)
     if leftover:
-        print("WARNING leftover unmapped hexes:", leftover)
-    else:
-        print("OK: all base hexes map to the opencode palette.")
+        print("ERROR leftover unmapped hexes:", leftover)
+        raise SystemExit(1)
+    print("OK: all base hexes map to the opencode palette.")
 
 
 if __name__ == "__main__":
