@@ -401,7 +401,7 @@
         "punctuation.definition.comment"
       ],
       "settings": {
-        "foreground": "#5d636f",
+        "foreground": "#70788a",
         "fontStyle": "italic"
       }
     },
@@ -914,7 +914,7 @@
         "punctuation.terminator.statement"
       ],
       "settings": {
-        "foreground": "#5d636f"
+        "foreground": "#70788a"
       }
     },
     {
@@ -1163,7 +1163,7 @@
       "name": "Markdown Strikethrough",
       "scope": "markup.strikethrough",
       "settings": {
-        "foreground": "#5d636f",
+        "foreground": "#70788a",
         "fontStyle": "strikethrough"
       }
     },
@@ -1767,7 +1767,7 @@
         "punctuation.definition.tag.sgml"
       ],
       "settings": {
-        "foreground": "#5d636f"
+        "foreground": "#70788a"
       }
     },
     {

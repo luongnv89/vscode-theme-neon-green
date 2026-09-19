@@ -167,7 +167,7 @@
     "tab.unfocusedActiveBackground": "#1e1d28",
     "tab.unfocusedActiveForeground": "#6d6d6d",
     "tab.unfocusedInactiveBackground": "#1a1922",
-    "tab.unfocusedInactiveForeground": "#4a4a4a",
+    "tab.unfocusedInactiveForeground": "#5f5f6e",
     "titleBar.activeBackground": "#0f0e14",
     "titleBar.activeForeground": "#edecee",
     "titleBar.inactiveBackground": "#0f0e14",
@@ -175,7 +175,7 @@
     "titleBar.border": "#1f1e28",
     "activityBar.background": "#0f0e14",
     "activityBar.foreground": "#a277ff",
-    "activityBar.inactiveForeground": "#4a4a4a",
+    "activityBar.inactiveForeground": "#5f5f6e",
     "activityBar.border": "#1f1e28",
     "activityBar.activeBorder": "#a277ff",
     "activityBarBadge.background": "#a277ff",
@@ -238,7 +238,7 @@
     "terminal.ansiMagenta": "#f694ff",
     "terminal.ansiCyan": "#82e2ff",
     "terminal.ansiWhite": "#edecee",
-    "terminal.ansiBrightBlack": "#4a4a4a",
+    "terminal.ansiBrightBlack": "#5f5f6e",
     "terminal.ansiBrightRed": "#ff8585",
     "terminal.ansiBrightGreen": "#61ffca",
     "terminal.ansiBrightYellow": "#ffca85",
@@ -258,7 +258,7 @@
     "input.background": "#1a1922",
     "input.foreground": "#edecee",
     "input.border": "#232130",
-    "input.placeholderForeground": "#4a4a4a",
+    "input.placeholderForeground": "#5f5f6e",
     "inputOption.activeBackground": "#a277ff30",
     "inputOption.activeBorder": "#a277ff",
     "inputOption.activeForeground": "#a277ff",
@@ -401,7 +401,7 @@
         "punctuation.definition.comment"
       ],
       "settings": {
-        "foreground": "#4a4a4a",
+        "foreground": "#5f5f6e",
         "fontStyle": "italic"
       }
     },
@@ -914,7 +914,7 @@
         "punctuation.terminator.statement"
       ],
       "settings": {
-        "foreground": "#4a4a4a"
+        "foreground": "#5f5f6e"
       }
     },
     {
@@ -1163,7 +1163,7 @@
       "name": "Markdown Strikethrough",
       "scope": "markup.strikethrough",
       "settings": {
-        "foreground": "#4a4a4a",
+        "foreground": "#5f5f6e",
         "fontStyle": "strikethrough"
       }
     },
@@ -1767,7 +1767,7 @@
         "punctuation.definition.tag.sgml"
       ],
       "settings": {
-        "foreground": "#4a4a4a"
+        "foreground": "#5f5f6e"
       }
     },
     {
