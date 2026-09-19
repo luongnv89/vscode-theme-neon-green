@@ -17,11 +17,16 @@ are pinned to explicit diff colors (their source hexes are shared with
 unrelated roles like keywords, so a blind remap would mis-color them).
 """
 import json
-import re
+import sys
 from collections import OrderedDict
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+if str(HERE) not in sys.path:
+    sys.path.insert(0, str(HERE))  # sibling import when loaded by path (tests)
+
+from hex_remap import HEX_RE, leftover_hexes, remap, walk  # noqa: E402
+
 THEMES = HERE.parent / "themes"
 DARK_BASE = THEMES / "neon-green-color-theme.json"
 LIGHT_BASE = THEMES / "neon-green-light-color-theme.json"
@@ -346,8 +351,6 @@ THEME_LIST = [AURA, OMARCHY, SYNTHWAVE, ZED_DARK, ZED_LIGHT]
 # Engine
 # ---------------------------------------------------------------------------
 
-HEX_RE = re.compile(r"^#[0-9a-fA-F]{6}([0-9a-fA-F]{2})?$")
-
 DIFF_NAMES = {
     "Diff Added": "diffAdd",
     "Diff Removed": "diffDel",
@@ -363,24 +366,6 @@ def build_map(roles, palette):
         for src in srcs:
             m[src.lower()] = target
     return m
-
-
-def remap(value, table):
-    if not isinstance(value, str) or not HEX_RE.match(value):
-        return value
-    base = value[:7].lower()
-    alpha = value[7:]
-    if base in table:
-        return table[base] + alpha
-    return value
-
-
-def walk(node, table):
-    if isinstance(node, dict):
-        return OrderedDict((k, walk(v, table)) for k, v in node.items())
-    if isinstance(node, list):
-        return [walk(x, table) for x in node]
-    return remap(node, table)
 
 
 def fix_diff_entries(token_colors, palette):
@@ -428,6 +413,7 @@ def fix_terminal_git_green(colors, palette):
 
 
 def main():
+    failures = []
     for theme in THEME_LIST:
         is_dark = theme["base"] == "dark"
         src = DARK_BASE if is_dark else LIGHT_BASE
@@ -465,14 +451,16 @@ def main():
         print(f"Wrote {dst.name}")
 
         # ---- verification: no base-theme hue should survive ---------------
-        text = dst.read_text()
-        found = set(m.group(0).lower()[:7] for m in re.finditer(r"#[0-9a-fA-F]{6}", text))
         allowed = {v.lower() for v in pal.values()} | {"#000000", "#ffffff"}
-        leftover = sorted(found - allowed)
+        leftover = leftover_hexes(dst.read_text(), allowed)
         if leftover:
-            print(f"  WARNING leftover unmapped hexes: {leftover}")
+            print(f"  ERROR leftover unmapped hexes in {dst.name}: {leftover}")
+            failures.append(theme["name"])
         else:
             print("  OK: all base hexes map to the palette.")
+
+    if failures:
+        raise SystemExit(f"leftover unmapped hexes in: {', '.join(failures)}")
 
 
 if __name__ == "__main__":

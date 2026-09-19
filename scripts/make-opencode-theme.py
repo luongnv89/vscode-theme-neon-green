@@ -10,11 +10,16 @@ for keywords. A single global hex-swap would not read like opencode.
 Palette source: sst/opencode default "opencode" theme (dark mode).
 """
 import json
-import re
+import sys
 from collections import OrderedDict
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+if str(HERE) not in sys.path:
+    sys.path.insert(0, str(HERE))  # sibling import when loaded by path (tests)
+
+from hex_remap import HEX_RE, leftover_hexes, remap, walk  # noqa: E402
+
 THEMES = HERE.parent / "themes"
 SRC = THEMES / "neon-green-color-theme.json"
 DST = THEMES / "opencode-color-theme.json"
@@ -162,27 +167,6 @@ SYNTAX_MAP = {
     "#ffb347": OC["yellow"],
 }
 
-HEX_RE = re.compile(r"^#[0-9a-fA-F]{6}([0-9a-fA-F]{2})?$")
-
-
-def remap(value, table):
-    """Replace a hex value via table, preserving any 8-digit alpha suffix."""
-    if not isinstance(value, str) or not HEX_RE.match(value):
-        return value
-    base = value[:7].lower()
-    alpha = value[7:]
-    if base in table:
-        return table[base] + alpha
-    return value  # leave unmapped (verifier will flag leftovers)
-
-
-def walk(node, table):
-    if isinstance(node, dict):
-        return OrderedDict((k, walk(v, table)) for k, v in node.items())
-    if isinstance(node, list):
-        return [walk(x, table) for x in node]
-    return remap(node, table)
-
 
 def main():
     data = json.loads(SRC.read_text(), object_pairs_hook=OrderedDict)
@@ -207,19 +191,17 @@ def main():
     print(f"Wrote {DST}")
 
     # ---- verification: no Neon Green hue should survive ------------------
-    text = DST.read_text()
-    found = set(m.group(0).lower()[:7] for m in re.finditer(r"#[0-9a-fA-F]{6}", text))
     allowed = {v.lower() for v in OC.values()}
     allowed |= {v.lower() for v in ELEV.values()}
     allowed |= {
         "#ffffff", "#000000", "#c8c8c8", "#a0a0a0", "#e8838b",
         "#6f7a6f", "#7f8a7f", "#9a9a9a", "#1f1212", "#1f1810", "#10171f",
     }
-    leftover = sorted(found - allowed)
+    leftover = leftover_hexes(DST.read_text(), allowed)
     if leftover:
-        print("WARNING leftover unmapped hexes:", leftover)
-    else:
-        print("OK: all base hexes map to the opencode palette.")
+        print("ERROR leftover unmapped hexes:", leftover)
+        raise SystemExit(1)
+    print("OK: all base hexes map to the opencode palette.")
 
 
 if __name__ == "__main__":

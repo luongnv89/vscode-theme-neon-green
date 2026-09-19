@@ -27,7 +27,8 @@ in [CLAUDE.md](CLAUDE.md) and [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
 
 ### Generator maintainer
 
-- **Scope:** `scripts/make-pi-themes.py`, `scripts/make-opencode-theme.py`
+- **Scope:** `scripts/make-pi-themes.py`, `scripts/make-opencode-theme.py`,
+  `scripts/hex_remap.py` (shared hex-remap engine both generators import)
 - Owns the palette-driven generators; output must stay consistent with
   hand-written themes in structure and naming
 
