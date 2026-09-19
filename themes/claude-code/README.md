@@ -2,9 +2,10 @@
 
 Custom color themes for [Claude Code](https://docs.anthropic.com/claude-code), the
 Anthropic CLI. Same DNA as the VS Code collection: the signature `#39ff14` neon green
-drives the brand accent on the Neon Green variants, plus a warm-peach OpenCode
-companion and a gold-on-midnight Hermes Agent variant — palettes mapped straight from
-their source themes.
+drives the brand accent on the Neon Green variants, alongside Soft Glow pastels, a
+warm-peach OpenCode companion, a gold-on-midnight Hermes Agent variant, Aura's purple
+haze, Omarchy's neon green on slate, Synthwave '84 retro neon, and Zed's muted pair —
+palettes mapped straight from their source themes.
 
 Requires Claude Code **v2.1.118+** (custom themes).
 
@@ -20,10 +21,17 @@ Requires Claude Code **v2.1.118+** (custom themes).
 | `soft-glow-light.json` | Soft Glow — Light | `light` |
 | `opencode-dark.json` | OpenCode — Dark | `dark` |
 | `hermes-agent-dark.json` | Hermes Agent — Dark | `dark` |
+| `aura-dark.json` | Aura — Dark | `dark` |
+| `omarchy-dark.json` | Omarchy — Dark | `dark` |
+| `synthwave-84-dark.json` | Synthwave '84 — Dark | `dark` |
+| `zed-dark.json` | Zed — Dark | `dark` |
+| `zed-light.json` | Zed — Light | `light` |
 
-Four families, matching the VS Code collection: **Neon Green** (Dark, Midnight,
+All eight families, matching the VS Code collection: **Neon Green** (Dark, Midnight,
 Liquid Glass, Light), **Soft Glow** (warm eye-friendly pastels — Dark, Light),
-**OpenCode** (Dark), and **Hermes Agent** (gold-on-midnight — Dark).
+**OpenCode** (Dark), **Hermes Agent** (gold-on-midnight — Dark), **Aura** (purple
+haze — Dark), **Omarchy** (neon green on slate — Dark), **Synthwave '84** (retro
+neon — Dark), and **Zed** (Dark, Light).
 
 ## Install
 
@@ -40,7 +48,7 @@ Then select it inside Claude Code:
 /theme
 ```
 
-Pick any of the eight (e.g. **Neon Green — Dark**, **Soft Glow — Light**, **OpenCode — Dark**, **Hermes Agent — Dark**) from the list. Claude Code watches the
+Pick any of the thirteen (e.g. **Neon Green — Dark**, **Soft Glow — Light**, **Aura — Dark**, **Zed — Light**) from the list. Claude Code watches the
 themes directory, so edits to the JSON apply to the running session immediately — no
 restart needed.
 
@@ -86,3 +94,8 @@ Other variants keep the same token roles, recolored from their VS Code counterpa
 | Soft Glow — Light | `#a07838` | `#467046` | `#3a756a` | `#a04545` |
 | OpenCode — Dark | `#fab283` | `#7fd88f` | `#56b6c2` | `#e06c75` |
 | Hermes Agent — Dark | `#FFD700` | `#4CAF50` | `#6ED7D2` | `#EF5350` |
+| Aura — Dark | `#a277ff` | `#61ffca` | `#82e2ff` | `#ff6767` |
+| Omarchy — Dark | `#00ff99` | `#00ff99` | `#33ccff` | `#b85f5f` |
+| Synthwave '84 — Dark | `#ff7edb` | `#72f1b8` | `#03edf9` | `#fe4450` |
+| Zed — Dark | `#74ade8` | `#98c379` | `#6eb4bf` | `#d07277` |
+| Zed — Light | `#5c78e2` | `#50a14f` | `#3882b7` | `#d36151` |

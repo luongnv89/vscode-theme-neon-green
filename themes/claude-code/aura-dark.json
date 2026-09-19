@@ -1,0 +1,55 @@
+{
+  "name": "Aura — Dark",
+  "base": "dark",
+  "overrides": {
+    "claude": "#a277ff",
+    "claudeShimmer": "#ad87ff",
+
+    "text": "#edecee",
+    "inverseText": "#0f0e14",
+    "inactive": "#5f5f6e",
+    "inactiveShimmer": "#9a97a8",
+    "subtle": "#1f1e28",
+    "suggestion": "#82e2ff",
+    "remember": "#f694ff",
+
+    "success": "#61ffca",
+    "error": "#ff6767",
+    "warning": "#ffca85",
+    "warningShimmer": "#ffd59d",
+    "merged": "#f694ff",
+
+    "permission": "#82e2ff",
+    "permissionShimmer": "#96e7ff",
+    "promptBorder": "#a277ff",
+    "promptBorderShimmer": "#ad87ff",
+    "planMode": "#82e2ff",
+    "autoAccept": "#82e2ff",
+    "bashBorder": "#ffca85",
+    "ide": "#82e2ff",
+    "fastMode": "#f694ff",
+    "fastModeShimmer": "#f7a5ff",
+
+    "diffAdded": "#1c3531",
+    "diffAddedDimmed": "#162424",
+    "diffAddedWord": "#2b6052",
+    "diffRemoved": "#351c21",
+    "diffRemovedDimmed": "#25161b",
+    "diffRemovedWord": "#612c30",
+
+    "rate_limit_fill": "#a277ff",
+    "rate_limit_empty": "#1f1e28",
+
+    "briefLabelYou": "#82e2ff",
+    "briefLabelClaude": "#a277ff",
+
+    "red_FOR_SUBAGENTS_ONLY": "#ff6767",
+    "blue_FOR_SUBAGENTS_ONLY": "#82e2ff",
+    "green_FOR_SUBAGENTS_ONLY": "#61ffca",
+    "yellow_FOR_SUBAGENTS_ONLY": "#ffca85",
+    "purple_FOR_SUBAGENTS_ONLY": "#a277ff",
+    "orange_FOR_SUBAGENTS_ONLY": "#ff9e6e",
+    "pink_FOR_SUBAGENTS_ONLY": "#f694ff",
+    "cyan_FOR_SUBAGENTS_ONLY": "#82e2ff"
+  }
+}
