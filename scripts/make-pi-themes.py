@@ -391,6 +391,30 @@ def fix_diff_entries(token_colors, palette):
             entry["settings"]["foreground"] = palette[slot]
 
 
+def _palette_added_green(palette):
+    return palette.get("diffAdd") or palette["green"]
+
+
+def _palette_bright_green(palette):
+    if "accentHi" in palette:
+        return palette["accentHi"]
+    accent = palette.get("accent")
+    green = palette["green"]
+    if accent and accent.lower() == green.lower():
+        return accent
+    return green
+
+
+def fix_terminal_git_green(colors, palette):
+    """Pin terminal/git added greens after UI remap (accent shares source hexes)."""
+    green = _palette_added_green(palette)
+    bright = _palette_bright_green(palette)
+    colors["terminal.ansiGreen"] = green
+    colors["terminal.ansiBrightGreen"] = bright
+    colors["editorGutter.addedBackground"] = green
+    colors["gitDecoration.addedResourceForeground"] = green
+
+
 def main():
     for theme in THEME_LIST:
         is_dark = theme["base"] == "dark"
@@ -421,6 +445,7 @@ def main():
         out["colors"]["editor.background"] = pal["editorBg"]
         out["colors"]["editor.foreground"] = pal["ink"]
         out["colors"]["foreground"] = pal["ink"]
+        fix_terminal_git_green(out["colors"], pal)
         fix_diff_entries(out["tokenColors"], pal)
 
         dst = THEMES / theme["file"]
