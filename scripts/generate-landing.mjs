@@ -26,6 +26,54 @@ const slugify = (value) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 
+const HTML_ESCAPE_MAP = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;',
+};
+
+// Escape a value before it lands in HTML text or a double-quoted attribute —
+// every interpolated attribute in the template below is double-quoted, so the
+// same five-character set covers both contexts.
+const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (ch) => HTML_ESCAPE_MAP[ch]);
+
+const escapeAttr = escapeHtml;
+
+const CSS_HEX_COLOR = /^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/;
+const CSS_NAMED_COLOR = /^[a-zA-Z]{3,20}$/;
+const CSS_FUNCTIONAL_COLOR =
+  /^(?:rgb|rgba|hsl|hsla|hwb|lab|lch|oklab|oklch|color)\(\s*[0-9a-zA-Z.,%\s/-]+\s*\)$/i;
+
+// Allowlist a theme color before it is interpolated into a CSS declaration or
+// a style attribute. Anything outside the allowlist falls back so `;`, `}`,
+// `<` or quotes can never break out of the stylesheet/attribute.
+const sanitizeCssColor = (value, fallback = '#000000') => {
+  const text = String(value ?? '').trim();
+  if (CSS_HEX_COLOR.test(text) || CSS_NAMED_COLOR.test(text) || CSS_FUNCTIONAL_COLOR.test(text)) {
+    return text;
+  }
+  return fallback;
+};
+
+// Allowlist link/image targets: http(s), mailto, fragments and relative
+// paths. Any other scheme (javascript:, data:, vbscript:, …) collapses to the
+// fallback. Control characters and spaces are stripped for the scheme check
+// only, so `java\tscript:` cannot slip past.
+const sanitizeUrl = (value, fallback = '#') => {
+  const text = String(value ?? '').trim();
+  if (!text) return fallback;
+  const collapsed = text.replace(/[\u0000-\u0020]+/g, '');
+  const scheme = collapsed.match(/^([a-z][a-z0-9+.-]*):/i);
+  if (scheme && !/^(?:https?|mailto)$/i.test(scheme[1])) return fallback;
+  return text;
+};
+
+// JSON-LD must be real JSON, never interpolated markup: serialize the object
+// and escape `<` so a literal `</script>` inside a value cannot close the tag.
+const serializeJsonLd = (value) => JSON.stringify(value, null, 2).replace(/</g, '\\u003c');
+
 const normalizeLang = (lang) => {
   if (!lang) return 'text';
   const value = lang.toLowerCase();
@@ -78,17 +126,27 @@ const buildVariantCards = (themes) => {
 <div class="variant-grid">
 ${themes
   .map((theme) => {
-    const bg = theme.colors['editor.background'] || theme.colors.background || '#111111';
-    const panel = theme.colors['sideBar.background'] || theme.colors['panel.background'] || '#181818';
-    const surface = theme.colors['tab.activeBackground'] || theme.colors['input.background'] || '#202020';
-    const accent =
+    const bg = sanitizeCssColor(theme.colors['editor.background'] || theme.colors.background, '#111111');
+    const panel = sanitizeCssColor(
+      theme.colors['sideBar.background'] || theme.colors['panel.background'],
+      '#181818',
+    );
+    const surface = sanitizeCssColor(
+      theme.colors['tab.activeBackground'] || theme.colors['input.background'],
+      '#202020',
+    );
+    const accent = sanitizeCssColor(
       theme.colors['activityBar.foreground'] ||
-      theme.colors['editorCursor.foreground'] ||
-      theme.colors['textLink.foreground'] ||
-      '#39ff14';
-    const text = theme.colors['editor.foreground'] || theme.colors.foreground || '#e6e6e6';
-    const muted = theme.colors['descriptionForeground'] || theme.colors['sideBar.foreground'] || '#8c8c8c';
-    const line = theme.colors['panel.border'] || theme.colors['editorGroup.border'] || '#2a2a2a';
+        theme.colors['editorCursor.foreground'] ||
+        theme.colors['textLink.foreground'],
+      '#39ff14',
+    );
+    const text = sanitizeCssColor(theme.colors['editor.foreground'] || theme.colors.foreground, '#e6e6e6');
+    const muted = sanitizeCssColor(
+      theme.colors['descriptionForeground'] || theme.colors['sideBar.foreground'],
+      '#8c8c8c',
+    );
+    const line = sanitizeCssColor(theme.colors['panel.border'] || theme.colors['editorGroup.border'], '#2a2a2a');
     const label = themeLabelFromFilename(theme.sourcePath);
 
     return `
@@ -108,11 +166,11 @@ ${themes
       </div>
     </div>
     <div class="variant-meta">
-      <h3>${label}</h3>
-      <p>${humanDescription(theme.sourcePath)}</p>
+      <h3>${escapeHtml(label)}</h3>
+      <p>${escapeHtml(humanDescription(theme.sourcePath))}</p>
       <dl>
-        <div><dt>Background</dt><dd><code>${bg}</code></dd></div>
-        <div><dt>Accent</dt><dd><code>${accent}</code></dd></div>
+        <div><dt>Background</dt><dd><code>${escapeHtml(bg)}</code></dd></div>
+        <div><dt>Accent</dt><dd><code>${escapeHtml(accent)}</code></dd></div>
       </dl>
     </div>
   </article>`;
@@ -141,10 +199,10 @@ ${picks
   .map(
     ([label, value]) => `
   <div class="swatch-card">
-    <div class="swatch-chip" style="--chip:${value}"></div>
+    <div class="swatch-chip" style="--chip:${sanitizeCssColor(value)}"></div>
     <div class="swatch-copy">
-      <strong>${label}</strong>
-      <code>${value}</code>
+      <strong>${escapeHtml(label)}</strong>
+      <code>${escapeHtml(value)}</code>
     </div>
   </div>`,
   )
@@ -184,12 +242,12 @@ const buildNav = (markdown) => {
   const primaryHtml = primary
     .map(
       (heading) =>
-        `<a class="topnav-link" href="#${slugify(heading)}">${NAV_LABELS[heading] || heading}</a>`,
+        `<a class="topnav-link" href="#${slugify(heading)}">${escapeHtml(NAV_LABELS[heading] || heading)}</a>`,
     )
     .join('');
 
   const overflowHtml = overflow
-    .map((heading) => `<a href="#${slugify(heading)}">${heading}</a>`)
+    .map((heading) => `<a href="#${slugify(heading)}">${escapeHtml(heading)}</a>`)
     .join('');
 
   const overflowMenu = overflow.length
@@ -208,14 +266,14 @@ const buildNav = (markdown) => {
 const buildStatusCluster = ({ version, license, marketplaceUrl, repoUrl }) => `
 <div class="topbar-status">
   <span class="status-chip status-version" title="Version">
-    <span class="status-dot" aria-hidden="true"></span>v${version}
+    <span class="status-dot" aria-hidden="true"></span>v${escapeHtml(version)}
   </span>
-  <span class="status-chip status-license" title="License">${license}</span>
-  <a class="status-chip status-link" href="${marketplaceUrl}" aria-label="View on VS Code Marketplace">
+  <span class="status-chip status-license" title="License">${escapeHtml(license)}</span>
+  <a class="status-chip status-link" href="${escapeAttr(sanitizeUrl(marketplaceUrl))}" aria-label="View on VS Code Marketplace">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 3 6 14h4v7l11-11h-4V3z"/></svg>
     <span>Marketplace</span>
   </a>
-  <a class="status-chip status-link status-link-ghost" href="${repoUrl}" aria-label="View GitHub repository">
+  <a class="status-chip status-link status-link-ghost" href="${escapeAttr(sanitizeUrl(repoUrl))}" aria-label="View GitHub repository">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.35 1.08 2.92.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.55 9.55 0 0 1 5 0c1.9-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.86v2.76c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
     <span>GitHub</span>
   </a>
@@ -268,7 +326,7 @@ const buildPage = async () => {
         const text = this.parser.parseInline(token.tokens);
         const raw = token.text || text.replace(/<[^>]+>/g, '');
         const id = slugify(raw);
-        return `<h${token.depth} id="${id}">${text}</h${token.depth}>`;
+        return `<h${token.depth} id="${escapeAttr(id)}">${text}</h${token.depth}>`;
       },
       code(token) {
         const lang = normalizeLang(token.lang);
@@ -286,23 +344,23 @@ const buildPage = async () => {
         }
       },
       link(token) {
-        const title = token.title ? ` title="${token.title}"` : '';
-        const href = token.href || '#';
+        const title = token.title ? ` title="${escapeAttr(token.title)}"` : '';
+        const href = sanitizeUrl(token.href || '#');
         const text = this.parser.parseInline(token.tokens);
         const external = /^https?:\/\//.test(href);
         const target = external ? ' target="_blank" rel="noreferrer"' : '';
-        return `<a href="${href}"${title}${target}>${text}</a>`;
+        return `<a href="${escapeAttr(href)}"${title}${target}>${text}</a>`;
       },
       image: (() => {
         let imageIndex = 0;
         return (token) => {
-          const title = token.title ? ` title="${token.title}"` : '';
+          const title = token.title ? ` title="${escapeAttr(token.title)}"` : '';
           const alt = token.text || '';
-          const href = token.href || '';
+          const href = sanitizeUrl(token.href || '');
           const isFirst = imageIndex === 0;
           imageIndex++;
           const loading = isFirst ? ' loading="eager" fetchpriority="high"' : ' loading="lazy"';
-          return `<img src="${href}" alt="${alt}"${title}${loading} width="1200" height="800" />`;
+          return `<img src="${escapeAttr(href)}" alt="${escapeAttr(alt)}"${title}${loading} width="1200" height="800" />`;
         };
       })(),
     },
@@ -314,69 +372,71 @@ const buildPage = async () => {
   const marketplaceUrl = `https://marketplace.visualstudio.com/items?itemName=${pkg.publisher}.${pkg.name}`;
   const navHtml = buildNav(markdownWithInjectedBlocks);
 
-  const bg = darkTheme.colors['editor.background'] || '#0e0e1a';
-  const bgSoft = darkTheme.colors['sideBar.background'] || '#0b0b16';
-  const panel = darkTheme.colors['panel.background'] || '#111120';
-  const surface = darkTheme.colors['tab.activeBackground'] || '#131322';
-  const surfaceMuted = darkTheme.colors['input.background'] || '#111120';
-  const line = darkTheme.colors['panel.border'] || '#1e1e30';
-  const text = darkTheme.colors['editor.foreground'] || '#d5dce8';
-  const muted = darkTheme.colors['descriptionForeground'] || '#7a8599';
-  const accent = darkTheme.colors['activityBar.foreground'] || '#39ff14';
-  const accentStrong = darkTheme.colors['tab.activeForeground'] || '#4dff4d';
-  const selection = darkTheme.colors['editor.selectionBackground'] || '#39ff1425';
-  const warning = darkTheme.colors['terminal.ansiYellow'] || '#ffb347';
-  const danger = darkTheme.colors['errorForeground'] || '#ff5555';
-  const info = darkTheme.colors['terminal.ansiBlue'] || '#82aaff';
-  const shadow = darkTheme.colors['widget.shadow'] || '#00000066';
+  const bg = sanitizeCssColor(darkTheme.colors['editor.background'], '#0e0e1a');
+  const bgSoft = sanitizeCssColor(darkTheme.colors['sideBar.background'], '#0b0b16');
+  const panel = sanitizeCssColor(darkTheme.colors['panel.background'], '#111120');
+  const surface = sanitizeCssColor(darkTheme.colors['tab.activeBackground'], '#131322');
+  const surfaceMuted = sanitizeCssColor(darkTheme.colors['input.background'], '#111120');
+  const line = sanitizeCssColor(darkTheme.colors['panel.border'], '#1e1e30');
+  const text = sanitizeCssColor(darkTheme.colors['editor.foreground'], '#d5dce8');
+  const muted = sanitizeCssColor(darkTheme.colors['descriptionForeground'], '#7a8599');
+  const accent = sanitizeCssColor(darkTheme.colors['activityBar.foreground'], '#39ff14');
+  const accentStrong = sanitizeCssColor(darkTheme.colors['tab.activeForeground'], '#4dff4d');
+  const selection = sanitizeCssColor(darkTheme.colors['editor.selectionBackground'], '#39ff1425');
+  const warning = sanitizeCssColor(darkTheme.colors['terminal.ansiYellow'], '#ffb347');
+  const danger = sanitizeCssColor(darkTheme.colors['errorForeground'], '#ff5555');
+  const info = sanitizeCssColor(darkTheme.colors['terminal.ansiBlue'], '#82aaff');
+  const shadow = sanitizeCssColor(darkTheme.colors['widget.shadow'], '#00000066');
 
   const seoDescription = '13 VS Code themes in 8 families: Neon Green (Dark Terminal, Midnight, Light, Liquid Glass), Soft Glow (Dark, Light), OpenCode (Dark), Hermes Agent (Dark), Aura (Dark), Omarchy (Dark), Synthwave \'84 (Dark), and Zed (Dark, Light). Vivid accents, warm pastels, and a minimal flat-black canvas for long coding sessions.';
   const siteUrl = 'https://luongnv89.github.io/vscode-theme-neon-green';
   const ogImage = `${siteUrl}/screenshot-dark.png`;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: pkg.displayName,
+    description: seoDescription,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Windows, macOS, Linux',
+    url: `${siteUrl}/`,
+    image: ogImage,
+    author: {
+      '@type': 'Person',
+      name: pkg.author?.name,
+      url: pkg.author?.url,
+    },
+    license: 'https://opensource.org/licenses/MIT',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    downloadUrl: marketplaceUrl,
+    softwareVersion: pkg.version,
+  };
 
   const html = `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>${pkg.displayName}</title>
-  <meta name="description" content="${seoDescription}" />
-  <link rel="canonical" href="${siteUrl}/" />
-  <meta property="og:title" content="${pkg.displayName}" />
+  <title>${escapeHtml(pkg.displayName)}</title>
+  <meta name="description" content="${escapeAttr(seoDescription)}" />
+  <link rel="canonical" href="${escapeAttr(siteUrl)}/" />
+  <meta property="og:title" content="${escapeAttr(pkg.displayName)}" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="${siteUrl}/" />
-  <meta property="og:image" content="${ogImage}" />
-  <meta property="og:description" content="${seoDescription}" />
-  <meta property="og:site_name" content="${pkg.displayName}" />
+  <meta property="og:url" content="${escapeAttr(siteUrl)}/" />
+  <meta property="og:image" content="${escapeAttr(ogImage)}" />
+  <meta property="og:description" content="${escapeAttr(seoDescription)}" />
+  <meta property="og:site_name" content="${escapeAttr(pkg.displayName)}" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="${pkg.displayName}" />
-  <meta name="twitter:description" content="${seoDescription}" />
-  <meta name="twitter:image" content="${ogImage}" />
+  <meta name="twitter:title" content="${escapeAttr(pkg.displayName)}" />
+  <meta name="twitter:description" content="${escapeAttr(seoDescription)}" />
+  <meta name="twitter:image" content="${escapeAttr(ogImage)}" />
   <meta name="twitter:image:alt" content="Neon Green Theme Collection screenshot" />
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "${pkg.displayName}",
-    "description": "${seoDescription}",
-    "applicationCategory": "DeveloperApplication",
-    "operatingSystem": "Windows, macOS, Linux",
-    "url": "${siteUrl}/",
-    "image": "${ogImage}",
-    "author": {
-      "@type": "Person",
-      "name": "${pkg.author.name}",
-      "url": "${pkg.author.url}"
-    },
-    "license": "https://opensource.org/licenses/MIT",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "downloadUrl": "${marketplaceUrl}",
-    "softwareVersion": "${pkg.version}"
-  }
+${serializeJsonLd(jsonLd).replace(/^/gm, '  ')}
   </script>
   <style>
     :root {
@@ -1189,14 +1249,14 @@ const buildPage = async () => {
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <a class="brand" href="#top" aria-label="${pkg.displayName} home">
+      <a class="brand" href="#top" aria-label="${escapeAttr(pkg.displayName)} home">
         <span class="brand-mark" aria-hidden="true"></span>
         <span class="brand-word">
           <span>NG</span><span class="brand-slash">//</span><span class="brand-long">THEMES</span>
         </span>
         <span class="brand-caret" aria-hidden="true"></span>
       </a>
-      <nav class="topnav" aria-label="Primary">${navHtml}</nav>
+      <nav class="topnav" id="primary-nav" aria-label="Primary">${navHtml}</nav>
       ${buildStatusCluster({
         version: pkg.version,
         license: pkg.license,
@@ -1217,7 +1277,7 @@ const buildPage = async () => {
 
   <footer>
     <span>Generated from <code>docs/landing.md</code> using theme JSON for syntax highlighting.</span>
-    <span><a href="${repoUrl}">GitHub</a> · <a href="${marketplaceUrl}">Marketplace</a></span>
+    <span><a href="${escapeAttr(sanitizeUrl(repoUrl))}">GitHub</a> · <a href="${escapeAttr(sanitizeUrl(marketplaceUrl))}">Marketplace</a></span>
   </footer>
   <script>
     (function () {
@@ -1271,7 +1331,15 @@ const buildPage = async () => {
   console.log('Generated docs/index.html');
 };
 
-buildPage().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+// Only run the build when executed as a script — importing this module (e.g.
+// from the unit tests) must not regenerate docs/index.html as a side effect.
+const isMainModule = Boolean(process.argv[1]) && path.resolve(process.argv[1]) === __filename;
+
+if (isMainModule) {
+  buildPage().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  });
+}
+
+export { escapeAttr, escapeHtml, sanitizeCssColor, sanitizeUrl, serializeJsonLd, slugify };
