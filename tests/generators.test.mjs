@@ -93,7 +93,7 @@ function callGenerator(scriptRel, calls) {
 // raw spawnSync result so tests can assert on the process exit code.
 function runGeneratorMain(scriptRel, source) {
   const script = join(REPO_ROOT, scriptRel);
-  const generator = scriptRel.includes('pi') ? 'pi' : 'opencode';
+  const generator = scriptRel === 'scripts/make-pi-themes.py' ? 'pi' : 'opencode';
   const r = spawnSync('python3', ['-c', MAIN_DRIVER, script], {
     input: JSON.stringify({ generator, source }),
     encoding: 'utf8',
