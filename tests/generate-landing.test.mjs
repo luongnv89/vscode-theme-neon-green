@@ -13,7 +13,8 @@ import {
   serializeJsonLd,
   slugify,
 } from '../scripts/generate-landing.mjs';
-import { shortVariantLabel, variantDescription } from '../scripts/landing/sections.mjs';
+import { buildNav } from '../scripts/landing/nav.mjs';
+import { buildHeroCta, shortVariantLabel, variantDescription } from '../scripts/landing/sections.mjs';
 import {
   createLandingHighlighter,
   normalizeLang,
@@ -206,4 +207,79 @@ test('variantDescription returns copy keyed by the contributes.themes label (#24
     assert.ok(variantDescription(entry.label).length > 0, `no description for ${entry.label}`);
   }
   assert.equal(variantDescription('No Such Theme — X'), variantDescription('Another Missing — Y'));
+});
+
+test('buildHeroCta renders one primary Marketplace CTA plus secondary text links (#30)', () => {
+  const html = buildHeroCta({
+    marketplaceUrl: 'https://marketplace.visualstudio.com/items?itemName=pub.name',
+    repoUrl: 'https://github.com/owner/repo',
+  });
+  assert.equal((html.match(/class="hero-cta-btn"/g) ?? []).length, 1, 'exactly one primary CTA');
+  assert.ok(
+    html.includes('class="hero-cta-btn" href="https://marketplace.visualstudio.com/items?itemName=pub.name"'),
+    'primary CTA must point at the Marketplace',
+  );
+  const alt = html.match(/<p class="hero-cta-alt">([\s\S]*?)<\/p>/);
+  assert.ok(alt, 'secondary links container missing');
+  assert.ok(alt[1].includes('>View on GitHub<'));
+  assert.ok(alt[1].includes('>Read the README<'));
+  assert.ok(!alt[1].includes('hero-cta-btn'), 'secondary links must not be styled as buttons');
+  assert.ok(html.includes('https://github.com/owner/repo/blob/main/README.md'), 'README link derives from repoUrl');
+});
+
+test('buildHeroCta sanitizes interpolated URLs (#30)', () => {
+  const html = buildHeroCta({ marketplaceUrl: 'javascript:alert(1)', repoUrl: 'https://github.com/owner/repo' });
+  assert.ok(!html.includes('javascript:'), 'unsafe scheme must collapse to the sanitizeUrl fallback');
+});
+
+test('generated docs/index.html hero has a single dominant install CTA (#30)', () => {
+  assert.equal(
+    (generatedHtml.match(/class="hero-cta-btn"/g) ?? []).length,
+    1,
+    'hero must render exactly one primary install control',
+  );
+  assert.match(
+    generatedHtml,
+    /<a class="hero-cta-btn" href="https:\/\/marketplace\.visualstudio\.com\//,
+    'primary CTA must link to the Marketplace',
+  );
+  assert.match(generatedHtml, /class="hero-cta-alt"/, 'secondary text links must be present');
+});
+
+test('buildNav promotes the Screenshots heading into the primary nav (#33)', () => {
+  const html = buildNav('## Theme variants\n\n## Screenshots\n\n## Installation\n\n## Final call\n');
+  const primary = html.split('<div class="topnav-more"')[0];
+  assert.match(primary, /<a class="topnav-link" href="#screenshots">Screenshots<\/a>/);
+});
+
+test('generated docs/index.html primary nav links to #screenshots (#33)', () => {
+  const nav = generatedHtml.match(/<nav class="topnav" id="primary-nav"[^>]*>([\s\S]*?)<\/nav>/);
+  assert.ok(nav, 'primary nav markup missing');
+  assert.match(nav[1], /<a class="topnav-link" href="#screenshots">Screenshots<\/a>/);
+});
+
+test('generated docs/index.html VSIX examples carry the package.json version (#32)', () => {
+  const filenames = generatedHtml.match(/neon-green-theme-\d+\.\d+\.\d+\.vsix/g) ?? [];
+  assert.ok(filenames.length > 0, 'expected at least one VSIX filename in the generated page');
+  for (const name of filenames) {
+    assert.equal(name, `neon-green-theme-${pkg.version}.vsix`, 'VSIX filename must match package.json version');
+  }
+});
+
+test('docs/landing.md and README.md pin no VSIX version (#32)', () => {
+  const landingMd = readFileSync(join(REPO_ROOT, 'docs', 'landing.md'), 'utf8');
+  const readme = readFileSync(join(REPO_ROOT, 'README.md'), 'utf8');
+  for (const [name, text] of [
+    ['docs/landing.md', landingMd],
+    ['README.md', readme],
+  ]) {
+    assert.ok(
+      !/neon-green-theme-\d+\.\d+\.\d+\.vsix/.test(text),
+      `${name} must not hardcode a VSIX version`,
+    );
+  }
+  assert.ok(
+    landingMd.includes('neon-green-theme-{{VERSION}}.vsix'),
+    'docs/landing.md must use the {{VERSION}} token injected from package.json',
+  );
 });

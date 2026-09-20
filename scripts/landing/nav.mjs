@@ -5,6 +5,7 @@ import { escapeAttr, escapeHtml, sanitizeUrl, slugify } from './sanitize.mjs';
 
 const NAV_PRIMARY = new Set([
   'Theme variants',
+  'Screenshots',
   'Installation',
   'Warp terminal themes',
   'iTerm2 terminal themes',
@@ -13,6 +14,7 @@ const NAV_PRIMARY = new Set([
 
 const NAV_LABELS = {
   'Theme variants': 'Variants',
+  'Screenshots': 'Screenshots',
   'Installation': 'Install',
   'Warp terminal themes': 'Warp',
   'iTerm2 terminal themes': 'iTerm',

@@ -4,7 +4,7 @@
 
 > Eight aesthetics, one collection. Neon Green for electric terminal energy. Soft Glow for warm, eye-friendly coding. OpenCode for a minimal flat-black canvas. Hermes Agent for gold-on-navy warmth. Aura for purple haze. Omarchy for slate minimalism. Synthwave '84 for retro neon. Zed for clean neutrality. All tuned for long sessions.
 
-[Install from Marketplace](https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme) · [View on GitHub](https://github.com/luongnv89/vscode-theme-neon-green) · [Read the README](https://github.com/luongnv89/vscode-theme-neon-green/blob/main/README.md)
+<!-- HERO_CTA -->
 
 ---
 
@@ -59,7 +59,7 @@ Open VS Code, search for **Neon Green Theme Collection**, then click **Install**
 ```bash
 npm install -g @vscode/vsce
 vsce package
-code --install-extension neon-green-theme-1.0.0.vsix
+code --install-extension neon-green-theme-{{VERSION}}.vsix
 ```
 
 ### Manual
@@ -307,7 +307,7 @@ fn main() {
 ```bash
 npm install -g @vscode/vsce
 vsce package
-code --install-extension neon-green-theme-1.0.0.vsix
+code --install-extension neon-green-theme-{{VERSION}}.vsix
 ```
 
 ---

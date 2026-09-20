@@ -6,7 +6,7 @@ import { buildCss, themeCssVars } from './landing/css.mjs';
 import { createLandingHighlighter, renderMarkdown } from './landing/highlight.mjs';
 import { buildNav } from './landing/nav.mjs';
 import { buildHtml } from './landing/page.mjs';
-import { buildPaletteSwatches, buildVariantCards } from './landing/sections.mjs';
+import { buildHeroCta, buildPaletteSwatches, buildVariantCards } from './landing/sections.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -45,17 +45,19 @@ const buildPage = async () => {
   const darkTheme = themes.find((theme) => theme.uiTheme === 'vs-dark') ?? themes[0];
   const highlighter = await createLandingHighlighter(darkTheme);
 
+  const repoUrl = pkg.repository?.url?.replace(/\.git$/, '') || 'https://github.com/luongnv89/vscode-theme-neon-green';
+  const marketplaceUrl = `https://marketplace.visualstudio.com/items?itemName=${pkg.publisher}.${pkg.name}`;
+
   const markdown = landingMarkdown
+    .replace('<!-- HERO_CTA -->', buildHeroCta({ marketplaceUrl, repoUrl }))
     .replace('<!-- VARIANT_CARDS -->', buildVariantCards(themes))
-    .replace('<!-- PALETTE_SWATCHES -->', buildPaletteSwatches(darkTheme));
+    .replace('<!-- PALETTE_SWATCHES -->', buildPaletteSwatches(darkTheme))
+    .replaceAll('{{VERSION}}', String(pkg.version));
 
   const contentHtml = await renderMarkdown(markdown, {
     highlighter,
     themeName: darkTheme.name,
   });
-
-  const repoUrl = pkg.repository?.url?.replace(/\.git$/, '') || 'https://github.com/luongnv89/vscode-theme-neon-green';
-  const marketplaceUrl = `https://marketplace.visualstudio.com/items?itemName=${pkg.publisher}.${pkg.name}`;
 
   const html = buildHtml({
     pkg,
