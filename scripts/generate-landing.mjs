@@ -22,34 +22,27 @@ const readText = async (relativePath) => {
   return fs.readFile(fullPath, 'utf8');
 };
 
-  const THEME_FILES = [
-    'themes/neon-green-color-theme.json',
-    'themes/neon-green-midnight-color-theme.json',
-    'themes/neon-green-light-color-theme.json',
-    'themes/neon-green-liquid-glass-color-theme.json',
-    'themes/soft-glow-dark-color-theme.json',
-    'themes/soft-glow-light-color-theme.json',
-    'themes/opencode-color-theme.json',
-    'themes/hermes-agent-dark-color-theme.json',
-    'themes/aura-color-theme.json',
-    'themes/omarchy-color-theme.json',
-    'themes/synthwave-84-color-theme.json',
-    'themes/zed-dark-color-theme.json',
-    'themes/zed-light-color-theme.json',
-  ];
+// Landing variants are driven by package.json → contributes.themes — the same
+// registry VS Code reads — so registering a theme there adds a card here.
+export const contributedThemes = (pkg) =>
+  (pkg.contributes?.themes ?? []).map((entry) => ({
+    sourcePath: String(entry.path ?? '').replace(/^\.\//, ''),
+    label: entry.label,
+    uiTheme: entry.uiTheme,
+  }));
 
 const buildPage = async () => {
   const pkg = await readJson('package.json');
   const landingMarkdown = await readText('docs/landing.md');
 
   const themes = await Promise.all(
-    THEME_FILES.map(async (sourcePath) => ({
-      ...(await readJson(sourcePath)),
-      sourcePath,
+    contributedThemes(pkg).map(async (ref) => ({
+      ...(await readJson(ref.sourcePath)),
+      ...ref,
     })),
   );
 
-  const darkTheme = themes[0];
+  const darkTheme = themes.find((theme) => theme.uiTheme === 'vs-dark') ?? themes[0];
   const highlighter = await createLandingHighlighter(themes);
 
   const markdown = landingMarkdown

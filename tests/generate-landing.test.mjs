@@ -5,6 +5,7 @@ import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 
 import {
+  contributedThemes,
   escapeAttr,
   escapeHtml,
   sanitizeCssColor,
@@ -12,9 +13,11 @@ import {
   serializeJsonLd,
   slugify,
 } from '../scripts/generate-landing.mjs';
+import { shortVariantLabel, variantDescription } from '../scripts/landing/sections.mjs';
 
 const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const generatedHtml = readFileSync(join(REPO_ROOT, 'docs', 'index.html'), 'utf8');
+const pkg = JSON.parse(readFileSync(join(REPO_ROOT, 'package.json'), 'utf8'));
 
 test('escapeHtml escapes the five HTML-significant characters', () => {
   assert.equal(escapeHtml('a & b'), 'a &amp; b');
@@ -130,4 +133,43 @@ test('generated docs/index.html JSON-LD block is parseable JSON', () => {
   assert.ok(match, 'docs/index.html must contain an application/ld+json script');
   const parsed = JSON.parse(match[1]);
   assert.equal(parsed['@type'], 'SoftwareApplication');
+});
+
+test('contributedThemes maps package.json contributes.themes one-to-one (#24)', () => {
+  const refs = contributedThemes(pkg);
+  assert.equal(refs.length, pkg.contributes.themes.length);
+  pkg.contributes.themes.forEach((entry, index) => {
+    assert.equal(refs[index].sourcePath, entry.path.replace(/^\.\//, ''));
+    assert.equal(refs[index].label, entry.label);
+    assert.equal(refs[index].uiTheme, entry.uiTheme);
+  });
+});
+
+test('generated docs/index.html renders one variant card per contributes.themes entry (#24)', () => {
+  const cardCount = (generatedHtml.match(/class="variant-card"/g) ?? []).length;
+  assert.equal(cardCount, pkg.contributes.themes.length);
+});
+
+test('variant card headings come from the contributes.themes label (#24)', () => {
+  const family = pkg.contributes.themes[0].label.split(/\s+—\s+/)[0];
+  for (const entry of pkg.contributes.themes) {
+    const expected = escapeHtml(shortVariantLabel(entry.label, family));
+    assert.ok(
+      generatedHtml.includes(`<h3>${expected}</h3>`),
+      `variant card heading missing for label ${JSON.stringify(entry.label)}`,
+    );
+  }
+});
+
+test('shortVariantLabel strips only the collection family prefix (#24)', () => {
+  assert.equal(shortVariantLabel('Neon Green — Dark Terminal', 'Neon Green'), 'Dark Terminal');
+  assert.equal(shortVariantLabel('Soft Glow — Dark', 'Neon Green'), 'Soft Glow — Dark');
+  assert.equal(shortVariantLabel('Neon Green — Light', ''), 'Neon Green — Light');
+});
+
+test('variantDescription returns copy keyed by the contributes.themes label (#24)', () => {
+  for (const entry of pkg.contributes.themes) {
+    assert.ok(variantDescription(entry.label).length > 0, `no description for ${entry.label}`);
+  }
+  assert.equal(variantDescription('No Such Theme — X'), variantDescription('Another Missing — Y'));
 });
