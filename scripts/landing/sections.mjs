@@ -3,39 +3,44 @@
 
 import { escapeHtml, sanitizeCssColor } from './sanitize.mjs';
 
-const themeLabelFromFilename = (filename) => {
-  if (filename.includes('opencode')) return 'OpenCode — Dark';
-  if (filename.includes('hermes-agent')) return 'Hermes Agent — Dark';
-  if (filename.includes('aura')) return 'Aura — Dark';
-  if (filename.includes('omarchy')) return 'Omarchy — Dark';
-  if (filename.includes('synthwave-84')) return "Synthwave '84 — Dark";
-  if (filename.includes('zed-dark')) return 'Zed — Dark';
-  if (filename.includes('zed-light')) return 'Zed — Light';
-  if (filename.includes('soft-glow-dark')) return 'Soft Glow — Dark';
-  if (filename.includes('soft-glow-light')) return 'Soft Glow — Light';
-  if (filename.includes('liquid-glass')) return 'Liquid Glass';
-  if (filename.includes('midnight')) return 'Midnight';
-  if (filename.includes('neon-green-light')) return 'Light';
-  return 'Dark Terminal';
-};
+// Card blurbs keyed by the contributes.themes label — the same identifier
+// package.json registers. Theme JSON carries no description field, so the copy
+// lives here as data rather than a filename heuristic.
+const VARIANT_DESCRIPTIONS = new Map([
+  ['Neon Green — Dark Terminal', 'Classic hacker-terminal energy with deep contrast and sharp green accents.'],
+  ['Neon Green — Midnight', 'Softer blue-black base for a calmer late-night editor.'],
+  ['Neon Green — Light', 'Clean daytime version with neon accents still doing the heavy lifting.'],
+  ['Neon Green — Liquid Glass', 'Modern translucent feel with glass-like editor surfaces.'],
+  ['Soft Glow — Dark', 'Warm, cozy dark theme with amber accents and desaturated syntax.'],
+  ['Soft Glow — Light', 'Gentle cream background with muted jewel-tone highlights.'],
+  ['OpenCode — Dark', 'Minimal terminal-agent look on a flat near-black canvas — warm peach accent with purple keywords.'],
+  ['Hermes Agent — Dark', 'Warm gold-on-navy — cornsilk text, gold brand accent, purple suggestions.'],
+  ['Aura — Dark', 'Purple haze on a deep purple-black canvas — violet keywords, mint types, amber functions.'],
+  ['Omarchy — Dark', 'Minimal DHH-style slate theme — neon green strings with cyan keywords.'],
+  ["Synthwave '84 — Dark", 'Retro outrun neon — hot pink keywords, cyan types, sunset orange functions.'],
+  ['Zed — Dark', 'Zed-inspired neutral dark — blue functions, purple keywords, green strings.'],
+  ['Zed — Light', 'Zed-inspired neutral light — the same palette tuned for daylight.'],
+]);
 
-const humanDescription = (filename) => {
-  if (filename.includes('opencode')) return 'Minimal terminal-agent look on a flat near-black canvas — warm peach accent with purple keywords.';
-  if (filename.includes('hermes-agent')) return 'Warm gold-on-navy — cornsilk text, gold brand accent, purple suggestions.';
-  if (filename.includes('aura')) return 'Purple haze on a deep purple-black canvas — violet keywords, mint types, amber functions.';
-  if (filename.includes('omarchy')) return 'Minimal DHH-style slate theme — neon green strings with cyan keywords.';
-  if (filename.includes('synthwave-84')) return 'Retro outrun neon — hot pink keywords, cyan types, sunset orange functions.';
-  if (filename.includes('zed-dark')) return 'Zed-inspired neutral dark — blue functions, purple keywords, green strings.';
-  if (filename.includes('zed-light')) return 'Zed-inspired neutral light — the same palette tuned for daylight.';
-  if (filename.includes('soft-glow-dark')) return 'Warm, cozy dark theme with amber accents and desaturated syntax.';
-  if (filename.includes('soft-glow-light')) return 'Gentle cream background with muted jewel-tone highlights.';
-  if (filename.includes('liquid-glass')) return 'Modern translucent feel with glass-like editor surfaces.';
-  if (filename.includes('midnight')) return 'Softer blue-black base for a calmer late-night editor.';
-  if (filename.includes('neon-green-light')) return 'Clean daytime version with neon accents still doing the heavy lifting.';
-  return 'Classic hacker-terminal energy with deep contrast and sharp green accents.';
+const FALLBACK_VARIANT_DESCRIPTION = 'A variant from the Neon Green Theme Collection.';
+
+export const variantDescription = (label) =>
+  VARIANT_DESCRIPTIONS.get(label) ?? FALLBACK_VARIANT_DESCRIPTION;
+
+// contributes.themes labels carry the family prefix ("Neon Green — Dark
+// Terminal") while cards show the variant alone. The collection's own family
+// is the first registered theme's label stem, so the shortener stays
+// data-driven — it never inspects the theme filename.
+export const collectionFamily = (themes) =>
+  String(themes[0]?.label ?? themes[0]?.name ?? '').split(/\s+—\s+/)[0];
+
+export const shortVariantLabel = (label, family) => {
+  const prefix = `${family} — `;
+  return family && String(label).startsWith(prefix) ? String(label).slice(prefix.length) : label;
 };
 
 export const buildVariantCards = (themes) => {
+  const family = collectionFamily(themes);
   return `
 <div class="variant-grid">
 ${themes
@@ -61,7 +66,8 @@ ${themes
       '#8c8c8c',
     );
     const line = sanitizeCssColor(theme.colors['panel.border'] || theme.colors['editorGroup.border'], '#2a2a2a');
-    const label = themeLabelFromFilename(theme.sourcePath);
+    const label = theme.label ?? theme.name ?? '';
+    const cardLabel = shortVariantLabel(label, family);
 
     return `
   <article class="variant-card" style="--variant-bg:${bg};--variant-panel:${panel};--variant-surface:${surface};--variant-accent:${accent};--variant-text:${text};--variant-muted:${muted};--variant-line:${line};">
@@ -80,8 +86,8 @@ ${themes
       </div>
     </div>
     <div class="variant-meta">
-      <h3>${escapeHtml(label)}</h3>
-      <p>${escapeHtml(humanDescription(theme.sourcePath))}</p>
+      <h3>${escapeHtml(cardLabel)}</h3>
+      <p>${escapeHtml(variantDescription(label))}</p>
       <dl>
         <div><dt>Background</dt><dd><code>${escapeHtml(bg)}</code></dd></div>
         <div><dt>Accent</dt><dd><code>${escapeHtml(accent)}</code></dd></div>
