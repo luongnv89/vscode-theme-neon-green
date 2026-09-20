@@ -43,7 +43,7 @@ const buildPage = async () => {
   );
 
   const darkTheme = themes.find((theme) => theme.uiTheme === 'vs-dark') ?? themes[0];
-  const highlighter = await createLandingHighlighter(themes);
+  const highlighter = await createLandingHighlighter(darkTheme);
 
   const markdown = landingMarkdown
     .replace('<!-- VARIANT_CARDS -->', buildVariantCards(themes))
