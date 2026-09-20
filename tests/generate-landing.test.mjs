@@ -14,6 +14,11 @@ import {
   slugify,
 } from '../scripts/generate-landing.mjs';
 import { shortVariantLabel, variantDescription } from '../scripts/landing/sections.mjs';
+import {
+  createLandingHighlighter,
+  normalizeLang,
+  SHIKI_LANGS,
+} from '../scripts/landing/highlight.mjs';
 
 const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const generatedHtml = readFileSync(join(REPO_ROOT, 'docs', 'index.html'), 'utf8');
@@ -165,6 +170,35 @@ test('shortVariantLabel strips only the collection family prefix (#24)', () => {
   assert.equal(shortVariantLabel('Neon Green — Dark Terminal', 'Neon Green'), 'Dark Terminal');
   assert.equal(shortVariantLabel('Soft Glow — Dark', 'Neon Green'), 'Soft Glow — Dark');
   assert.equal(shortVariantLabel('Neon Green — Light', ''), 'Neon Green — Light');
+});
+
+test('SHIKI_LANGS registers exactly the docs/landing.md fence langs plus text (#36)', () => {
+  const landingMd = readFileSync(join(REPO_ROOT, 'docs', 'landing.md'), 'utf8');
+  const fenceLangs = new Set(
+    [...landingMd.matchAll(/^```([^\s`]*)/gm)].map((m) => normalizeLang(m[1])),
+  );
+  for (const lang of fenceLangs) {
+    assert.ok(SHIKI_LANGS.includes(lang), `fence lang ${JSON.stringify(lang)} is not registered`);
+  }
+  for (const lang of SHIKI_LANGS) {
+    assert.ok(
+      lang === 'text' || fenceLangs.has(lang),
+      `registered lang ${JSON.stringify(lang)} is not used by any docs/landing.md fence`,
+    );
+  }
+});
+
+test('createLandingHighlighter loads a single theme and renders every fence lang (#36)', async () => {
+  const darkRef = pkg.contributes.themes.find((entry) => entry.uiTheme === 'vs-dark');
+  const darkTheme = JSON.parse(
+    readFileSync(join(REPO_ROOT, darkRef.path.replace(/^\.\//, '')), 'utf8'),
+  );
+  const highlighter = await createLandingHighlighter(darkTheme);
+  assert.deepEqual(highlighter.getLoadedThemes(), [darkTheme.name]);
+  for (const lang of [...SHIKI_LANGS, 'txt']) {
+    const html = highlighter.codeToHtml('echo hi', { lang, theme: darkTheme.name });
+    assert.ok(html.includes('<pre'), `no highlighted output for lang ${JSON.stringify(lang)}`);
+  }
 });
 
 test('variantDescription returns copy keyed by the contributes.themes label (#24)', () => {

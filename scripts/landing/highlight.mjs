@@ -6,7 +6,9 @@ import { createHighlighter } from 'shiki';
 
 import { escapeAttr, sanitizeUrl, slugify } from './sanitize.mjs';
 
-const SHIKI_LANGS = ['text', 'markdown', 'ts', 'js', 'python', 'rust', 'json', 'bash', 'html', 'css'];
+// Registering 'text' also covers its aliases (txt, plain, plaintext); a fence
+// lang outside this set falls back to 'text' in the code renderer below.
+const SHIKI_LANGS = ['text', 'bash', 'ts', 'python', 'rust', 'json'];
 
 const normalizeLang = (lang) => {
   if (!lang) return 'text';
@@ -23,11 +25,15 @@ const normalizeLang = (lang) => {
   return value;
 };
 
-export const createLandingHighlighter = (themes) =>
+// Only `darkTheme` is ever rendered (renderMarkdown's themeName), so the
+// highlighter loads that single theme instead of the whole collection.
+export const createLandingHighlighter = (theme) =>
   createHighlighter({
-    themes: themes.map((theme) => ({ ...theme })),
+    themes: [{ ...theme }],
     langs: SHIKI_LANGS,
   });
+
+export { normalizeLang, SHIKI_LANGS };
 
 export const renderMarkdown = async (markdown, { highlighter, themeName }) => {
   marked.use({
