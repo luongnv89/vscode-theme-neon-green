@@ -100,7 +100,7 @@
 ```bash
 npm install -g @vscode/vsce
 vsce package
-code --install-extension neon-green-theme-1.6.0.vsix
+code --install-extension neon-green-theme-<version>.vsix
 ```
 
 ### Manual Installation

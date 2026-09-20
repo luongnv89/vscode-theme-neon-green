@@ -1,7 +1,7 @@
-// Theme-card and palette-swatch section builders injected into docs/landing.md
-// placeholders — moved verbatim from generate-landing.mjs.
+// Theme-card, palette-swatch and hero-CTA section builders injected into
+// docs/landing.md placeholders — moved verbatim from generate-landing.mjs.
 
-import { escapeHtml, sanitizeCssColor } from './sanitize.mjs';
+import { escapeAttr, escapeHtml, sanitizeCssColor, sanitizeUrl } from './sanitize.mjs';
 
 // Card blurbs keyed by the contributes.themes label — the same identifier
 // package.json registers. Theme JSON carries no description field, so the copy
@@ -96,6 +96,20 @@ ${themes
   </article>`;
   })
   .join('\n')}
+</div>`;
+};
+
+// Hero call-to-action injected at the <!-- HERO_CTA --> placeholder: a single
+// dominant Marketplace install button, with GitHub/README demoted to plain
+// secondary text links (#30). The emitted markup contains no blank lines so it
+// stays one HTML block for marked, and every interpolated URL routes through
+// sanitizeUrl + escapeAttr like the rest of the page.
+export const buildHeroCta = ({ marketplaceUrl, repoUrl }) => {
+  const readmeUrl = `${String(repoUrl ?? '').replace(/\.git$/, '')}/blob/main/README.md`;
+  return `
+<div class="hero-cta">
+  <a class="hero-cta-btn" href="${escapeAttr(sanitizeUrl(marketplaceUrl))}">Install from Marketplace</a>
+  <p class="hero-cta-alt"><a href="${escapeAttr(sanitizeUrl(repoUrl))}">View on GitHub</a> &middot; <a href="${escapeAttr(sanitizeUrl(readmeUrl))}">Read the README</a></p>
 </div>`;
 };
 

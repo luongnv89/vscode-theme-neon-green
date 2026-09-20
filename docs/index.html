@@ -452,30 +452,54 @@
       font-size: 1rem;
     }
 
-    .markdown-body > p:nth-of-type(2) {
+    .markdown-body > .hero-cta {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      align-items: center;
+      gap: 16px 28px;
       margin: 0 0 30px;
     }
 
-    .markdown-body > p:nth-of-type(2) a {
+    /* One dominant install control: the Marketplace CTA is the only filled
+       button in the hero (#30). */
+    .hero-cta-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 46px;
-      padding: 0 18px;
+      min-height: 54px;
+      padding: 0 30px;
       border-radius: 999px;
-      border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
-      background: color-mix(in srgb, var(--surface) 72%, transparent);
-      color: var(--text);
-      font-weight: 700;
+      font-size: 1.08rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      color: var(--bg);
+      background: linear-gradient(180deg, var(--accent-strong), var(--accent));
+      box-shadow:
+        0 14px 42px color-mix(in srgb, var(--accent) 36%, transparent),
+        inset 0 0 0 1px color-mix(in srgb, white 22%, transparent);
     }
 
-    .markdown-body > p:nth-of-type(2) a:first-child {
-      background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 20%, transparent), color-mix(in srgb, var(--surface) 88%, transparent));
+    .hero-cta-btn:hover {
+      color: var(--bg);
+      filter: brightness(1.08);
+    }
+
+    /* GitHub / README ride along as plain secondary text links. */
+    .hero-cta-alt {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .hero-cta-alt a {
+      color: var(--muted);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .hero-cta-alt a:hover {
       color: var(--accent-strong);
-      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 12%, transparent);
     }
 
     .markdown-body > hr:first-of-type {
@@ -860,12 +884,12 @@
         </span>
         <span class="brand-caret" aria-hidden="true"></span>
       </a>
-      <nav class="topnav" id="primary-nav" aria-label="Primary"><a class="topnav-link" href="#theme-variants">Variants</a><a class="topnav-link" href="#installation">Install</a><a class="topnav-link" href="#iterm2-terminal-themes">iTerm</a><a class="topnav-link" href="#warp-terminal-themes">Warp</a><a class="topnav-link" href="#syntax-showcase">Showcase</a><div class="topnav-more" data-more>
+      <nav class="topnav" id="primary-nav" aria-label="Primary"><a class="topnav-link" href="#theme-variants">Variants</a><a class="topnav-link" href="#screenshots">Screenshots</a><a class="topnav-link" href="#installation">Install</a><a class="topnav-link" href="#iterm2-terminal-themes">iTerm</a><a class="topnav-link" href="#warp-terminal-themes">Warp</a><a class="topnav-link" href="#syntax-showcase">Showcase</a><div class="topnav-more" data-more>
         <button class="topnav-more-btn" type="button" aria-haspopup="true" aria-expanded="false">
           <span>More</span>
           <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="topnav-more-panel" role="menu"><a href="#why-this-theme-exists">Why this theme exists</a><a href="#screenshots">Screenshots</a><a href="#what-the-theme-covers">What the theme covers</a><a href="#markdown-rendering-gallery">Markdown rendering gallery</a><a href="#open-source-details">Open source details</a><a href="#final-call">Final call</a></div>
+        <div class="topnav-more-panel" role="menu"><a href="#why-this-theme-exists">Why this theme exists</a><a href="#what-the-theme-covers">What the theme covers</a><a href="#markdown-rendering-gallery">Markdown rendering gallery</a><a href="#open-source-details">Open source details</a><a href="#final-call">Final call</a></div>
       </div></nav>
 
 <div class="topbar-status">
@@ -893,8 +917,10 @@
 <blockquote>
 <p>Eight aesthetics, one collection. Neon Green for electric terminal energy. Soft Glow for warm, eye-friendly coding. OpenCode for a minimal flat-black canvas. Hermes Agent for gold-on-navy warmth. Aura for purple haze. Omarchy for slate minimalism. Synthwave &#39;84 for retro neon. Zed for clean neutrality. All tuned for long sessions.</p>
 </blockquote>
-<p><a href="https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme" target="_blank" rel="noreferrer">Install from Marketplace</a> · <a href="https://github.com/luongnv89/vscode-theme-neon-green" target="_blank" rel="noreferrer">View on GitHub</a> · <a href="https://github.com/luongnv89/vscode-theme-neon-green/blob/main/README.md" target="_blank" rel="noreferrer">Read the README</a></p>
-<hr>
+<div class="hero-cta">
+  <a class="hero-cta-btn" href="https://marketplace.visualstudio.com/items?itemName=luongnv89.neon-green-theme">Install from Marketplace</a>
+  <p class="hero-cta-alt"><a href="https://github.com/luongnv89/vscode-theme-neon-green">View on GitHub</a> &middot; <a href="https://github.com/luongnv89/vscode-theme-neon-green/blob/main/README.md">Read the README</a></p>
+</div><hr>
 <h2 id="why-this-theme-exists">Why this theme exists</h2><p>Most themes choose one of two extremes:</p>
 <ul>
 <li>visually loud, but tiring after an hour</li>
@@ -1221,7 +1247,7 @@
 <h2 id="installation">Installation</h2><h3 id="marketplace">Marketplace</h3><p>Open VS Code, search for <strong>Neon Green Theme Collection</strong>, then click <strong>Install</strong>.</p>
 <h3 id="vsix">VSIX</h3><pre class="shiki Neon Green — Dark Terminal" style="background-color:#0e0e1a;color:#d5dce8" tabindex="0"><code><span class="line"><span style="color:#82AAFF;font-weight:bold">npm</span><span style="color:#C3E88D"> install</span><span style="color:#F78C6C"> -g</span><span style="color:#C3E88D"> @vscode/vsce</span></span>
 <span class="line"><span style="color:#82AAFF;font-weight:bold">vsce</span><span style="color:#C3E88D"> package</span></span>
-<span class="line"><span style="color:#82AAFF;font-weight:bold">code</span><span style="color:#F78C6C"> --install-extension</span><span style="color:#C3E88D"> neon-green-theme-1.0.0.vsix</span></span></code></pre><h3 id="manual">Manual</h3><p>Copy the project folder into your VS Code extensions directory:</p>
+<span class="line"><span style="color:#82AAFF;font-weight:bold">code</span><span style="color:#F78C6C"> --install-extension</span><span style="color:#C3E88D"> neon-green-theme-1.7.0.vsix</span></span></code></pre><h3 id="manual">Manual</h3><p>Copy the project folder into your VS Code extensions directory:</p>
 <ul>
 <li>macOS/Linux: <code>~/.vscode/extensions/neon-green-theme</code></li>
 <li>Windows: <code>%USERPROFILE%\.vscode\extensions\neon-green-theme</code></li>
@@ -1475,7 +1501,7 @@
 <span class="line"><span style="color:#6A8A6A">  "</span><span style="color:#FF6B81">accent</span><span style="color:#6A8A6A">"</span><span style="color:#6A8A6A">:</span><span style="color:#C3E88D"> "#39ff14"</span></span>
 <span class="line"><span style="color:#6A8A6A">}</span></span></code></pre><h3 id="bash">Bash</h3><pre class="shiki Neon Green — Dark Terminal" style="background-color:#0e0e1a;color:#d5dce8" tabindex="0"><code><span class="line"><span style="color:#82AAFF;font-weight:bold">npm</span><span style="color:#C3E88D"> install</span><span style="color:#F78C6C"> -g</span><span style="color:#C3E88D"> @vscode/vsce</span></span>
 <span class="line"><span style="color:#82AAFF;font-weight:bold">vsce</span><span style="color:#C3E88D"> package</span></span>
-<span class="line"><span style="color:#82AAFF;font-weight:bold">code</span><span style="color:#F78C6C"> --install-extension</span><span style="color:#C3E88D"> neon-green-theme-1.0.0.vsix</span></span></code></pre><hr>
+<span class="line"><span style="color:#82AAFF;font-weight:bold">code</span><span style="color:#F78C6C"> --install-extension</span><span style="color:#C3E88D"> neon-green-theme-1.7.0.vsix</span></span></code></pre><hr>
 <h2 id="open-source-details">Open source details</h2><ul>
 <li>License: <strong>MIT</strong></li>
 <li>Publisher: <strong>luongnv89</strong></li>

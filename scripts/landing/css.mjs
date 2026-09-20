@@ -432,30 +432,54 @@ export const buildCss = ({ bg, bgSoft, panel, surface, surfaceMuted, line, text,
       font-size: 1rem;
     }
 
-    .markdown-body > p:nth-of-type(2) {
+    .markdown-body > .hero-cta {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      align-items: center;
+      gap: 16px 28px;
       margin: 0 0 30px;
     }
 
-    .markdown-body > p:nth-of-type(2) a {
+    /* One dominant install control: the Marketplace CTA is the only filled
+       button in the hero (#30). */
+    .hero-cta-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 46px;
-      padding: 0 18px;
+      min-height: 54px;
+      padding: 0 30px;
       border-radius: 999px;
-      border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
-      background: color-mix(in srgb, var(--surface) 72%, transparent);
-      color: var(--text);
-      font-weight: 700;
+      font-size: 1.08rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      color: var(--bg);
+      background: linear-gradient(180deg, var(--accent-strong), var(--accent));
+      box-shadow:
+        0 14px 42px color-mix(in srgb, var(--accent) 36%, transparent),
+        inset 0 0 0 1px color-mix(in srgb, white 22%, transparent);
     }
 
-    .markdown-body > p:nth-of-type(2) a:first-child {
-      background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 20%, transparent), color-mix(in srgb, var(--surface) 88%, transparent));
+    .hero-cta-btn:hover {
+      color: var(--bg);
+      filter: brightness(1.08);
+    }
+
+    /* GitHub / README ride along as plain secondary text links. */
+    .hero-cta-alt {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .hero-cta-alt a {
+      color: var(--muted);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .hero-cta-alt a:hover {
       color: var(--accent-strong);
-      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 12%, transparent);
     }
 
     .markdown-body > hr:first-of-type {
