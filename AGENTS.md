@@ -34,8 +34,8 @@ in [CLAUDE.md](CLAUDE.md) and [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
 
 ### Landing generator
 
-- **Scope:** `scripts/generate-landing.mjs`, `docs/index.html`,
-  `docs/landing.md`
+- **Scope:** `scripts/generate-landing.mjs`, `scripts/landing/`,
+  `docs/index.html`, `docs/landing.md`
 - Regenerates the landing page when the theme set, descriptions, or README
   change
 
