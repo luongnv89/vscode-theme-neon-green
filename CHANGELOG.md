@@ -1,18 +1,6 @@
 # Changelog
 
-## Unreleased
-
-### Documentation
-
-- Aligned the docs with the 13-theme, 8-family collection: `docs/ARCHITECTURE.md` now describes all families plus the landing/Python generators, `CONTRIBUTING.md` lists every registered theme, `docs/llms.txt` and the bug-report template enumerate all variants, and `docs/CHANGELOG.md` is now a pointer to this file (#35)
-
-### Tests
-
-- Added the `npm test` smoke suite (`node --test`, no new dependencies): theme-JSON schema checks against `contributes.themes` and characterization tests for the Python generators' `remap`/`walk` functions (#10)
-
-### Fixed
-
-- Restored the documented `F5` Extension Development Host workflow: `.vscode/launch.json` is now committed (`.gitignore` narrowed to un-ignore it) (#11)
+## v1.7.0 — 2026-09-20
 
 ### Features
 
@@ -21,6 +9,47 @@
 - **Synthwave '84 — Dark** theme: retro purple dusk canvas (`#262335`) with hot pink keywords (`#ff7edb`), cyan types (`#03edf9`), and sunset orange functions — ported from the Pi agent `synthwave-84` theme
 - **Zed — Dark** and **Zed — Light** themes: Zed editor's neutral palette (`#282c33` / `#fafafa`) with blue functions, purple keywords, and green strings — ported from the Pi agent `zed-dark` / `zed-light` themes, bringing the collection to thirteen themes
 - Added `scripts/make-pi-themes.py` generator: role-table hex remapper that ports any Pi agent theme palette onto the full VS Code theme skeleton (dark and light bases)
+- **Hermes Agent — Dark** theme: warm gold-on-navy palette for VS Code, iTerm2, Warp, Ghostty (cmux), and Claude Code (#3)
+- **Claude Code palette family** under `themes/claude-code/` — ports for all thirteen themes across all 8 families (#27)
+- **Ghostty themes** and **macOS Terminal.app profiles** for all 8 theme variants
+- Landing page: one dominant **Install from Marketplace** CTA in the hero, Screenshots promoted into the primary nav, and a per-family schematic gallery drawn from each family's real palette (#30, #31, #33)
+- Landing variant cards are now driven by `contributes.themes` instead of a hardcoded list (#24)
+
+### Fixed
+
+- Restored the documented `F5` Extension Development Host workflow: `.vscode/launch.json` is now committed (`.gitignore` narrowed to un-ignore it) (#11)
+- Mobile nav toggle's `aria-controls` now points at a real `id="primary-nav"` element (#14)
+- Firefox preview page scrolls on short viewports instead of clipping (#34)
+- Palette generators now exit non-zero on unmapped leftover hexes; CI regenerates themes and fails on drift (#29)
+- VSIX no longer ships companion theme trees (`claude-code`, `firefox`, `ghostty`, `cmux`, `terminal`), tests, or `.gitissue/` (#26)
+- VSIX version examples in docs are generated from `package.json` instead of hardcoded (#32)
+
+### Security
+
+- Landing generator escapes all HTML, attribute, URL, and CSS interpolation and serializes JSON-LD safely — closing a stored-XSS path through theme content (#17)
+- GitHub Actions pinned to commit SHAs in all workflows (#16)
+- `npm audit --audit-level=high` runs in CI and fails on high/critical advisories (#15)
+
+### Documentation
+
+- Aligned the docs with the 13-theme, 8-family collection: `docs/ARCHITECTURE.md` now describes all families plus the landing/Python generators, `CONTRIBUTING.md` lists every registered theme, `docs/llms.txt` and the bug-report template enumerate all variants, and `docs/CHANGELOG.md` is now a pointer to this file (#35)
+- Added `docs/DEVELOPMENT.md` toolchain guide, `CLAUDE.md`, and `AGENTS.md` agent-environment docs (#7, #8, #9)
+
+### Tests
+
+- Added the `npm test` smoke suite (`node --test`, no new dependencies): theme-JSON schema checks against `contributes.themes` and characterization tests for the Python generators' `remap`/`walk` functions (#10)
+- Suite now covers generator escaping helpers, contributes-driven variant parity, Shiki lang invariants, hero CTA, and the family gallery — 79 tests (#44, #52, #53, #54, #55)
+
+### Maintenance
+
+- CI moved to **Node 24 LTS** and `engines.node >= 24` declared (#18)
+- Upgraded `marked` 15 → 18 and `shiki` 3 → 4 (#19, #20, #21, #22)
+- CI validates all `themes/**/*.json` recursively (incl. nested families), excludes `node_modules`, and runs the test suite (#13)
+- Extracted the duplicated Python hex-remap logic into `scripts/hex_remap.py` (#25)
+- Split the 1,345-line landing generator into focused modules under `scripts/landing/` (#23)
+- Landing Shiki highlighter now loads a single theme and only the languages used (#36)
+
+**Full Changelog**: https://github.com/luongnv89/vscode-theme-neon-green/compare/v1.6.0...v1.7.0
 
 ## v1.6.0 — 2026-06-02
 
