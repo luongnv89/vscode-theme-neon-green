@@ -10,7 +10,7 @@ Neon Green Theme Collection is a VS Code color theme extension that provides thi
 
 Each theme variant is a standalone JSON file following the [VS Code Color Theme](https://code.visualstudio.com/api/extension-guides/color-theme) specification:
 
-- **`neon-green-color-theme.json`** — Dark Terminal variant with pure dark green-black background (`#0a0f0a`)
+- **`neon-green-color-theme.json`** — Dark Terminal variant with pure dark background (`#0e0e1a`)
 - **`neon-green-midnight-color-theme.json`** — Midnight variant with deep blue-black background (`#0b1014`)
 - **`neon-green-light-color-theme.json`** — Light variant for daytime use
 - **`neon-green-liquid-glass-color-theme.json`** — Liquid Glass variant with modern translucent feel
@@ -49,7 +49,7 @@ Defines the extension metadata and registers all thirteen themes via the `contri
 
 Two generator toolchains produce derivable artifacts from the theme palettes:
 
-- **Landing page** — `scripts/generate-landing.mjs` renders `docs/index.html` from `docs/landing.md`, the README, and the live theme JSON files. It is split into focused modules under `scripts/landing/` (`page.mjs`, `sections.mjs`, `nav.mjs`, `css.mjs`, `highlight.mjs`, `sanitize.mjs`) and is run via `npm run build:landing` — the repo's build/CI stand-in.
+- **Landing page** — `scripts/generate-landing.mjs` renders `docs/index.html` from `docs/landing.md`, `package.json` (`contributes.themes`, version, repo URLs), and the live theme JSON files. It is split into focused modules under `scripts/landing/` (`page.mjs`, `sections.mjs`, `nav.mjs`, `css.mjs`, `highlight.mjs`, `sanitize.mjs`) and is run via `npm run build:landing` — the repo's build/CI stand-in.
 - **Theme generators** — `scripts/make-pi-themes.py` and `scripts/make-opencode-theme.py` are palette-driven generators that port external theme palettes (e.g. Pi agent themes) onto the VS Code theme skeleton. Both share `scripts/hex_remap.py`, the role-table hex-remap engine that maps a source palette onto the `colors`/`tokenColors` structure. Generated output must stay consistent with the hand-written themes in structure and naming.
 
 ### Tests (`tests/`)
