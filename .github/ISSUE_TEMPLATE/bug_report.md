@@ -33,7 +33,7 @@ If applicable, add screenshots to help explain your problem.
 - OS: [e.g., macOS 14.0, Ubuntu 22.04, Windows 11]
 - VS Code Version: [e.g., 1.85.0]
 - Theme Version: [e.g., 1.0.0]
-- Theme Variant: [Neon Green — Dark Terminal / Midnight / Light / Liquid Glass / Soft Glow — Dark / Light]
+- Theme Variant: [e.g., Neon Green — Dark Terminal / Midnight / Light / Liquid Glass, Soft Glow — Dark / Light, OpenCode — Dark, Hermes Agent — Dark, Aura — Dark, Omarchy — Dark, Synthwave '84 — Dark, Zed — Dark / Light]
 
 ## Additional Context
 

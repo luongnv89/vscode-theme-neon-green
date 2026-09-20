@@ -37,7 +37,7 @@ Manual visual check:
 1. Open the project in VS Code
 2. Press `F5` to launch the **Extension Development Host**
 3. In the new window, open `Preferences: Color Theme` (`Ctrl+K Ctrl+T`)
-4. Select a theme variant (Neon Green or Soft Glow family)
+4. Select a theme variant (any of the 13 themes across the 8 families)
 5. Open files in various languages to verify syntax highlighting
 6. Use `examples/theme-showcase.md` for comprehensive multi-language testing
 

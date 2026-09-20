@@ -48,14 +48,21 @@ code .
 
 ### Theme Files
 
-Theme JSON files are located in `themes/`:
+Theme JSON files are located in `themes/` (all 13 are registered in `package.json` under `contributes.themes`):
 
-- `neon-green-color-theme.json` — Neon Green Dark Terminal
-- `neon-green-midnight-color-theme.json` — Neon Green Midnight
-- `neon-green-light-color-theme.json` — Neon Green Light
-- `neon-green-liquid-glass-color-theme.json` — Neon Green Liquid Glass
-- `soft-glow-dark-color-theme.json` — Soft Glow Dark
-- `soft-glow-light-color-theme.json` — Soft Glow Light
+- `neon-green-color-theme.json` — Neon Green — Dark Terminal
+- `neon-green-midnight-color-theme.json` — Neon Green — Midnight
+- `neon-green-light-color-theme.json` — Neon Green — Light
+- `neon-green-liquid-glass-color-theme.json` — Neon Green — Liquid Glass
+- `soft-glow-dark-color-theme.json` — Soft Glow — Dark
+- `soft-glow-light-color-theme.json` — Soft Glow — Light
+- `opencode-color-theme.json` — OpenCode — Dark
+- `hermes-agent-dark-color-theme.json` — Hermes Agent — Dark
+- `aura-color-theme.json` — Aura — Dark
+- `omarchy-color-theme.json` — Omarchy — Dark
+- `synthwave-84-color-theme.json` — Synthwave '84 — Dark
+- `zed-dark-color-theme.json` — Zed — Dark
+- `zed-light-color-theme.json` — Zed — Light
 
 Each file contains:
 - `colors` — UI element colors (editor, sidebar, terminal, etc.)
