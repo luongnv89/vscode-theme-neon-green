@@ -14,7 +14,13 @@ import {
   slugify,
 } from '../scripts/generate-landing.mjs';
 import { buildNav } from '../scripts/landing/nav.mjs';
-import { buildHeroCta, shortVariantLabel, variantDescription } from '../scripts/landing/sections.mjs';
+import {
+  buildFamilyGallery,
+  buildHeroCta,
+  shortVariantLabel,
+  themeFamily,
+  variantDescription,
+} from '../scripts/landing/sections.mjs';
 import {
   createLandingHighlighter,
   normalizeLang,
@@ -282,4 +288,90 @@ test('docs/landing.md and README.md pin no VSIX version (#32)', () => {
     landingMd.includes('neon-green-theme-{{VERSION}}.vsix'),
     'docs/landing.md must use the {{VERSION}} token injected from package.json',
   );
+});
+
+// Families are derived the same way the gallery groups them: the label stem
+// before " — ". The collection's own count feeds every assertion below, so a
+// new family fails the tests only if the gallery stops covering it.
+const themeFamilies = (entries) =>
+  new Set(entries.map((entry) => themeFamily(entry.label)));
+
+test('themeFamily groups a label on its " — " stem (#31)', () => {
+  assert.equal(themeFamily('Neon Green — Dark Terminal'), 'Neon Green');
+  assert.equal(themeFamily("Synthwave '84 — Dark"), "Synthwave '84");
+  assert.equal(themeFamily('Standalone'), 'Standalone');
+  assert.equal(themeFamily(null), '');
+});
+
+test('buildFamilyGallery emits one schematic card per theme family (#31)', () => {
+  const themes = pkg.contributes.themes.map((entry) => ({ label: entry.label, colors: {} }));
+  const html = buildFamilyGallery(themes);
+  const families = themeFamilies(pkg.contributes.themes);
+  assert.ok(families.size >= 8, 'the collection ships at least 8 theme families');
+  assert.equal(
+    (html.match(/class="family-shot"/g) ?? []).length,
+    families.size,
+    'one .family-shot card per family',
+  );
+  for (const family of families) {
+    assert.ok(
+      html.includes(`<strong>${escapeHtml(family)}</strong>`),
+      `family ${JSON.stringify(family)} missing from the gallery`,
+    );
+  }
+});
+
+test('buildFamilyGallery lists every variant under its family (#31)', () => {
+  const themes = pkg.contributes.themes.map((entry) => ({ label: entry.label, colors: {} }));
+  const html = buildFamilyGallery(themes);
+  for (const entry of pkg.contributes.themes) {
+    const short = shortVariantLabel(entry.label, themeFamily(entry.label));
+    assert.ok(
+      html.includes(escapeHtml(short)),
+      `variant ${JSON.stringify(short)} not listed in the gallery`,
+    );
+  }
+});
+
+test('buildFamilyGallery marks cards as schematic previews, not screenshots (#31)', () => {
+  const themes = pkg.contributes.themes.map((entry) => ({ label: entry.label, colors: {} }));
+  const html = buildFamilyGallery(themes);
+  const families = themeFamilies(pkg.contributes.themes);
+  assert.equal(
+    (html.match(/family-shot-note/g) ?? []).length,
+    families.size,
+    'every card must carry the "schematic preview" honesty label',
+  );
+  assert.ok(html.includes('schematic preview'), 'cards must not pose as real screenshots');
+});
+
+test('buildFamilyGallery escapes labels and sanitizes palette colors (#31)', () => {
+  const evil = {
+    label: 'Evil — <img src=x onerror=alert(1)>',
+    colors: { 'editor.background': 'x;}</style><script>alert(1)</script>' },
+  };
+  const html = buildFamilyGallery([evil]);
+  assert.ok(!html.includes('<img src=x'), 'label markup must be escaped');
+  assert.ok(!html.includes('x;}</style>'), 'hostile color must fall back through sanitizeCssColor');
+  assert.ok(html.includes('Evil'), 'escaped family name still renders');
+});
+
+test('generated docs/index.html Screenshots section carries the family gallery (#31)', () => {
+  const screenshots = generatedHtml.slice(generatedHtml.indexOf('id="screenshots"'));
+  assert.ok(screenshots.includes('class="family-gallery"'), 'gallery must render inside #screenshots');
+  const families = themeFamilies(pkg.contributes.themes);
+  assert.equal(
+    (screenshots.match(/class="family-shot"/g) ?? []).length,
+    families.size,
+    'the rendered gallery must cover every theme family',
+  );
+});
+
+test('generated docs/index.html keeps the two real editor screenshots (#31)', () => {
+  const screenshots = generatedHtml.slice(generatedHtml.indexOf('id="screenshots"'));
+  const installation = screenshots.indexOf('id="installation"');
+  const section = installation === -1 ? screenshots : screenshots.slice(0, installation);
+  for (const src of ['../screenshot-dark.png', '../screenshot-light.png']) {
+    assert.ok(section.includes(`src="${src}"`), `real capture ${src} missing from #screenshots`);
+  }
 });

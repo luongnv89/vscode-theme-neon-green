@@ -785,6 +785,56 @@
       color: var(--text);
     }
 
+    /* Screenshots gallery (#31): one schematic editor card per theme family.
+       Shares the .variant-card look and the .variant-window mockup, whose
+       colors arrive via the card's --variant-* custom properties. */
+    .family-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 100%;
+    }
+
+    .family-shot {
+      margin: 0;
+      padding: 16px;
+      border-radius: 24px;
+      border: 1px solid color-mix(in srgb, var(--line) 90%, transparent);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 78%, transparent), color-mix(in srgb, var(--panel) 92%, transparent));
+      box-shadow: 0 18px 42px color-mix(in srgb, var(--shadow) 42%, transparent);
+    }
+
+    .family-shot .variant-window {
+      margin-bottom: 12px;
+    }
+
+    .family-shot .variant-window-body {
+      min-height: 210px;
+    }
+
+    .family-shot-meta {
+      display: grid;
+      gap: 4px;
+    }
+
+    .family-shot-meta strong {
+      color: var(--text);
+      font-size: 1.12rem;
+    }
+
+    .family-shot-variants {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .family-shot-note {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
     footer {
       width: min(calc(100% - 32px), var(--content-width));
       margin: 16px auto 32px;
@@ -843,7 +893,8 @@
         display: grid;
       }
       .variant-grid,
-      .swatch-grid {
+      .swatch-grid,
+      .family-gallery {
         grid-template-columns: 1fr;
       }
     }
@@ -1241,8 +1292,171 @@
     </div>
   </article>
 </div><hr>
-<h2 id="screenshots">Screenshots</h2><h3 id="dark-terminal">Dark Terminal</h3><p><img src="../screenshot-dark.png" alt="Neon Green Dark Theme screenshot" loading="eager" fetchpriority="high" width="1200" height="800" /></p>
+<h2 id="screenshots">Screenshots</h2><p>The flagship Neon Green family ships real editor captures (dark and light). The gallery below covers <strong>all eight families</strong> — each card is rendered from that family&#39;s own theme palette.</p>
+<h3 id="dark-terminal">Dark Terminal</h3><p><img src="../screenshot-dark.png" alt="Neon Green Dark Theme screenshot" loading="eager" fetchpriority="high" width="1200" height="800" /></p>
 <h3 id="light-variant">Light Variant</h3><p><img src="../screenshot-light.png" alt="Neon Green Light Theme screenshot" loading="lazy" width="1200" height="800" /></p>
+<h3 id="all-eight-families">All eight families</h3><div class="family-gallery">  <figure class="family-shot" style="--variant-bg:#0e0e1a;--variant-panel:#0b0b16;--variant-surface:#131322;--variant-accent:#39ff14;--variant-text:#d5dce8;--variant-muted:#7a8599;--variant-line:#1e1e30;">
+    <div class="variant-window">
+      <div class="variant-window-bar">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="variant-window-body">
+        <div class="variant-sidebar"></div>
+        <div class="variant-editor">
+          <div class="variant-line variant-line-1"></div>
+          <div class="variant-line variant-line-2"></div>
+          <div class="variant-line variant-line-3"></div>
+          <div class="variant-line variant-line-4"></div>
+        </div>
+      </div>
+    </div>
+    <figcaption class="family-shot-meta">
+      <strong>Neon Green</strong>
+      <span class="family-shot-variants">Dark Terminal · Midnight · Light · Liquid Glass</span>
+      <span class="family-shot-note">schematic preview — real palette</span>
+    </figcaption>
+  </figure>  <figure class="family-shot" style="--variant-bg:#12100e;--variant-panel:#0d0b09;--variant-surface:#16140f;--variant-accent:#d4a87a;--variant-text:#c8c0b8;--variant-muted:#8a8078;--variant-line:#1c1915;">
+    <div class="variant-window">
+      <div class="variant-window-bar">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="variant-window-body">
+        <div class="variant-sidebar"></div>
+        <div class="variant-editor">
+          <div class="variant-line variant-line-1"></div>
+          <div class="variant-line variant-line-2"></div>
+          <div class="variant-line variant-line-3"></div>
+          <div class="variant-line variant-line-4"></div>
+        </div>
+      </div>
+    </div>
+    <figcaption class="family-shot-meta">
+      <strong>Soft Glow</strong>
+      <span class="family-shot-variants">Dark · Light</span>
+      <span class="family-shot-note">schematic preview — real palette</span>
+    </figcaption>
+  </figure>  <figure class="family-shot" style="--variant-bg:#0a0a0a;--variant-panel:#141414;--variant-surface:#1a1a1a;--variant-accent:#fab283;--variant-text:#eeeeee;--variant-muted:#808080;--variant-line:#1f1f1f;">
+    <div class="variant-window">
+      <div class="variant-window-bar">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="variant-window-body">
+        <div class="variant-sidebar"></div>
+        <div class="variant-editor">
+          <div class="variant-line variant-line-1"></div>
+          <div class="variant-line variant-line-2"></div>
+          <div class="variant-line variant-line-3"></div>
+          <div class="variant-line variant-line-4"></div>
+        </div>
+      </div>
+    </div>
+    <figcaption class="family-shot-meta">
+      <strong>OpenCode</strong>
+      <span class="family-shot-variants">Dark</span>
+      <span class="family-shot-note">schematic preview — real palette</span>
+    </figcaption>
+  </figure>  <figure class="family-shot" style="--variant-bg:#0b0b16;--variant-panel:#1a1a2e;--variant-surface:#1e1e35;--variant-accent:#FFD700;--variant-text:#FFF8DC;--variant-muted:#8B8682;--variant-line:#151525;">
+    <div class="variant-window">
+      <div class="variant-window-bar">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="variant-window-body">
+        <div class="variant-sidebar"></div>
+        <div class="variant-editor">
+          <div class="variant-line variant-line-1"></div>
+          <div class="variant-line variant-line-2"></div>
+          <div class="variant-line variant-line-3"></div>
+          <div class="variant-line variant-line-4"></div>
+        </div>
+      </div>
+    </div>
+    <figcaption class="family-shot-meta">
+      <strong>Hermes Agent</strong>
+      <span class="family-shot-variants">Dark</span>
+      <span class="family-shot-note">schematic preview — real palette</span>
+    </figcaption>
+  </figure>  <figure class="family-shot" style="--variant-bg:#15141b;--variant-panel:#1a1922;--variant-surface:#232130;--variant-accent:#a277ff;--variant-text:#edecee;--variant-muted:#6d6d6d;--variant-line:#1f1e28;">
+    <div class="variant-window">
+      <div class="variant-window-bar">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="variant-window-body">
+        <div class="variant-sidebar"></div>
+        <div class="variant-editor">
+          <div class="variant-line variant-line-1"></div>
+          <div class="variant-line variant-line-2"></div>
+          <div class="variant-line variant-line-3"></div>
+          <div class="variant-line variant-line-4"></div>
+        </div>
+      </div>
+    </div>
+    <figcaption class="family-shot-meta">
+      <strong>Aura</strong>
+      <span class="family-shot-variants">Dark</span>
+      <span class="family-shot-note">schematic preview — real palette</span>
+    </figcaption>
+  </figure>  <figure class="family-shot" style="--variant-bg:#101315;--variant-panel:#181c1f;--variant-surface:#22272b;--variant-accent:#00ff99;--variant-text:#cacccc;--variant-muted:#707880;--variant-line:#2a3034;">
+    <div class="variant-window">
+      <div class="variant-window-bar">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="variant-window-body">
+        <div class="variant-sidebar"></div>
+        <div class="variant-editor">
+          <div class="variant-line variant-line-1"></div>
+          <div class="variant-line variant-line-2"></div>
+          <div class="variant-line variant-line-3"></div>
+          <div class="variant-line variant-line-4"></div>
+        </div>
+      </div>
+    </div>
+    <figcaption class="family-shot-meta">
+      <strong>Omarchy</strong>
+      <span class="family-shot-variants">Dark</span>
+      <span class="family-shot-note">schematic preview — real palette</span>
+    </figcaption>
+  </figure>  <figure class="family-shot" style="--variant-bg:#262335;--variant-panel:#241b2f;--variant-surface:#2a2139;--variant-accent:#ff7edb;--variant-text:#b6b1b1;--variant-muted:#848bbd;--variant-line:#34294f;">
+    <div class="variant-window">
+      <div class="variant-window-bar">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="variant-window-body">
+        <div class="variant-sidebar"></div>
+        <div class="variant-editor">
+          <div class="variant-line variant-line-1"></div>
+          <div class="variant-line variant-line-2"></div>
+          <div class="variant-line variant-line-3"></div>
+          <div class="variant-line variant-line-4"></div>
+        </div>
+      </div>
+    </div>
+    <figcaption class="family-shot-meta">
+      <strong>Synthwave &#39;84</strong>
+      <span class="family-shot-variants">Dark</span>
+      <span class="family-shot-note">schematic preview — real palette</span>
+    </figcaption>
+  </figure>  <figure class="family-shot" style="--variant-bg:#282c33;--variant-panel:#2f343e;--variant-surface:#3a4048;--variant-accent:#74ade8;--variant-text:#dce0e5;--variant-muted:#878a98;--variant-line:#363c46;">
+    <div class="variant-window">
+      <div class="variant-window-bar">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="variant-window-body">
+        <div class="variant-sidebar"></div>
+        <div class="variant-editor">
+          <div class="variant-line variant-line-1"></div>
+          <div class="variant-line variant-line-2"></div>
+          <div class="variant-line variant-line-3"></div>
+          <div class="variant-line variant-line-4"></div>
+        </div>
+      </div>
+    </div>
+    <figcaption class="family-shot-meta">
+      <strong>Zed</strong>
+      <span class="family-shot-variants">Dark · Light</span>
+      <span class="family-shot-note">schematic preview — real palette</span>
+    </figcaption>
+  </figure>
+</div><p><em>Each card is a schematic preview drawn from the family&#39;s real <code>colors</code> — editor background, panel, accent and text — not a literal screenshot. Per-family editor captures land in this section as they are taken.</em></p>
 <hr>
 <h2 id="installation">Installation</h2><h3 id="marketplace">Marketplace</h3><p>Open VS Code, search for <strong>Neon Green Theme Collection</strong>, then click <strong>Install</strong>.</p>
 <h3 id="vsix">VSIX</h3><pre class="shiki Neon Green — Dark Terminal" style="background-color:#0e0e1a;color:#d5dce8" tabindex="0"><code><span class="line"><span style="color:#82AAFF;font-weight:bold">npm</span><span style="color:#C3E88D"> install</span><span style="color:#F78C6C"> -g</span><span style="color:#C3E88D"> @vscode/vsce</span></span>

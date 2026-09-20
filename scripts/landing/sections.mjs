@@ -39,38 +39,36 @@ export const shortVariantLabel = (label, family) => {
   return family && String(label).startsWith(prefix) ? String(label).slice(prefix.length) : label;
 };
 
-export const buildVariantCards = (themes) => {
-  const family = collectionFamily(themes);
-  return `
-<div class="variant-grid">
-${themes
-  .map((theme) => {
-    const bg = sanitizeCssColor(theme.colors['editor.background'] || theme.colors.background, '#111111');
-    const panel = sanitizeCssColor(
-      theme.colors['sideBar.background'] || theme.colors['panel.background'],
-      '#181818',
-    );
-    const surface = sanitizeCssColor(
-      theme.colors['tab.activeBackground'] || theme.colors['input.background'],
-      '#202020',
-    );
-    const accent = sanitizeCssColor(
-      theme.colors['activityBar.foreground'] ||
-        theme.colors['editorCursor.foreground'] ||
-        theme.colors['textLink.foreground'],
-      '#39ff14',
-    );
-    const text = sanitizeCssColor(theme.colors['editor.foreground'] || theme.colors.foreground, '#e6e6e6');
-    const muted = sanitizeCssColor(
-      theme.colors['descriptionForeground'] || theme.colors['sideBar.foreground'],
-      '#8c8c8c',
-    );
-    const line = sanitizeCssColor(theme.colors['panel.border'] || theme.colors['editorGroup.border'], '#2a2a2a');
-    const label = theme.label ?? theme.name ?? '';
-    const cardLabel = shortVariantLabel(label, family);
+// Sanitized palette the schematic editor mockup is drawn from — the
+// sanitizeCssColor allowlist means a hostile theme file can never inject
+// markup through a color string.
+const variantPalette = (theme) => ({
+  bg: sanitizeCssColor(theme.colors['editor.background'] || theme.colors.background, '#111111'),
+  panel: sanitizeCssColor(
+    theme.colors['sideBar.background'] || theme.colors['panel.background'],
+    '#181818',
+  ),
+  surface: sanitizeCssColor(
+    theme.colors['tab.activeBackground'] || theme.colors['input.background'],
+    '#202020',
+  ),
+  accent: sanitizeCssColor(
+    theme.colors['activityBar.foreground'] ||
+      theme.colors['editorCursor.foreground'] ||
+      theme.colors['textLink.foreground'],
+    '#39ff14',
+  ),
+  text: sanitizeCssColor(theme.colors['editor.foreground'] || theme.colors.foreground, '#e6e6e6'),
+  muted: sanitizeCssColor(
+    theme.colors['descriptionForeground'] || theme.colors['sideBar.foreground'],
+    '#8c8c8c',
+  ),
+  line: sanitizeCssColor(theme.colors['panel.border'] || theme.colors['editorGroup.border'], '#2a2a2a'),
+});
 
-    return `
-  <article class="variant-card" style="--variant-bg:${bg};--variant-panel:${panel};--variant-surface:${surface};--variant-accent:${accent};--variant-text:${text};--variant-muted:${muted};--variant-line:${line};">
+// The schematic editor window shared by variant cards and the family gallery —
+// its colors come entirely from the card's --variant-* custom properties.
+const variantWindow = () => `
     <div class="variant-window">
       <div class="variant-window-bar">
         <span></span><span></span><span></span>
@@ -84,7 +82,20 @@ ${themes
           <div class="variant-line variant-line-4"></div>
         </div>
       </div>
-    </div>
+    </div>`;
+
+export const buildVariantCards = (themes) => {
+  const family = collectionFamily(themes);
+  return `
+<div class="variant-grid">
+${themes
+  .map((theme) => {
+    const { bg, panel, surface, accent, text, muted, line } = variantPalette(theme);
+    const label = theme.label ?? theme.name ?? '';
+    const cardLabel = shortVariantLabel(label, family);
+
+    return `
+  <article class="variant-card" style="--variant-bg:${bg};--variant-panel:${panel};--variant-surface:${surface};--variant-accent:${accent};--variant-text:${text};--variant-muted:${muted};--variant-line:${line};">${variantWindow()}
     <div class="variant-meta">
       <h3>${escapeHtml(cardLabel)}</h3>
       <p>${escapeHtml(variantDescription(label))}</p>
@@ -94,6 +105,45 @@ ${themes
       </dl>
     </div>
   </article>`;
+  })
+  .join('\n')}
+</div>`;
+};
+
+// A theme's family is its label stem — "Synthwave '84 — Dark" groups under
+// "Synthwave '84". A label with no " — " separator is its own family.
+export const themeFamily = (label) => String(label ?? '').split(/\s+—\s+/)[0];
+
+// Gallery equivalent for per-family editor shots (#31): one schematic card per
+// theme family, painted from that family's first registered variant's real
+// colors — the same data VS Code applies. Only two hand-captured PNGs exist,
+// so every card is labelled "schematic preview" to stay honest about what it
+// is; it is never presented as a real screenshot.
+export const buildFamilyGallery = (themes) => {
+  const groups = new Map();
+  for (const theme of themes) {
+    const familyName = themeFamily(theme.label ?? theme.name ?? '') || 'Theme';
+    if (!groups.has(familyName)) groups.set(familyName, []);
+    groups.get(familyName).push(theme);
+  }
+
+  return `
+<div class="family-gallery">
+${[...groups]
+  .map(([familyName, members]) => {
+    const { bg, panel, surface, accent, text, muted, line } = variantPalette(members[0]);
+    const variants = members
+      .map((theme) => shortVariantLabel(theme.label ?? theme.name ?? '', familyName))
+      .join(' · ');
+
+    return `
+  <figure class="family-shot" style="--variant-bg:${bg};--variant-panel:${panel};--variant-surface:${surface};--variant-accent:${accent};--variant-text:${text};--variant-muted:${muted};--variant-line:${line};">${variantWindow()}
+    <figcaption class="family-shot-meta">
+      <strong>${escapeHtml(familyName)}</strong>
+      <span class="family-shot-variants">${escapeHtml(variants)}</span>
+      <span class="family-shot-note">schematic preview — real palette</span>
+    </figcaption>
+  </figure>`;
   })
   .join('\n')}
 </div>`;

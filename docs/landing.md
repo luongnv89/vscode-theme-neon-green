@@ -38,6 +38,8 @@ Most themes choose one of two extremes:
 
 ## Screenshots
 
+The flagship Neon Green family ships real editor captures (dark and light). The gallery below covers **all eight families** — each card is rendered from that family's own theme palette.
+
 ### Dark Terminal
 
 ![Neon Green Dark Theme screenshot](../screenshot-dark.png)
@@ -45,6 +47,12 @@ Most themes choose one of two extremes:
 ### Light Variant
 
 ![Neon Green Light Theme screenshot](../screenshot-light.png)
+
+### All eight families
+
+<!-- FAMILY_GALLERY -->
+
+*Each card is a schematic preview drawn from the family's real `colors` — editor background, panel, accent and text — not a literal screenshot. Per-family editor captures land in this section as they are taken.*
 
 ---
 
