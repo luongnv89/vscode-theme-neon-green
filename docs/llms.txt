@@ -1,6 +1,6 @@
 # Neon Green Theme Collection
 
-> 7 VS Code themes in 3 families: Neon Green (Dark Terminal, Midnight, Light, Liquid Glass), Soft Glow (Dark, Light), and OpenCode (Dark). Vivid neon accents, warm eye-friendly pastels, and a minimal flat-black canvas for long coding sessions. Free and open source under MIT.
+> 13 VS Code themes in 8 families: Neon Green (Dark Terminal, Midnight, Light, Liquid Glass), Soft Glow (Dark, Light), OpenCode (Dark), Hermes Agent (Dark), Aura (Dark), Omarchy (Dark), Synthwave '84 (Dark), and Zed (Dark, Light). Vivid neon accents, warm eye-friendly pastels, and a minimal flat-black canvas for long coding sessions. Free and open source under MIT.
 
 ## Main
 
@@ -22,6 +22,22 @@
 
 ### OpenCode
 - Dark: Minimal flat near-black canvas (#0a0a0a) with warm peach accents (#fab283) and soft purple keywords (#9d7cd8) — a clean, low-distraction editor surface
+
+### Hermes Agent
+- Dark: Deep midnight navy canvas (#0b0b16) with cornsilk text and a warm gold accent — a regal, low-glare agent theme
+
+### Aura
+- Dark: Deep purple-black canvas (#15141b) with violet keywords (#a277ff), mint types (#61ffca), and warm amber functions — a purple-hazed theme ported from the Pi agent
+
+### Omarchy
+- Dark: Slate gray-black canvas (#101315) with neon green strings (#00ff99) and cyan keywords (#33ccff) — a minimal DHH-style theme ported from the Pi agent
+
+### Synthwave '84
+- Dark: Retro purple dusk canvas (#262335) with hot pink keywords (#ff7edb), cyan types (#03edf9), and sunset orange functions — outrun neon, ported from the Pi agent
+
+### Zed
+- Dark: Zed editor's neutral gray palette (#282c33) with blue functions, purple keywords, and green strings
+- Light: Clean neutral white (#fafafa) — the same palette tuned for daylight
 
 ## Optional
 

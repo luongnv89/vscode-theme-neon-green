@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Documentation
+
+- Aligned the docs with the 13-theme, 8-family collection: `docs/ARCHITECTURE.md` now describes all families plus the landing/Python generators, `CONTRIBUTING.md` lists every registered theme, `docs/llms.txt` and the bug-report template enumerate all variants, and `docs/CHANGELOG.md` is now a pointer to this file (#35)
+
 ### Tests
 
 - Added the `npm test` smoke suite (`node --test`, no new dependencies): theme-JSON schema checks against `contributes.themes` and characterization tests for the Python generators' `remap`/`walk` functions (#10)
