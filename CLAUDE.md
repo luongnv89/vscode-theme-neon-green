@@ -35,7 +35,7 @@ Recorded commands an agent can run from a fresh checkout:
 | `themes/*.json` | VS Code color themes (registered in `package.json` → `contributes.themes`) |
 | `themes/*.itermcolors`, `themes/terminal/`, `themes/warp/`, `themes/ghostty/`, `themes/cmux/` | Terminal emulator ports |
 | `themes/claude-code/`, `themes/firefox/` | Claude Code and Firefox theme ports |
-| `scripts/` | Generators — Node (`generate-landing.mjs`) and Python (`make-*.py`) |
+| `scripts/` | Generators — Node (`generate-landing.mjs` + `landing/` modules) and Python (`make-*.py`) |
 | `docs/` | DEVELOPMENT.md (toolchain + recorded commands), ARCHITECTURE.md, generated landing page |
 | `examples/` | `theme-showcase.md` for manual multi-language visual checks |
 
