@@ -6,7 +6,7 @@ import { buildCss, themeCssVars } from './landing/css.mjs';
 import { createLandingHighlighter, renderMarkdown } from './landing/highlight.mjs';
 import { buildNav } from './landing/nav.mjs';
 import { buildHtml } from './landing/page.mjs';
-import { buildHeroCta, buildPaletteSwatches, buildVariantCards } from './landing/sections.mjs';
+import { buildFamilyGallery, buildHeroCta, buildPaletteSwatches, buildVariantCards } from './landing/sections.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -51,6 +51,7 @@ const buildPage = async () => {
   const markdown = landingMarkdown
     .replace('<!-- HERO_CTA -->', buildHeroCta({ marketplaceUrl, repoUrl }))
     .replace('<!-- VARIANT_CARDS -->', buildVariantCards(themes))
+    .replace('<!-- FAMILY_GALLERY -->', buildFamilyGallery(themes))
     .replace('<!-- PALETTE_SWATCHES -->', buildPaletteSwatches(darkTheme))
     .replaceAll('{{VERSION}}', String(pkg.version));
 

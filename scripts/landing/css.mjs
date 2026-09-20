@@ -765,6 +765,56 @@ export const buildCss = ({ bg, bgSoft, panel, surface, surfaceMuted, line, text,
       color: var(--text);
     }
 
+    /* Screenshots gallery (#31): one schematic editor card per theme family.
+       Shares the .variant-card look and the .variant-window mockup, whose
+       colors arrive via the card's --variant-* custom properties. */
+    .family-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 100%;
+    }
+
+    .family-shot {
+      margin: 0;
+      padding: 16px;
+      border-radius: 24px;
+      border: 1px solid color-mix(in srgb, var(--line) 90%, transparent);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 78%, transparent), color-mix(in srgb, var(--panel) 92%, transparent));
+      box-shadow: 0 18px 42px color-mix(in srgb, var(--shadow) 42%, transparent);
+    }
+
+    .family-shot .variant-window {
+      margin-bottom: 12px;
+    }
+
+    .family-shot .variant-window-body {
+      min-height: 210px;
+    }
+
+    .family-shot-meta {
+      display: grid;
+      gap: 4px;
+    }
+
+    .family-shot-meta strong {
+      color: var(--text);
+      font-size: 1.12rem;
+    }
+
+    .family-shot-variants {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .family-shot-note {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
     footer {
       width: min(calc(100% - 32px), var(--content-width));
       margin: 16px auto 32px;
@@ -823,7 +873,8 @@ export const buildCss = ({ bg, bgSoft, panel, surface, surfaceMuted, line, text,
         display: grid;
       }
       .variant-grid,
-      .swatch-grid {
+      .swatch-grid,
+      .family-gallery {
         grid-template-columns: 1fr;
       }
     }
